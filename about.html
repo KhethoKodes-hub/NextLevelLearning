@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Next Level Learning - THRASS Africa</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cabinet+Grotesk:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Cormorant Garamond', 'serif'],
+            body: ['Cabinet Grotesk', 'sans-serif'],
+          },
+          colors: {
+            ink:   { DEFAULT: '#04112B', 50: '#EFF4FF', 100: '#D6E4FF', 200: '#AFC9FE', 300: '#7CAAFD', 400: '#4082FB', 500: '#1658F0', 600: '#0942D3', 700: '#0A32A4', 800: '#0D2780', 900: '#04112B' },
+            azure: { DEFAULT: '#0ea5e9', 50: '#F0FBFF', 100: '#DDFAFF', 200: '#B3F1FE', 300: '#7AE6FC', 400: '#38D1F5', 500: '#0ea5e9', 600: '#0484C8', 700: '#066FA8', 800: '#0A5A88', 900: '#0C3F5E' },
+            frost: '#F0F7FF',
+          },
+          animation: {
+            'float':       'float 6s ease-in-out infinite',
+            'float-slow':  'float 9s ease-in-out 1s infinite',
+            'float-med':   'float 7.5s ease-in-out 2s infinite',
+            'pulse-soft':  'pulseSoft 4s ease-in-out infinite',
+            'slide-up':    'slideUp 0.7s cubic-bezier(0.16,1,0.3,1) both',
+            'fade-in':     'fadeIn 0.6s ease both',
+            'shimmer':     'shimmer 2.5s linear infinite',
+          },
+          keyframes: {
+            float:     { '0%,100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-16px)' } },
+            pulseSoft: { '0%,100%': { opacity: '0.6' }, '50%': { opacity: '1' } },
+            slideUp:   { from: { opacity: '0', transform: 'translateY(32px)' }, to: { opacity: '1', transform: 'translateY(0)' } },
+            fadeIn:    { from: { opacity: '0' }, to: { opacity: '1' } },
+            shimmer:   { '0%': { backgroundPosition: '-200% 0' }, '100%': { backgroundPosition: '200% 0' } },
+          },
+          backgroundImage: {
+            'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%234082FB' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Cabinet Grotesk', sans-serif; overflow-x: hidden; }
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; }
+
+    /* Glass */
+    .glass        { background: rgba(255,255,255,0.12); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.22); }
+    .glass-white  { background: rgba(255,255,255,0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.65); }
+
+    /* Gradients */
+    .grad-text       { background: linear-gradient(135deg,#3B82F6 0%,#0ea5e9 50%,#38bdf8 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .grad-text-light { background: linear-gradient(135deg,#BAE6FD 0%,#93C5FD 50%,#E0F2FE 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+
+    /* Shimmer button */
+    .btn-shimmer { background: linear-gradient(90deg,#1658F0 0%,#0ea5e9 33%,#38bdf8 66%,#1658F0 100%); background-size:200% auto; animation: shimmer 3s linear infinite; }
+
+    /* Reveal animations */
+    .reveal       { opacity:0; transform:translateY(28px);  transition:opacity 0.75s cubic-bezier(0.16,1,0.3,1),transform 0.75s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-left  { opacity:0; transform:translateX(-28px); transition:opacity 0.75s cubic-bezier(0.16,1,0.3,1),transform 0.75s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-right { opacity:0; transform:translateX(28px);  transition:opacity 0.75s cubic-bezier(0.16,1,0.3,1),transform 0.75s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.up, .reveal-left.up, .reveal-right.up { opacity:1; transform:none; }
+
+    /* Nav underline */
+    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:linear-gradient(90deg,#1658F0,#0ea5e9); border-radius:2px; transition:width 0.35s cubic-bezier(0.16,1,0.3,1); }
+    .nav-link:hover::after, .nav-link.active::after { width:100%; }
+    .nav-link.active { color: white !important; font-weight: 800; }
+
+    /* Mobile menu */
+    #mobile-menu { max-height:0; overflow:hidden; transition:max-height 0.4s cubic-bezier(0.16,1,0.3,1); }
+    #mobile-menu.open { max-height:480px; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width:6px; }
+    ::-webkit-scrollbar-track { background:#F0F7FF; }
+    ::-webkit-scrollbar-thumb { background:linear-gradient(180deg,#1658F0,#0ea5e9); border-radius:3px; }
+
+    /* Noise */
+    .noise::before { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events:none; }
+
+    /* Dot bg */
+    .dot-bg { background-image:radial-gradient(circle,#1658F020 1px,transparent 1px); background-size:28px 28px; }
+
+    /* Float classes */
+    .float-1 { animation: float 6s ease-in-out infinite; }
+    .float-2 { animation: float 8s ease-in-out 1s infinite; }
+    .float-3 { animation: float 7s ease-in-out 2s infinite; }
+
+    /* Image hover zoom */
+    .img-zoom img { transition:transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+    .img-zoom:hover img { transform:scale(1.05); }
+
+    /* Card hover */
+    .card-hover { transition:transform 0.4s cubic-bezier(0.16,1,0.3,1),box-shadow 0.4s ease; }
+    .card-hover:hover { transform:translateY(-10px); box-shadow:0 30px 60px rgba(4,17,43,0.18); }
+
+    /* Parallax */
+    .parallax-bg { background-attachment:fixed; }
+    @media (max-width:768px) { .parallax-bg { background-attachment:scroll; } }
+
+    /* Timeline vertical line */
+    .tl-line { position:absolute; left:32px; top:0; bottom:0; width:2px; background:linear-gradient(180deg,#1658F0,#0ea5e9,#38bdf8,#1658F0); border-radius:2px; }
+
+    /* Value card tilt on hover */
+    .value-tilt { transition:transform 0.4s cubic-bezier(0.16,1,0.3,1),box-shadow 0.4s ease; }
+    .value-tilt:hover { transform:translateY(-10px) rotate(-1deg); box-shadow:0 28px 50px rgba(4,17,43,0.14); }
+
+    /* Marquee */
+    .marquee-track { display:flex; animation:marquee 26s linear infinite; white-space:nowrap; }
+    @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+    /* Orbit */
+    .orbit { animation:orbitSpin 22s linear infinite; }
+    .orbit-r { animation:orbitSpin 28s linear reverse infinite; }
+    @keyframes orbitSpin { to{transform:rotate(360deg)} }
+
+    /* Blob */
+    .blob { border-radius:60% 40% 30% 70% / 60% 30% 70% 40%; animation:blobMove 12s ease-in-out infinite; }
+    @keyframes blobMove { 0%,100%{border-radius:60% 40% 30% 70% / 60% 30% 70% 40%} 33%{border-radius:30% 60% 70% 40% / 50% 60% 30% 60%} 66%{border-radius:50% 60% 30% 60% / 30% 40% 60% 50%} }
+
+    /* Team card overlay */
+    .team-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(4,17,43,0.85) 0%,rgba(4,17,43,0.2) 45%,transparent 70%); opacity:0; transition:opacity 0.4s ease; }
+    .team-card-wrap:hover .team-overlay { opacity:1; }
+
+    /* Section number */
+    .section-num { font-family:'Cormorant Garamond',serif; font-size:7rem; font-weight:700; line-height:1; color:rgba(14,165,233,0.07); position:absolute; top:-1.5rem; left:-1rem; pointer-events:none; user-select:none; }
+  </style>
+</head>
+<body class="bg-white text-ink-900">
+
+  <!-- ══════════════ HEADER ══════════════ -->
+  <header id="header" class="fixed top-0 inset-x-0 z-50 transition-all duration-500" style="background:transparent;">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between gap-6">
+
+      <a href="index.html" class="flex items-center gap-3 group flex-shrink-0">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-ink-800 to-azure flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+          <i class="fas fa-book-open-reader text-white text-sm"></i>
+        </div>
+        <div class="leading-tight">
+          <div class="font-display font-bold text-lg text-white leading-none">Next Level Learning</div>
+          <div class="text-[0.62rem] font-body font-700 tracking-[0.14em] uppercase text-azure-300 leading-none mt-0.5">THRASS Africa</div>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-1">
+        <a href="c.html"  class="nav-link relative px-4 py-2 text-sm font-body font-500 text-white/80 hover:text-white transition-colors duration-200">Home</a>
+        <a href="about.html"  class="nav-link active relative px-4 py-2 text-sm font-body font-500 text-white transition-colors duration-200">About</a>
+        <a href="services.html" class="nav-link relative px-4 py-2 text-sm font-body font-500 text-white/80 hover:text-white transition-colors duration-200">Resources</a>
+        <a href="contact.html" class="nav-link relative px-4 py-2 text-sm font-body font-500 text-white/80 hover:text-white transition-colors duration-200">Contact</a>
+      </nav>
+
+      <div class="hidden md:flex items-center gap-3">
+        <a href="index.html" class="glass px-5 py-2.5 rounded-full text-sm font-body font-700 text-white hover:bg-white/20 transition-all duration-300 flex items-center gap-2">
+          <i class="fas fa-sign-in-alt text-azure-300"></i> Login
+        </a>
+        <a href="services.html" class="btn-shimmer px-5 py-2.5 rounded-full text-sm font-body font-700 text-white shadow-lg shadow-azure/30 hover:scale-105 hover:shadow-azure/50 transition-all duration-300 flex items-center gap-2">
+          <i class="fas fa-rocket"></i> Get Started
+        </a>
+      </div>
+
+      <button id="menuBtn" class="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 group">
+        <span class="w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
+        <span class="w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
+        <span class="w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden overflow-hidden bg-ink-900/95 backdrop-blur-xl border-t border-white/10">
+      <div class="px-6 py-4 flex flex-col gap-1">
+        <a href="c.html"   class="mobile-link py-3 text-white/80 hover:text-white font-body font-500 border-b border-white/8 transition-colors">Home</a>
+        <a href="about.html"   class="mobile-link py-3 text-white font-body font-700 border-b border-white/8">About</a>
+        <a href="services.html" class="mobile-link py-3 text-white/80 hover:text-white font-body font-500 border-b border-white/8 transition-colors">Resources</a>
+        <a href="contact.html" class="mobile-link py-3 text-white/80 hover:text-white font-body font-500 transition-colors">Contact</a>
+        <div class="pt-4 flex gap-3">
+          <a href="index.html" class="flex-1 py-3 rounded-xl text-center text-sm font-700 text-white glass border border-white/20">Login</a>
+          <a href="services.html" class="flex-1 py-3 rounded-xl text-center text-sm font-700 text-white btn-shimmer shadow-lg">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════ HERO ══════════════ -->
+  <section class="relative min-h-[80vh] flex items-center overflow-hidden noise parallax-bg"
+    style="background-image:url('https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=1800&auto=format&fit=crop&q=85'); background-size:cover; background-position:center 40%;">
+    <div class="absolute inset-0 bg-gradient-to-br from-ink-900/95 via-ink-900/82 to-azure-900/70"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-ink-900/60 via-transparent to-transparent"></div>
+    <div class="absolute inset-0 dot-bg opacity-25"></div>
+
+    <!-- Decorative blobs -->
+    <div class="absolute top-1/3 right-1/4 w-72 h-72 bg-azure-500/15 blob filter blur-3xl float-1 pointer-events-none"></div>
+    <div class="absolute bottom-1/4 left-1/6 w-56 h-56 bg-blue-600/10 blob filter blur-3xl float-2 pointer-events-none"></div>
+
+    <!-- Orbit decoration -->
+    <div class="absolute left-10 top-1/2 -translate-y-1/2 w-56 h-56 hidden xl:block pointer-events-none">
+      <div class="absolute inset-0 orbit rounded-full border border-white/8"></div>
+      <div class="absolute inset-6 orbit-r rounded-full border border-azure/12"></div>
+      <div class="absolute inset-12 rounded-full border border-white/10 animate-pulse-soft"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-40 relative z-10 w-full">
+      <div class="max-w-3xl mx-auto text-center text-white">
+
+        <!-- Breadcrumb -->
+        <div class="inline-flex items-center gap-2 glass border border-white/15 rounded-full px-4 py-2 mb-8 text-xs font-body text-white/60 animate-fade-in">
+          <a href="index.html" class="hover:text-white transition-colors flex items-center gap-1.5">
+            <i class="fas fa-house text-azure-300 text-[10px]"></i> Home
+          </a>
+          <i class="fas fa-chevron-right text-[9px] text-azure/50"></i>
+          <span class="text-white/90 font-700">About Us</span>
+        </div>
+
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 glass border border-white/20 rounded-full px-5 py-2.5 mb-8 text-xs font-body font-700 text-white/90 tracking-wider uppercase block w-fit mx-auto animate-slide-up" style="animation-delay:0.05s">
+          <i class="fas fa-heart text-rose-400 text-xs"></i>
+          Our Story & Mission
+        </div>
+
+        <h1 class="font-display font-700 text-5xl sm:text-6xl lg:text-7xl text-white leading-[1.05] mb-7 animate-slide-up" style="animation-delay:0.12s">
+          Empowering <span class="grad-text-light"><em class="not-italic">African Minds</em></span><br>
+          Through Literacy
+        </h1>
+
+        <p class="font-body text-white/65 text-lg leading-relaxed max-w-xl mx-auto mb-10 animate-slide-up" style="animation-delay:0.22s">
+          For over a decade, Next Level Learning has been the trusted partner in phonics excellence — transforming how children read, write, and succeed across Southern Africa.
+        </p>
+
+        <!-- Mini stats strip -->
+        <div class="inline-flex flex-wrap items-center justify-center gap-6 glass border border-white/15 rounded-2xl px-8 py-4 animate-slide-up" style="animation-delay:0.3s">
+          <div class="text-center">
+            <div class="font-display font-700 text-2xl grad-text-light">350+</div>
+            <div class="text-white/50 text-[11px] font-body mt-0.5">Schools</div>
+          </div>
+          <div class="w-px h-8 bg-white/15"></div>
+          <div class="text-center">
+            <div class="font-display font-700 text-2xl grad-text-light">24k+</div>
+            <div class="text-white/50 text-[11px] font-body mt-0.5">Learners</div>
+          </div>
+          <div class="w-px h-8 bg-white/15"></div>
+          <div class="text-center">
+            <div class="font-display font-700 text-2xl grad-text-light">10+</div>
+            <div class="text-white/50 text-[11px] font-body mt-0.5">Years</div>
+          </div>
+          <div class="w-px h-8 bg-white/15"></div>
+          <div class="text-center">
+            <div class="font-display font-700 text-2xl grad-text-light">1.2k+</div>
+            <div class="text-white/50 text-[11px] font-body mt-0.5">Teachers Trained</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wave -->
+    <svg class="absolute bottom-0 left-0 w-full" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 C240,80 480,0 720,40 C960,80 1200,10 1440,50 L1440,80 L0,80Z" fill="white"/>
+    </svg>
+  </section>
+
+  <!-- ══════════════ MARQUEE ══════════════ -->
+  <div class="py-5 bg-gradient-to-r from-ink-900 via-ink-800 to-azure-900 overflow-hidden">
+    <div class="marquee-track text-white/40 text-sm font-body font-500 tracking-widest uppercase select-none">
+      <span class="mx-8">📚 Literacy Excellence</span><span class="mx-8 text-azure/60">✦</span>
+      <span class="mx-8">🌍 African Context</span><span class="mx-8 text-azure/60">✦</span>
+      <span class="mx-8">🎓 THRASS Certified</span><span class="mx-8 text-azure/60">✦</span>
+      <span class="mx-8">✏️ Evidence-Based Learning</span><span class="mx-8 text-azure/60">✦</span>
+      <span class="mx-8">🏆 Award-Winning Resources</span><span class="mx-8 text-azure/60">✦</span>
+      <span class="mx-8">❤️ Learner-Centered</span><span class="mx-8 text-azure/60">✦</span>
+      <span class="mx-8">📚 Literacy Excellence</span><span class="mx-8 text-azure/60">✦</span>
+      <span class="mx-8">🌍 African Context</span><span class="mx-8 text-azure/60">✦</span>
+      <span class="mx-8">🎓 THRASS Certified</span><span class="mx-8 text-azure/60">✦</span>
+      <span class="mx-8">✏️ Evidence-Based Learning</span><span class="mx-8 text-azure/60">✦</span>
+      <span class="mx-8">🏆 Award-Winning Resources</span><span class="mx-8 text-azure/60">✦</span>
+      <span class="mx-8">❤️ Learner-Centered</span><span class="mx-8 text-azure/60">✦</span>
+    </div>
+  </div>
+
+  <!-- ══════════════ MISSION SECTION ══════════════ -->
+  <section class="py-28 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 dot-bg opacity-40 pointer-events-none"></div>
+    <div class="absolute top-0 right-0 w-80 h-80 bg-azure-50/80 rounded-full filter blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-50 rounded-full filter blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
+      <div class="grid lg:grid-cols-2 gap-20 items-center">
+
+        <!-- Image -->
+        <div class="reveal-left relative">
+          <div class="relative rounded-3xl overflow-hidden img-zoom shadow-2xl shadow-ink-900/20">
+            <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=800&auto=format&fit=crop&q=80" class="w-full h-[500px] object-cover" alt="Children reading together">
+            <div class="absolute inset-0 bg-gradient-to-t from-ink-900/35 to-transparent"></div>
+          </div>
+
+          <!-- Float badge: years -->
+          <div class="absolute -bottom-6 -right-4 sm:-right-8 glass-white shadow-2xl rounded-2xl p-5 float-2 min-w-[150px]">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-gradient-to-br from-ink-800 to-azure rounded-xl flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-award text-white text-lg"></i>
+              </div>
+              <div>
+                <div class="font-display font-700 text-2xl text-ink-900">10+</div>
+                <div class="text-ink-400 text-xs font-body">Years of Impact</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Float badge: mission -->
+          <div class="absolute -top-5 -left-0 sm:-left-5 glass-white shadow-xl rounded-2xl px-4 py-3 float-3">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 bg-gradient-to-br from-azure to-sky-300 rounded-xl flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-globe-africa text-white text-xs"></i>
+              </div>
+              <div>
+                <div class="font-body font-700 text-ink-900 text-xs">Proudly South African</div>
+                <div class="font-body text-ink-400 text-[10px]">THRASS Africa Partner</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Decorative circle -->
+          <div class="absolute -bottom-10 -left-10 w-48 h-48 bg-azure-100/50 rounded-full filter blur-3xl pointer-events-none"></div>
+        </div>
+
+        <!-- Text -->
+        <div class="reveal-right">
+          <div class="inline-flex items-center gap-2 bg-azure-50 text-azure-700 border border-azure-100 rounded-full px-4 py-2 text-xs font-body font-700 tracking-wider uppercase mb-6">
+            <i class="fas fa-seedling text-azure text-xs"></i> Why We Exist
+          </div>
+
+          <h2 class="font-display font-700 text-5xl sm:text-6xl text-ink-900 leading-tight mb-6">
+            Our <span class="grad-text">Mission</span><br>& Vision
+          </h2>
+          <div class="w-16 h-1 bg-gradient-to-r from-blue-600 to-azure rounded-full mb-8"></div>
+
+          <p class="text-ink-500 font-body leading-relaxed text-lg mb-5">
+            To eradicate illiteracy across Africa by providing world-class, evidence-based phonics resources that make learning to read accessible, joyful, and effective for every child — regardless of background or first language.
+          </p>
+          <p class="text-ink-500 font-body leading-relaxed mb-10">
+            We believe literacy is the foundation of all learning. Through the THRASS methodology — a systematic, multi-sensory approach to phonics — we equip educators and parents with tools that unlock reading fluency from the very first sounds.
+          </p>
+
+          <!-- Vision box -->
+          <div class="bg-gradient-to-br from-frost to-azure-50 border border-azure-100 border-l-4 border-l-azure rounded-2xl p-6 flex gap-5 items-start hover:-translate-y-0.5 transition-transform duration-300">
+            <div class="w-12 h-12 bg-gradient-to-br from-ink-800 to-azure rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-azure/20">
+              <i class="fas fa-eye text-white text-sm"></i>
+            </div>
+            <div>
+              <div class="font-body font-700 text-ink-900 text-sm mb-2">Our Vision</div>
+              <div class="text-ink-500 font-body text-sm leading-relaxed">A continent where every child reads with confidence — from Cape Town to Cairo, <em class="text-azure-700 font-700 not-italic">one sound at a time.</em></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ VALUES ══════════════ -->
+  <section class="py-28 bg-gradient-to-b from-frost to-white relative overflow-hidden">
+    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-azure/30 to-transparent"></div>
+    <div class="absolute inset-0 dot-bg opacity-50 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
+      <div class="text-center mb-20 reveal">
+        <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 border border-blue-100 rounded-full px-4 py-2 text-xs font-body font-700 tracking-wider uppercase mb-6">
+          <i class="fas fa-compass text-blue-500 text-xs"></i> Core Principles
+        </div>
+        <h2 class="font-display font-700 text-5xl sm:text-6xl text-ink-900 leading-tight">
+          What Drives <span class="grad-text">Next Level</span>
+        </h2>
+        <p class="text-ink-400 font-body max-w-md mx-auto mt-5 text-sm leading-relaxed">Our values shape every resource, every training session, and every interaction we have.</p>
+        <div class="w-20 h-1 bg-gradient-to-r from-blue-600 to-azure mx-auto mt-6 rounded-full"></div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Value 1 -->
+        <div class="reveal value-tilt bg-white rounded-3xl p-8 text-center border border-blue-50 shadow-sm hover:border-azure/25 group cursor-default" style="transition-delay:0s">
+          <div class="relative mb-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-ink-800 to-azure rounded-2xl flex items-center justify-center mx-auto shadow-lg shadow-azure/25 group-hover:scale-110 group-hover:rotate-6 transition-all duration-400">
+              <i class="fas fa-hand-holding-heart text-white text-xl"></i>
+            </div>
+            <div class="absolute inset-0 w-16 h-16 mx-auto bg-azure/10 rounded-2xl filter blur-xl group-hover:blur-2xl transition-all duration-400"></div>
+          </div>
+          <h3 class="font-display font-700 text-xl text-ink-900 mb-3">Learner-Centered</h3>
+          <p class="text-ink-400 text-sm font-body leading-relaxed">Every child's unique journey matters. We design resources that adapt to diverse needs, abilities, and mother tongues.</p>
+        </div>
+
+        <!-- Value 2 -->
+        <div class="reveal value-tilt bg-white rounded-3xl p-8 text-center border border-blue-50 shadow-sm hover:border-azure/25 group cursor-default" style="transition-delay:0.08s">
+          <div class="relative mb-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-azure-700 to-azure-400 rounded-2xl flex items-center justify-center mx-auto shadow-lg shadow-azure/25 group-hover:scale-110 group-hover:rotate-6 transition-all duration-400">
+              <i class="fas fa-flask text-white text-xl"></i>
+            </div>
+            <div class="absolute inset-0 w-16 h-16 mx-auto bg-azure/10 rounded-2xl filter blur-xl group-hover:blur-2xl transition-all duration-400"></div>
+          </div>
+          <h3 class="font-display font-700 text-xl text-ink-900 mb-3">Evidence-Based</h3>
+          <p class="text-ink-400 text-sm font-body leading-relaxed">Rooted in the science of reading and the THRASS methodology — proven, measurable results across hundreds of schools.</p>
+        </div>
+
+        <!-- Value 3 -->
+        <div class="reveal value-tilt bg-white rounded-3xl p-8 text-center border border-blue-50 shadow-sm hover:border-azure/25 group cursor-default" style="transition-delay:0.16s">
+          <div class="relative mb-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-blue-700 to-blue-500 rounded-2xl flex items-center justify-center mx-auto shadow-lg shadow-azure/25 group-hover:scale-110 group-hover:rotate-6 transition-all duration-400">
+              <i class="fas fa-chalkboard-user text-white text-xl"></i>
+            </div>
+            <div class="absolute inset-0 w-16 h-16 mx-auto bg-blue-500/10 rounded-2xl filter blur-xl group-hover:blur-2xl transition-all duration-400"></div>
+          </div>
+          <h3 class="font-display font-700 text-xl text-ink-900 mb-3">Educator First</h3>
+          <p class="text-ink-400 text-sm font-body leading-relaxed">Empowering teachers with training, ongoing support, and classroom-ready lesson plans that save time and boost confidence.</p>
+        </div>
+
+        <!-- Value 4 -->
+        <div class="reveal value-tilt bg-white rounded-3xl p-8 text-center border border-blue-50 shadow-sm hover:border-azure/25 group cursor-default" style="transition-delay:0.24s">
+          <div class="relative mb-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-ink-800 to-blue-600 rounded-2xl flex items-center justify-center mx-auto shadow-lg shadow-azure/25 group-hover:scale-110 group-hover:rotate-6 transition-all duration-400">
+              <i class="fas fa-globe-africa text-white text-xl"></i>
+            </div>
+            <div class="absolute inset-0 w-16 h-16 mx-auto bg-ink-500/10 rounded-2xl filter blur-xl group-hover:blur-2xl transition-all duration-400"></div>
+          </div>
+          <h3 class="font-display font-700 text-xl text-ink-900 mb-3">African Context</h3>
+          <p class="text-ink-400 text-sm font-body leading-relaxed">Locally developed, culturally relevant materials that resonate deeply with South African classrooms and communities.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ STATS BAND ══════════════ -->
+  <section class="relative py-24 overflow-hidden noise parallax-bg"
+    style="background-image:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1400&auto=format&fit=crop&q=65'); background-size:cover; background-position:center;">
+    <div class="absolute inset-0 bg-gradient-to-br from-ink-900/93 via-ink-900/86 to-azure-900/76"></div>
+    <div class="absolute inset-0 grid-pattern opacity-20"></div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
+      <div class="text-center mb-14 reveal">
+        <h2 class="font-display font-700 text-4xl sm:text-5xl text-white">Our Impact in <span class="grad-text-light">Numbers</span></h2>
+        <p class="text-white/55 font-body mt-4 text-sm">Measurable change across classrooms, communities, and learners.</p>
+        <div class="w-16 h-px bg-gradient-to-r from-transparent via-azure/60 to-transparent mx-auto mt-4"></div>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="reveal glass border border-white/12 rounded-3xl p-8 text-center group hover:bg-white/12 hover:-translate-y-2 transition-all duration-400 cursor-default">
+          <div class="text-3xl mb-4 group-hover:scale-125 transition-transform duration-300 inline-block">
+            <i class="fas fa-school" style="background:linear-gradient(135deg,#BAE6FD,#93C5FD);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;"></i>
+          </div>
+          <div class="font-display font-700 text-5xl grad-text-light mb-2">350+</div>
+          <div class="font-body text-white/55 text-sm">Partner Schools</div>
+        </div>
+        <div class="reveal glass border border-white/12 rounded-3xl p-8 text-center group hover:bg-white/12 hover:-translate-y-2 transition-all duration-400 cursor-default" style="transition-delay:0.1s">
+          <div class="text-3xl mb-4 group-hover:scale-125 transition-transform duration-300 inline-block">
+            <i class="fas fa-users" style="background:linear-gradient(135deg,#BAE6FD,#93C5FD);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;"></i>
+          </div>
+          <div class="font-display font-700 text-5xl grad-text-light mb-2">24k+</div>
+          <div class="font-body text-white/55 text-sm">Learners Empowered</div>
+        </div>
+        <div class="reveal glass border border-white/12 rounded-3xl p-8 text-center group hover:bg-white/12 hover:-translate-y-2 transition-all duration-400 cursor-default" style="transition-delay:0.2s">
+          <div class="text-3xl mb-4 group-hover:scale-125 transition-transform duration-300 inline-block">
+            <i class="fas fa-chalkboard-user" style="background:linear-gradient(135deg,#BAE6FD,#93C5FD);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;"></i>
+          </div>
+          <div class="font-display font-700 text-5xl grad-text-light mb-2">1.2k+</div>
+          <div class="font-body text-white/55 text-sm">Teachers Trained</div>
+        </div>
+        <div class="reveal glass border border-white/12 rounded-3xl p-8 text-center group hover:bg-white/12 hover:-translate-y-2 transition-all duration-400 cursor-default" style="transition-delay:0.3s">
+          <div class="text-3xl mb-4 group-hover:scale-125 transition-transform duration-300 inline-block">
+            <i class="fas fa-book-open" style="background:linear-gradient(135deg,#BAE6FD,#93C5FD);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;"></i>
+          </div>
+          <div class="font-display font-700 text-5xl grad-text-light mb-2">50+</div>
+          <div class="font-body text-white/55 text-sm">Unique Resources</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ TIMELINE ══════════════ -->
+  <section class="py-28 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 dot-bg opacity-40 pointer-events-none"></div>
+    <div class="absolute top-0 right-0 w-96 h-96 bg-azure-50/70 rounded-full filter blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
+      <div class="text-center mb-20 reveal">
+        <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 border border-blue-100 rounded-full px-4 py-2 text-xs font-body font-700 tracking-wider uppercase mb-6">
+          <i class="fas fa-road text-blue-500 text-xs"></i> Milestones
+        </div>
+        <h2 class="font-display font-700 text-5xl sm:text-6xl text-ink-900 leading-tight">
+          The <span class="grad-text">Journey</span> So Far
+        </h2>
+        <p class="text-ink-400 font-body max-w-md mx-auto mt-5 text-sm leading-relaxed">A decade of dedication, growth, and impact across Southern Africa.</p>
+        <div class="w-20 h-1 bg-gradient-to-r from-blue-600 to-azure mx-auto mt-6 rounded-full"></div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="max-w-3xl mx-auto relative">
+        <!-- Vertical line -->
+        <div class="tl-line"></div>
+
+        <!-- Item 1 -->
+        <div class="reveal pl-20 pb-14 relative">
+          <div class="absolute left-6 top-6 w-5 h-5 bg-gradient-to-br from-ink-800 to-azure rounded-full border-3 border-azure-200 shadow-lg shadow-azure/30 hover:scale-125 transition-transform duration-300 cursor-default z-10" style="border: 3px solid #BAE6FD;"></div>
+          <div class="bg-white rounded-3xl p-7 border border-blue-50 shadow-md hover:shadow-2xl hover:shadow-azure/10 hover:border-azure/20 hover:translate-x-2 transition-all duration-400 cursor-default group">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <div class="inline-flex items-center gap-2 btn-shimmer rounded-full px-4 py-1.5 text-white text-xs font-body font-700 shadow-sm">
+                <i class="fas fa-seedling text-xs"></i> 2015
+              </div>
+              <div class="w-10 h-10 bg-gradient-to-br from-azure-50 to-blue-50 border border-blue-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                <i class="fas fa-seedling text-azure text-sm"></i>
+              </div>
+            </div>
+            <h3 class="font-display font-700 text-2xl text-ink-900 mb-3">Foundation of Next Level Learning</h3>
+            <p class="text-ink-400 font-body text-sm leading-relaxed">Started with a bold mission to bring THRASS methodology to South African schools — partnering with literacy experts, educators, and curriculum specialists to build something lasting.</p>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="reveal pl-20 pb-14 relative" style="transition-delay:0.1s">
+          <div class="absolute left-6 top-6 w-5 h-5 bg-gradient-to-br from-azure to-sky-400 rounded-full border-3 border-azure-200 shadow-lg shadow-azure/30 z-10" style="border: 3px solid #BAE6FD;"></div>
+          <div class="bg-white rounded-3xl p-7 border border-blue-50 shadow-md hover:shadow-2xl hover:shadow-azure/10 hover:border-azure/20 hover:translate-x-2 transition-all duration-400 cursor-default group">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <div class="inline-flex items-center gap-2 bg-azure-700 text-white rounded-full px-4 py-1.5 text-xs font-body font-700 shadow-sm">
+                <i class="fas fa-users-gear text-xs"></i> 2018
+              </div>
+              <div class="w-10 h-10 bg-gradient-to-br from-azure-50 to-blue-50 border border-blue-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                <i class="fas fa-users-gear text-azure text-sm"></i>
+              </div>
+            </div>
+            <h3 class="font-display font-700 text-2xl text-ink-900 mb-3">First Teacher Training Cohort</h3>
+            <p class="text-ink-400 font-body text-sm leading-relaxed">Trained over 200 educators in Gauteng and Western Cape, witnessing literacy gains of up to 40% in participating schools within a single academic year.</p>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="reveal pl-20 pb-14 relative" style="transition-delay:0.2s">
+          <div class="absolute left-6 top-6 w-5 h-5 bg-gradient-to-br from-blue-700 to-blue-500 rounded-full border-3 border-azure-200 shadow-lg shadow-azure/30 z-10" style="border: 3px solid #BAE6FD;"></div>
+          <div class="bg-white rounded-3xl p-7 border border-blue-50 shadow-md hover:shadow-2xl hover:shadow-azure/10 hover:border-azure/20 hover:translate-x-2 transition-all duration-400 cursor-default group">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <div class="inline-flex items-center gap-2 bg-blue-700 text-white rounded-full px-4 py-1.5 text-xs font-body font-700 shadow-sm">
+                <i class="fas fa-laptop-code text-xs"></i> 2021
+              </div>
+              <div class="w-10 h-10 bg-gradient-to-br from-azure-50 to-blue-50 border border-blue-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                <i class="fas fa-laptop-code text-azure text-sm"></i>
+              </div>
+            </div>
+            <h3 class="font-display font-700 text-2xl text-ink-900 mb-3">Digital Expansion & New Resources</h3>
+            <p class="text-ink-400 font-body text-sm leading-relaxed">Launched interactive digital workbooks, phonics chart series, and decodable reader sets — reaching 150+ schools across 5 provinces with both print and digital solutions.</p>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="reveal pl-20 relative" style="transition-delay:0.3s">
+          <div class="absolute left-6 top-6 w-5 h-5 bg-gradient-to-br from-amber-500 to-amber-400 rounded-full shadow-lg shadow-amber-300/50 z-10" style="border: 3px solid #FDE68A;"></div>
+          <div class="bg-gradient-to-br from-ink-900 to-azure-900 rounded-3xl p-7 border border-white/10 shadow-2xl shadow-ink-900/30 hover:-translate-y-1 hover:shadow-azure/20 transition-all duration-400 cursor-default group relative overflow-hidden">
+            <div class="absolute inset-0 dot-bg opacity-20 pointer-events-none"></div>
+            <div class="relative z-10">
+              <div class="flex items-start justify-between gap-4 mb-4">
+                <div class="inline-flex items-center gap-2 bg-amber-400/20 text-amber-300 border border-amber-400/30 rounded-full px-4 py-1.5 text-xs font-body font-700">
+                  <i class="fas fa-trophy text-xs"></i> 2024 – 2026
+                </div>
+                <div class="w-10 h-10 bg-white/10 border border-white/15 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                  <i class="fas fa-trophy text-amber-400 text-sm"></i>
+                </div>
+              </div>
+              <h3 class="font-display font-700 text-2xl text-white mb-3">National Recognition & Growth</h3>
+              <p class="text-white/60 font-body text-sm leading-relaxed">Recognised as a premier THRASS partner, now serving 350+ schools and 24,000+ learners with the continent's most comprehensive phonics literacy solution.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ TEAM ══════════════ 
+  <section class="py-28 bg-gradient-to-b from-frost to-white relative overflow-hidden">
+    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-azure/30 to-transparent"></div>
+    <div class="absolute inset-0 dot-bg opacity-50 pointer-events-none"></div>
+    <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-96 h-96 bg-azure-100/70 rounded-full filter blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
+      <div class="text-center mb-20 reveal">
+        <div class="inline-flex items-center gap-2 bg-azure-50 text-azure-700 border border-azure-100 rounded-full px-4 py-2 text-xs font-body font-700 tracking-wider uppercase mb-6">
+          <i class="fas fa-users text-azure text-xs"></i> Leadership
+        </div>
+        <h2 class="font-display font-700 text-5xl sm:text-6xl text-ink-900 leading-tight">
+          Passionate <span class="grad-text">Experts</span><br>Behind the Mission
+        </h2>
+        <p class="text-ink-400 font-body max-w-md mx-auto mt-5 text-sm leading-relaxed">Dedicated educators, literacy specialists, and innovators driving change every day.</p>
+        <div class="w-20 h-1 bg-gradient-to-r from-blue-600 to-azure mx-auto mt-6 rounded-full"></div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+
+        <div class="reveal team-card-wrap group cursor-default" style="transition-delay:0s">
+          <div class="bg-white rounded-3xl overflow-hidden border border-blue-50 shadow-md hover:shadow-2xl hover:shadow-azure/12 hover:-translate-y-3 transition-all duration-400">
+            <div class="relative h-64 overflow-hidden img-zoom">
+              <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=500&auto=format&fit=crop&q=80" class="w-full h-full object-cover object-top" alt="Dr. Thandi Mbeki">
+              <div class="team-overlay"></div>
+              <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-400">
+                <a href="#" class="w-9 h-9 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl flex items-center justify-center text-white hover:bg-white hover:text-ink-900 transition-all duration-200 text-sm"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="w-9 h-9 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl flex items-center justify-center text-white hover:bg-white hover:text-ink-900 transition-all duration-200 text-sm"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="w-9 h-9 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl flex items-center justify-center text-white hover:bg-white hover:text-ink-900 transition-all duration-200 text-sm"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+            <div class="p-7">
+              <div class="flex items-start justify-between gap-3 mb-3">
+                <div>
+                  <h3 class="font-display font-700 text-xl text-ink-900">Dr. Thandi Mbeki</h3>
+                  <div class="text-azure font-body font-700 text-xs mt-1 flex items-center gap-1.5">
+                    <i class="fas fa-star text-amber-400 text-[10px]"></i> Founder & Literacy Director
+                  </div>
+                </div>
+                <div class="w-10 h-10 bg-gradient-to-br from-ink-800 to-azure rounded-xl flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-graduation-cap text-white text-sm"></i>
+                </div>
+              </div>
+              <p class="text-ink-400 text-sm font-body leading-relaxed">PhD in Educational Linguistics, 20+ years experience in phonics curriculum development and teacher training across South Africa.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal team-card-wrap group cursor-default" style="transition-delay:0.1s">
+          <div class="bg-white rounded-3xl overflow-hidden border border-blue-50 shadow-md hover:shadow-2xl hover:shadow-azure/12 hover:-translate-y-3 transition-all duration-400">
+            <div class="relative h-64 overflow-hidden img-zoom">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500&auto=format&fit=crop&q=80" class="w-full h-full object-cover object-top" alt="James Van der Merwe">
+              <div class="team-overlay"></div>
+              <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-400">
+                <a href="#" class="w-9 h-9 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl flex items-center justify-center text-white hover:bg-white hover:text-ink-900 transition-all duration-200 text-sm"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="w-9 h-9 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl flex items-center justify-center text-white hover:bg-white hover:text-ink-900 transition-all duration-200 text-sm"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="w-9 h-9 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl flex items-center justify-center text-white hover:bg-white hover:text-ink-900 transition-all duration-200 text-sm"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+            <div class="p-7">
+              <div class="flex items-start justify-between gap-3 mb-3">
+                <div>
+                  <h3 class="font-display font-700 text-xl text-ink-900">James Van der Merwe</h3>
+                  <div class="text-azure font-body font-700 text-xs mt-1 flex items-center gap-1.5">
+                    <i class="fas fa-star text-amber-400 text-[10px]"></i> Head of Education & Training
+                  </div>
+                </div>
+                <div class="w-10 h-10 bg-gradient-to-br from-azure-700 to-azure-400 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-chalkboard-teacher text-white text-sm"></i>
+                </div>
+              </div>
+              <p class="text-ink-400 text-sm font-body leading-relaxed">Former school principal and certified THRASS master trainer, leading hands-on teacher workshops across Southern and East Africa.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal team-card-wrap group cursor-default" style="transition-delay:0.2s">
+          <div class="bg-white rounded-3xl overflow-hidden border border-blue-50 shadow-md hover:shadow-2xl hover:shadow-azure/12 hover:-translate-y-3 transition-all duration-400">
+            <div class="relative h-64 overflow-hidden img-zoom">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&auto=format&fit=crop&q=80" class="w-full h-full object-cover object-top" alt="Nomalanga Khumalo">
+              <div class="team-overlay"></div>
+              <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-400">
+                <a href="#" class="w-9 h-9 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl flex items-center justify-center text-white hover:bg-white hover:text-ink-900 transition-all duration-200 text-sm"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="w-9 h-9 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl flex items-center justify-center text-white hover:bg-white hover:text-ink-900 transition-all duration-200 text-sm"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="w-9 h-9 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl flex items-center justify-center text-white hover:bg-white hover:text-ink-900 transition-all duration-200 text-sm"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+            <div class="p-7">
+              <div class="flex items-start justify-between gap-3 mb-3">
+                <div>
+                  <h3 class="font-display font-700 text-xl text-ink-900">Nomalanga Khumalo</h3>
+                  <div class="text-azure font-body font-700 text-xs mt-1 flex items-center gap-1.5">
+                    <i class="fas fa-star text-amber-400 text-[10px]"></i> Resource Development Lead
+                  </div>
+                </div>
+                <div class="w-10 h-10 bg-gradient-to-br from-blue-700 to-blue-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-pen-nib text-white text-sm"></i>
+                </div>
+              </div>
+              <p class="text-ink-400 text-sm font-body leading-relaxed">Curriculum designer and author of 15+ THRASS-aligned student workbooks, passionate about making phonics accessible for all learners.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>-->
+
+  <!-- ══════════════ CTA SECTION ══════════════ -->
+  <section class="py-20 bg-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="reveal relative rounded-3xl overflow-hidden noise parallax-bg"
+        style="background-image:url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=1400&auto=format&fit=crop&q=75'); background-size:cover; background-position:center 40%;">
+        <div class="absolute inset-0 bg-gradient-to-r from-ink-900/96 via-ink-900/87 to-azure-800/72"></div>
+
+        <!-- Decorative orbs -->
+        <div class="absolute top-1/4 right-10 w-40 h-40 bg-azure/10 rounded-full filter blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-1/4 right-1/3 w-28 h-28 bg-blue-500/10 rounded-full filter blur-2xl pointer-events-none"></div>
+
+        <div class="relative z-10 py-20 px-8 sm:px-16 text-center">
+          <div class="inline-flex items-center gap-2 glass border border-white/20 rounded-full px-4 py-2 text-xs font-body font-700 text-white/75 tracking-wider uppercase mb-8">
+            <i class="fas fa-rocket text-azure-300 text-xs"></i> Join the Movement
+          </div>
+          <h2 class="font-display font-700 text-4xl sm:text-5xl lg:text-6xl text-white mb-6 leading-tight max-w-2xl mx-auto">
+            Join the <span class="grad-text-light">Literacy</span> Movement
+          </h2>
+          <p class="text-white/60 font-body max-w-xl mx-auto mb-12 leading-relaxed">Be part of transforming education — partner with us, attend a workshop, or explore our THRASS resources today.</p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="services.html" class="inline-flex items-center justify-center gap-3 bg-white text-ink-900 font-body font-800 px-8 py-4 rounded-full shadow-2xl hover:shadow-azure/25 hover:-translate-y-1 transition-all duration-300 text-sm">
+              <span class="w-8 h-8 rounded-full bg-azure flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-book-open text-white text-xs"></i>
+              </span>
+              Explore Resources
+            </a>
+            <a href="contact.html" class="inline-flex items-center justify-center gap-2 glass border border-white/30 text-white font-body font-700 px-8 py-4 rounded-full hover:bg-white/15 hover:-translate-y-1 transition-all duration-300 text-sm">
+              <i class="fas fa-envelope text-azure-300 text-xs"></i>
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer class="bg-ink-900 pt-20 pb-8 relative overflow-hidden noise">
+    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-azure/40 to-transparent"></div>
+    <div class="absolute top-0 right-0 w-80 h-80 bg-azure/5 rounded-full filter blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-600/5 rounded-full filter blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+
+        <div class="sm:col-span-2 lg:col-span-1">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 bg-gradient-to-br from-ink-700 to-azure rounded-xl flex items-center justify-center">
+              <i class="fas fa-book-open-reader text-white text-sm"></i>
+            </div>
+            <div>
+              <div class="font-display font-700 text-white text-lg leading-none">Next Level Learning</div>
+              <div class="text-azure-400 text-[0.6rem] font-body font-700 tracking-wider uppercase mt-0.5">THRASS Africa</div>
+            </div>
+          </div>
+          <p class="text-white/45 font-body text-sm leading-relaxed mb-6">Empowering African literacy through THRASS — innovative phonics and reading solutions for every classroom.</p>
+          <div class="flex gap-3">
+            <a href="#" class="w-9 h-9 rounded-xl bg-white/6 border border-white/10 flex items-center justify-center text-white/50 hover:bg-azure hover:text-white hover:border-azure hover:-translate-y-1 transition-all duration-300 text-sm"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="w-9 h-9 rounded-xl bg-white/6 border border-white/10 flex items-center justify-center text-white/50 hover:bg-azure hover:text-white hover:border-azure hover:-translate-y-1 transition-all duration-300 text-sm"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="w-9 h-9 rounded-xl bg-white/6 border border-white/10 flex items-center justify-center text-white/50 hover:bg-azure hover:text-white hover:border-azure hover:-translate-y-1 transition-all duration-300 text-sm"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="w-9 h-9 rounded-xl bg-white/6 border border-white/10 flex items-center justify-center text-white/50 hover:bg-azure hover:text-white hover:border-azure hover:-translate-y-1 transition-all duration-300 text-sm"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h5 class="text-white font-body font-700 text-xs uppercase tracking-widest mb-6">Quick Links</h5>
+          <ul class="space-y-3">
+            <li><a href="about.html" class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> About THRASS</a></li>
+            <li><a href="services.html" class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> Resource Catalogue</a></li>
+            <li><a href="#" class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> Workshops</a></li>
+            <li><a href="#" class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> Blog & Insights</a></li>
+            <li><a href="#" class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> Become a Partner</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="text-white font-body font-700 text-xs uppercase tracking-widest mb-6">Support</h5>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> FAQs</a></li>
+            <li><a href="#" class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> Shipping Policy</a></li>
+            <li><a href="#" class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> Returns</a></li>
+            <li><a href="#" class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> Privacy Policy</a></li>
+            <li><a href="contact.html" class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> Contact Support</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="text-white font-body font-700 text-xs uppercase tracking-widest mb-6">Newsletter</h5>
+          <p class="text-white/45 font-body text-sm leading-relaxed mb-5">Literacy tips, new resources, and THRASS insights straight to your inbox.</p>
+          <div class="space-y-3">
+            <input type="email" placeholder="Your email address" class="w-full px-4 py-3 rounded-xl bg-white/6 border border-white/12 text-white text-sm font-body placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-azure/40 focus:border-azure/50 transition-all duration-300">
+            <button class="w-full btn-shimmer text-white font-body font-700 py-3 rounded-xl text-sm flex items-center justify-center gap-2 hover:-translate-y-0.5 transition-transform duration-300">
+              <i class="fas fa-paper-plane text-xs"></i> Subscribe
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-white/8 pt-7 flex flex-col sm:flex-row items-center justify-between gap-4 text-white/35 font-body text-xs">
+        <span>© 2026 Next Level Learning | THRASS Africa — Shaping readers, one sound at a time.</span>
+        <div class="flex gap-5">
+          <a href="#" class="hover:text-azure-300 transition-colors">Privacy</a>
+          <a href="#" class="hover:text-azure-300 transition-colors">Terms</a>
+          <a href="#" class="hover:text-azure-300 transition-colors">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ─── Header scroll ───
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        header.style.background = 'rgba(4,17,43,0.92)';
+        header.style.backdropFilter = 'blur(24px)';
+        header.style.boxShadow = '0 4px 32px rgba(0,0,0,0.25)';
+      } else {
+        header.style.background = 'transparent';
+        header.style.backdropFilter = 'none';
+        header.style.boxShadow = 'none';
+      }
+    });
+
+    // ─── Mobile menu ───
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    let menuOpen = false;
+    menuBtn.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('open', menuOpen);
+      const bars = menuBtn.querySelectorAll('span');
+      if (menuOpen) {
+        bars[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        bars[1].style.opacity = '0';
+        bars[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+      } else {
+        bars[0].style.transform = '';
+        bars[1].style.opacity = '';
+        bars[2].style.transform = '';
+      }
+    });
+    document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      menuOpen = false;
+      const bars = menuBtn.querySelectorAll('span');
+      bars[0].style.transform = '';
+      bars[1].style.opacity = '';
+      bars[2].style.transform = '';
+    }));
+
+    // ─── Scroll reveal ───
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const delay = parseFloat(entry.target.style.transitionDelay || 0);
+          setTimeout(() => entry.target.classList.add('up'), delay * 1000 + 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

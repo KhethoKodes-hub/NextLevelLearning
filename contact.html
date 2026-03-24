@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Next Level Learning - THRASS Africa</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cabinet+Grotesk:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Cormorant Garamond', 'serif'],
+            body: ['Cabinet Grotesk', 'sans-serif'],
+          },
+          colors: {
+            ink:   { DEFAULT: '#04112B', 50: '#EFF4FF', 100: '#D6E4FF', 200: '#AFC9FE', 300: '#7CAAFD', 400: '#4082FB', 500: '#1658F0', 600: '#0942D3', 700: '#0A32A4', 800: '#0D2780', 900: '#04112B' },
+            azure: { DEFAULT: '#0ea5e9', 50: '#F0FBFF', 100: '#DDFAFF', 200: '#B3F1FE', 300: '#7AE6FC', 400: '#38D1F5', 500: '#0ea5e9', 600: '#0484C8', 700: '#066FA8', 800: '#0A5A88', 900: '#0C3F5E' },
+            frost: '#F0F7FF',
+          },
+          animation: {
+            'float':      'float 6s ease-in-out infinite',
+            'float-slow': 'float 9s ease-in-out 1s infinite',
+            'float-med':  'float 7.5s ease-in-out 2s infinite',
+            'pulse-soft': 'pulseSoft 4s ease-in-out infinite',
+            'shimmer':    'shimmer 2.5s linear infinite',
+            'slide-up':   'slideUp 0.7s cubic-bezier(0.16,1,0.3,1) both',
+            'fade-in':    'fadeIn 0.6s ease both',
+          },
+          keyframes: {
+            float:     { '0%,100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-16px)' } },
+            pulseSoft: { '0%,100%': { opacity: '0.6' }, '50%': { opacity: '1' } },
+            shimmer:   { '0%': { backgroundPosition: '-200% 0' }, '100%': { backgroundPosition: '200% 0' } },
+            slideUp:   { from: { opacity: '0', transform: 'translateY(32px)' }, to: { opacity: '1', transform: 'translateY(0)' } },
+            fadeIn:    { from: { opacity: '0' }, to: { opacity: '1' } },
+          },
+          backgroundImage: {
+            'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%234082FB' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Cabinet Grotesk', sans-serif; overflow-x: hidden; }
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; }
+
+    /* Glass */
+    .glass       { background: rgba(255,255,255,0.12); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.22); }
+    .glass-white { background: rgba(255,255,255,0.90); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.65); }
+    .glass-dark  { background: rgba(4,17,43,0.50); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.12); }
+
+    /* Gradients */
+    .grad-text       { background: linear-gradient(135deg,#3B82F6 0%,#0ea5e9 50%,#38bdf8 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .grad-text-light { background: linear-gradient(135deg,#BAE6FD 0%,#93C5FD 50%,#E0F2FE 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+
+    /* Shimmer btn */
+    .btn-shimmer { background: linear-gradient(90deg,#1658F0 0%,#0ea5e9 33%,#38bdf8 66%,#1658F0 100%); background-size:200% auto; animation: shimmer 3s linear infinite; }
+
+    /* Reveals */
+    .reveal       { opacity:0; transform:translateY(28px);  transition:opacity 0.75s cubic-bezier(0.16,1,0.3,1),transform 0.75s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-left  { opacity:0; transform:translateX(-28px); transition:opacity 0.75s cubic-bezier(0.16,1,0.3,1),transform 0.75s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-right { opacity:0; transform:translateX(28px);  transition:opacity 0.75s cubic-bezier(0.16,1,0.3,1),transform 0.75s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.up, .reveal-left.up, .reveal-right.up { opacity:1; transform:none; }
+
+    /* Nav underline */
+    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:linear-gradient(90deg,#1658F0,#0ea5e9); border-radius:2px; transition:width 0.35s cubic-bezier(0.16,1,0.3,1); }
+    .nav-link:hover::after, .nav-link.active::after { width:100%; }
+    .nav-link.active { color:white !important; font-weight:800; }
+
+    /* Mobile menu */
+    #mobile-menu { max-height:0; overflow:hidden; transition:max-height 0.4s cubic-bezier(0.16,1,0.3,1); }
+    #mobile-menu.open { max-height:480px; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width:6px; }
+    ::-webkit-scrollbar-track { background:#F0F7FF; }
+    ::-webkit-scrollbar-thumb { background:linear-gradient(180deg,#1658F0,#0ea5e9); border-radius:3px; }
+
+    /* Noise */
+    .noise::before { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events:none; z-index:0; }
+
+    /* Dot bg */
+    .dot-bg { background-image:radial-gradient(circle,#1658F020 1px,transparent 1px); background-size:28px 28px; }
+
+    /* Float */
+    .float-1 { animation: float 6s ease-in-out infinite; }
+    .float-2 { animation: float 8s ease-in-out 1s infinite; }
+    .float-3 { animation: float 7s ease-in-out 2s infinite; }
+
+    /* Parallax */
+    .parallax-bg { background-attachment:fixed; }
+    @media (max-width:768px) { .parallax-bg { background-attachment:scroll; } }
+
+    /* Blob */
+    .blob { border-radius:60% 40% 30% 70% / 60% 30% 70% 40%; animation:blobMove 12s ease-in-out infinite; }
+    @keyframes blobMove { 0%,100%{border-radius:60% 40% 30% 70% / 60% 30% 70% 40%} 33%{border-radius:30% 60% 70% 40% / 50% 60% 30% 60%} 66%{border-radius:50% 60% 30% 60% / 30% 40% 60% 50%} }
+
+    /* Orbit */
+    .orbit   { animation:orbitSpin 22s linear infinite; }
+    .orbit-r { animation:orbitSpin 28s linear reverse infinite; }
+    @keyframes orbitSpin { to{transform:rotate(360deg)} }
+
+    /* Marquee */
+    .marquee-track { display:flex; animation:marquee 26s linear infinite; white-space:nowrap; }
+    @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+    /* Form input focus ring */
+    .form-field {
+      width:100%; padding:14px 18px;
+      border: 1.5px solid rgba(14,165,233,0.2);
+      border-radius:14px; font-size:0.9rem;
+      color:#04112B; background:#F8FBFF;
+      transition:all 0.3s;
+      font-family:'Cabinet Grotesk',sans-serif;
+    }
+    .form-field:focus {
+      outline:none; border-color:#0ea5e9;
+      background:white; box-shadow:0 0 0 4px rgba(14,165,233,0.1);
+    }
+    .form-field::placeholder { color:#94a3b8; }
+
+    /* FAQ card left bar */
+    .faq-bar::before { content:''; position:absolute; top:0; left:0; width:3px; height:0; background:linear-gradient(180deg,#1658F0,#0ea5e9); border-radius:0 0 3px 3px; transition:height 0.4s ease; }
+    .faq-bar:hover::before { height:100%; }
+
+    /* Social btn branded hover */
+    .social-fb:hover  { background:#1877F2 !important; border-color:#1877F2 !important; }
+    .social-tw:hover  { background:#1DA1F2 !important; border-color:#1DA1F2 !important; }
+    .social-ig:hover  { background:linear-gradient(135deg,#E1306C,#833AB4) !important; border-color:transparent !important; }
+    .social-li:hover  { background:#0A66C2 !important; border-color:#0A66C2 !important; }
+    .social-yt:hover  { background:#FF0000 !important; border-color:#FF0000 !important; }
+
+    /* Hours row */
+    .hours-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid rgba(14,165,233,0.07); font-size:0.85rem; }
+    .hours-row:last-child { border-bottom:none; }
+
+    /* Map overlay */
+    .map-badge { position:absolute; top:20px; left:20px; z-index:10; }
+
+    /* Img zoom */
+    .img-zoom img { transition:transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+    .img-zoom:hover img { transform:scale(1.05); }
+  </style>
+</head>
+<body class="bg-white text-ink-900">
+
+  <!-- ══════════════ HEADER ══════════════ -->
+  <header id="header" class="fixed top-0 inset-x-0 z-50 transition-all duration-500" style="background:transparent;">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between gap-6">
+
+      <a href="c.html" class="flex items-center gap-3 group flex-shrink-0">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-ink-800 to-azure flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+          <i class="fas fa-book-open-reader text-white text-sm"></i>
+        </div>
+        <div class="leading-tight">
+          <div class="font-display font-bold text-lg text-white leading-none">Next Level Learning</div>
+          <div class="text-[0.62rem] font-body font-700 tracking-[0.14em] uppercase text-azure-300 leading-none mt-0.5">THRASS Africa</div>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-1">
+        <a href="c.html"    class="nav-link relative px-4 py-2 text-sm font-body font-500 text-white/80 hover:text-white transition-colors duration-200">Home</a>
+        <a href="about.html"    class="nav-link relative px-4 py-2 text-sm font-body font-500 text-white/80 hover:text-white transition-colors duration-200">About</a>
+        <a href="services.html" class="nav-link relative px-4 py-2 text-sm font-body font-500 text-white/80 hover:text-white transition-colors duration-200">Resources</a>
+        <a href="contact.html"  class="nav-link active relative px-4 py-2 text-sm font-body font-500 text-white transition-colors duration-200">Contact</a>
+      </nav>
+
+      <div class="hidden md:flex items-center gap-3">
+        <a href="index.html" class="glass px-5 py-2.5 rounded-full text-sm font-body font-700 text-white hover:bg-white/20 transition-all duration-300 flex items-center gap-2">
+          <i class="fas fa-sign-in-alt text-azure-300"></i> Login
+        </a>
+        <a href="contact.html" class="btn-shimmer px-5 py-2.5 rounded-full text-sm font-body font-700 text-white shadow-lg shadow-azure/30 hover:scale-105 hover:shadow-azure/50 transition-all duration-300 flex items-center gap-2">
+          <i class="fas fa-paper-plane"></i> Send Message
+        </a>
+      </div>
+
+      <button id="menuBtn" class="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5">
+        <span class="w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
+        <span class="w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
+        <span class="w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden overflow-hidden bg-ink-900/95 backdrop-blur-xl border-t border-white/10">
+      <div class="px-6 py-4 flex flex-col gap-1">
+        <a href="c.html"    class="mobile-link py-3 text-white/80 hover:text-white font-body font-500 border-b border-white/8 transition-colors">Home</a>
+        <a href="about.html"    class="mobile-link py-3 text-white/80 hover:text-white font-body font-500 border-b border-white/8 transition-colors">About</a>
+        <a href="services.html" class="mobile-link py-3 text-white/80 hover:text-white font-body font-500 border-b border-white/8 transition-colors">Resources</a>
+        <a href="contact.html"  class="mobile-link py-3 text-white font-body font-700 transition-colors">Contact</a>
+        <div class="pt-4 flex gap-3">
+          <a href="index.html"     class="flex-1 py-3 rounded-xl text-center text-sm font-700 text-white glass border border-white/20">Login</a>
+          <a href="contact.html"  class="flex-1 py-3 rounded-xl text-center text-sm font-700 text-white btn-shimmer shadow-lg">Message</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════ HERO ══════════════ -->
+  <section class="relative min-h-[80vh] flex items-center overflow-hidden noise parallax-bg"
+    style="background-image:url('./assets/nllcon.png'); background-size:cover; background-position:center 35%;">
+    <div class="absolute inset-0 bg-gradient-to-br from-ink-900/96 via-ink-900/84 to-azure-900/70"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-ink-900/60 via-transparent to-transparent"></div>
+    <div class="absolute inset-0 dot-bg opacity-25"></div>
+
+    <!-- Blobs -->
+    <div class="absolute top-1/3 right-1/5 w-72 h-72 bg-azure/12 blob filter blur-3xl float-1 pointer-events-none"></div>
+    <div class="absolute bottom-1/4 left-1/6 w-56 h-56 bg-blue-600/10 blob filter blur-3xl float-2 pointer-events-none"></div>
+
+    <!-- Orbit left -->
+    <div class="absolute left-10 top-1/2 -translate-y-1/2 w-56 h-56 hidden xl:block pointer-events-none">
+      <div class="absolute inset-0 orbit rounded-full border border-white/8"></div>
+      <div class="absolute inset-7 orbit-r rounded-full border border-azure/12"></div>
+      <div class="absolute inset-14 rounded-full border border-white/10 animate-pulse-soft"></div>
+    </div>
+
+    <!-- Orbit right -->
+    <div class="absolute right-10 top-1/2 -translate-y-1/2 w-48 h-48 hidden xl:block pointer-events-none">
+      <div class="absolute inset-0 orbit-r rounded-full border border-azure/10"></div>
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="glass rounded-2xl w-20 h-20 flex flex-col items-center justify-center gap-1">
+          <i class="fas fa-comment-dots text-azure-300 text-xl"></i>
+          <span class="text-white text-[9px] font-body font-700 tracking-wider">CONTACT</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-40 relative z-10 w-full">
+      <div class="max-w-3xl mx-auto text-center text-white">
+
+        <!-- Breadcrumb -->
+        <div class="inline-flex items-center gap-2 glass border border-white/15 rounded-full px-4 py-2 mb-8 text-xs font-body text-white/60 animate-fade-in">
+          <a href="index.html" class="hover:text-white transition-colors flex items-center gap-1.5">
+            <i class="fas fa-house text-azure-300 text-[10px]"></i> Home
+          </a>
+          <i class="fas fa-chevron-right text-[9px] text-azure/50"></i>
+          <span class="text-white/90 font-700">Contact Us</span>
+        </div>
+
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 glass border border-white/20 rounded-full px-5 py-2.5 mb-8 text-xs font-body font-700 text-white/90 tracking-wider uppercase mx-auto animate-slide-up" style="animation-delay:0.05s">
+          <i class="fas fa-comment-dots text-emerald-400 text-xs"></i>
+          Let's Connect — We're Here to Help
+        </div>
+
+        <h1 class="font-display font-700 text-5xl sm:text-6xl lg:text-7xl text-white leading-[1.05] mb-7 animate-slide-up" style="animation-delay:0.12s">
+          Get in <span class="grad-text-light"><em class="not-italic">Touch</em></span> With<br>Our Literacy Team
+        </h1>
+
+        <p class="font-body text-white/65 text-lg leading-relaxed max-w-xl mx-auto mb-12 animate-slide-up" style="animation-delay:0.22s">
+          Questions about THRASS resources, teacher training, or school partnerships? Our specialists are ready to help you take literacy to the next level.
+        </p>
+
+        <!-- Quick contact pills -->
+        <div class="flex flex-wrap justify-center gap-3 animate-slide-up" style="animation-delay:0.3s">
+          <a href="tel:+27210123456" class="inline-flex items-center gap-2 glass border border-white/20 rounded-full px-5 py-3 text-sm font-body font-500 text-white hover:bg-white/20 hover:-translate-y-1 transition-all duration-300">
+            <i class="fas fa-phone-alt text-azure-300 text-xs"></i> +27 21 012 3456
+          </a>
+          <a href="mailto:hello@nextlevellearning.co.za" class="inline-flex items-center gap-2 glass border border-white/20 rounded-full px-5 py-3 text-sm font-body font-500 text-white hover:bg-white/20 hover:-translate-y-1 transition-all duration-300">
+            <i class="fas fa-envelope text-azure-300 text-xs"></i> hello@nextlevellearning.co.za
+          </a>
+          <a href="#contact-form" class="inline-flex items-center gap-2 btn-shimmer rounded-full px-5 py-3 text-sm font-body font-700 text-white shadow-lg shadow-azure/30 hover:shadow-azure/50 hover:-translate-y-1 transition-all duration-300">
+            <i class="fab fa-whatsapp text-xs"></i> WhatsApp Us
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <svg class="absolute bottom-0 left-0 w-full" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 C240,80 480,0 720,40 C960,80 1200,10 1440,50 L1440,80 L0,80Z" fill="white"/>
+    </svg>
+  </section>
+
+  <!-- ══════════════ MARQUEE ══════════════ -->
+  <div class="py-5 bg-gradient-to-r from-ink-900 via-ink-800 to-azure-900 overflow-hidden">
+    <div class="marquee-track text-white/40 text-sm font-body font-500 tracking-widest uppercase select-none">
+      <span class="mx-8">📞 Call Us Anytime</span><span class="mx-8 text-azure/60">✦</span>
+      <span class="mx-8">✉️ Email Support</span><span class="mx-8 text-azure/60">✦</span>
+      <span class="mx-8">💬 WhatsApp Chat</span><span class="mx-8 text-azure/60">✦</span>
+      <span class="mx-8">📍 Cape Town Office</span><span class="mx-8 text-azure/60">✦</span>
+      <span class="mx-8">⚡ 24h Response Time</span><span class="mx-8 text-azure/60">✦</span>
+      <span class="mx-8">🎓 Free Consultation</span><span class="mx-8 text-azure/60">✦</span>
+      <span class="mx-8">📞 Call Us Anytime</span><span class="mx-8 text-azure/60">✦</span>
+      <span class="mx-8">✉️ Email Support</span><span class="mx-8 text-azure/60">✦</span>
+      <span class="mx-8">💬 WhatsApp Chat</span><span class="mx-8 text-azure/60">✦</span>
+      <span class="mx-8">📍 Cape Town Office</span><span class="mx-8 text-azure/60">✦</span>
+      <span class="mx-8">⚡ 24h Response Time</span><span class="mx-8 text-azure/60">✦</span>
+      <span class="mx-8">🎓 Free Consultation</span><span class="mx-8 text-azure/60">✦</span>
+    </div>
+  </div>
+
+  <!-- ══════════════ CONTACT MAIN ══════════════ -->
+  <section id="contact-form" class="py-28 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 dot-bg opacity-40 pointer-events-none"></div>
+    <div class="absolute top-0 right-0 w-96 h-96 bg-azure-50/70 rounded-full filter blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-72 h-72 bg-blue-50/60 rounded-full filter blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
+      <div class="grid lg:grid-cols-5 gap-12 items-start">
+
+        <!-- ── FORM (col-span-3) ── -->
+        <div class="lg:col-span-3 reveal-left">
+          <div class="bg-white rounded-3xl p-8 sm:p-12 shadow-2xl shadow-ink-900/8 border border-blue-50">
+
+            <!-- Form header -->
+            <div class="mb-10">
+              <div class="inline-flex items-center gap-2 bg-azure-50 text-azure-700 border border-azure-100 rounded-full px-4 py-2 text-xs font-body font-700 tracking-wider uppercase mb-5">
+                <i class="fas fa-paper-plane text-azure text-xs"></i> Send a Message
+              </div>
+              <h2 class="font-display font-700 text-4xl sm:text-5xl text-ink-900 leading-tight mb-3">
+                We'd Love to Hear <span class="grad-text">From You</span>
+              </h2>
+              <p class="text-ink-400 font-body text-sm leading-relaxed">Fill out the form and our team will respond within 24 hours — committed to next level support.</p>
+            </div>
+
+            <form id="contactForm" onsubmit="handleSubmit(event)" class="space-y-5">
+
+              <!-- Row 1: Name + Organisation -->
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label class="block text-xs font-body font-700 text-ink-700 mb-2 flex items-center gap-1.5">
+                    <i class="fas fa-user text-azure text-[11px]"></i> Full Name *
+                  </label>
+                  <input id="fullName" type="text" placeholder="e.g. Thabo Mbeki" class="form-field">
+                </div>
+                <div>
+                  <label class="block text-xs font-body font-700 text-ink-700 mb-2 flex items-center gap-1.5">
+                    <i class="fas fa-building text-azure text-[11px]"></i> School / Organisation
+                  </label>
+                  <input id="organisation" type="text" placeholder="Your school or company" class="form-field">
+                </div>
+              </div>
+
+              <!-- Row 2: Email + Phone -->
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label class="block text-xs font-body font-700 text-ink-700 mb-2 flex items-center gap-1.5">
+                    <i class="fas fa-envelope text-azure text-[11px]"></i> Email Address *
+                  </label>
+                  <input id="email" type="email" placeholder="hello@school.co.za" class="form-field">
+                </div>
+                <div>
+                  <label class="block text-xs font-body font-700 text-ink-700 mb-2 flex items-center gap-1.5">
+                    <i class="fas fa-phone-alt text-azure text-[11px]"></i> Phone Number
+                  </label>
+                  <input id="phone" type="tel" placeholder="+27 21 123 4567" class="form-field">
+                </div>
+              </div>
+
+              <!-- Topic -->
+              <div>
+                <label class="block text-xs font-body font-700 text-ink-700 mb-2 flex items-center gap-1.5">
+                  <i class="fas fa-tag text-azure text-[11px]"></i> Topic *
+                </label>
+                <select id="subject" class="form-field cursor-pointer">
+                  <option value="">Select a topic...</option>
+                  <option value="Resources">📚 Resources &amp; Materials Inquiry</option>
+                  <option value="Training">👩‍🏫 Teacher Training &amp; Workshops</option>
+                  <option value="Partnership">🏫 School Partnership Programme</option>
+                  <option value="Quote">💰 Request a Quote</option>
+                  <option value="Support">💬 Technical Support</option>
+                  <option value="General">🌟 General Question</option>
+                </select>
+              </div>
+
+              <!-- Message -->
+              <div>
+                <label class="block text-xs font-body font-700 text-ink-700 mb-2 flex items-center gap-1.5">
+                  <i class="fas fa-comment-dots text-azure text-[11px]"></i> Your Message *
+                </label>
+                <textarea id="message" rows="5" placeholder="Tell us how we can help — THRASS resources, training, partnerships, or anything else..." class="form-field resize-none"></textarea>
+              </div>
+
+              <!-- Submit -->
+              <button type="submit" id="submitBtn" class="w-full btn-shimmer text-white font-body font-800 py-4 rounded-2xl flex items-center justify-center gap-3 shadow-lg shadow-azure/30 hover:shadow-azure/50 hover:-translate-y-0.5 transition-all duration-300 text-sm">
+                <i class="fas fa-paper-plane"></i> Send Message
+              </button>
+
+              <!-- Privacy note -->
+              <div class="flex items-center justify-center gap-2 pt-1">
+                <i class="fas fa-lock text-azure text-[11px]"></i>
+                <span class="text-ink-400 font-body text-xs">Your information is secure. We never share your details with third parties.</span>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- ── SIDEBAR (col-span-2) ── -->
+        <div class="lg:col-span-2 reveal-right space-y-4">
+
+          <!-- Contact cards -->
+          <div class="group flex items-start gap-5 bg-white border border-blue-50 rounded-3xl p-6 shadow-sm hover:shadow-xl hover:shadow-azure/8 hover:-translate-y-1 hover:translate-x-0.5 hover:border-azure/20 transition-all duration-300 cursor-default">
+            <div class="w-13 h-13 w-12 h-12 bg-gradient-to-br from-ink-800 to-azure rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md shadow-azure/20 group-hover:scale-110 transition-transform duration-300">
+              <i class="fas fa-map-marker-alt text-white text-sm"></i>
+            </div>
+            <div>
+              <div class="font-body font-700 text-ink-900 text-sm mb-1">Visit Us</div>
+              <div class="text-ink-400 font-body text-xs leading-relaxed">17 Dock Road, V&A Waterfront<br>Cape Town, 8001, South Africa</div>
+              <a href="#map" class="inline-flex items-center gap-1 text-azure font-body font-700 text-xs mt-2 hover:underline">
+                <i class="fas fa-directions text-[10px]"></i> Get Directions
+              </a>
+            </div>
+          </div>
+
+          <div class="group flex items-start gap-5 bg-white border border-blue-50 rounded-3xl p-6 shadow-sm hover:shadow-xl hover:shadow-azure/8 hover:-translate-y-1 hover:translate-x-0.5 hover:border-azure/20 transition-all duration-300 cursor-default">
+            <div class="w-12 h-12 bg-gradient-to-br from-azure-600 to-azure-400 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md shadow-azure/20 group-hover:scale-110 transition-transform duration-300">
+              <i class="fas fa-phone-alt text-white text-sm"></i>
+            </div>
+            <div>
+              <div class="font-body font-700 text-ink-900 text-sm mb-1">Call Us</div>
+              <div class="text-ink-400 font-body text-xs">+27 (0)21 012 3456</div>
+              <div class="text-ink-400 font-body text-xs mt-0.5">Mon–Fri, 8:30am – 5:00pm SAST</div>
+            </div>
+          </div>
+
+          <div class="group flex items-start gap-5 bg-white border border-blue-50 rounded-3xl p-6 shadow-sm hover:shadow-xl hover:shadow-azure/8 hover:-translate-y-1 hover:translate-x-0.5 hover:border-azure/20 transition-all duration-300 cursor-default">
+            <div class="w-12 h-12 bg-gradient-to-br from-blue-700 to-blue-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md shadow-blue-500/20 group-hover:scale-110 transition-transform duration-300">
+              <i class="fas fa-envelope-open-text text-white text-sm"></i>
+            </div>
+            <div>
+              <div class="font-body font-700 text-ink-900 text-sm mb-1">Email Us</div>
+              <div class="text-ink-400 font-body text-xs">hello@nextlevellearning.co.za</div>
+              <div class="text-ink-400 font-body text-xs mt-0.5">support@nextlevellearning.co.za</div>
+            </div>
+          </div>
+
+          <!-- Business hours -->
+          <div class="bg-gradient-to-br from-frost to-azure-50 border border-azure-100 rounded-3xl p-6 hover:-translate-y-0.5 transition-transform duration-300">
+            <h4 class="flex items-center gap-2 font-body font-700 text-ink-900 text-sm mb-4">
+              <div class="w-8 h-8 bg-gradient-to-br from-ink-800 to-azure rounded-xl flex items-center justify-center">
+                <i class="fas fa-clock text-white text-[10px]"></i>
+              </div>
+              Business Hours
+            </h4>
+            <div class="space-y-0">
+              <div class="hours-row">
+                <span class="text-ink-500 font-body">Monday – Friday</span>
+                <span class="font-body font-700 text-ink-900">8:30 AM – 5:00 PM</span>
+              </div>
+              <div class="hours-row">
+                <span class="text-ink-500 font-body">Saturday</span>
+                <span class="font-body font-700 text-ink-900">9:00 AM – 1:00 PM</span>
+              </div>
+              <div class="hours-row">
+                <span class="text-ink-500 font-body">Sunday</span>
+                <span class="font-body font-700 text-red-500">Closed</span>
+              </div>
+              <div class="hours-row">
+                <span class="text-ink-500 font-body">Public Holidays</span>
+                <span class="font-body font-700 text-red-500">Closed</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- WhatsApp card -->
+          <div class="bg-gradient-to-br from-emerald-50 to-green-50 border border-emerald-100 rounded-3xl p-7 text-center hover:-translate-y-1 transition-all duration-300">
+            <div class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-green-400 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-emerald-200 float-3">
+              <i class="fab fa-whatsapp text-white text-2xl"></i>
+            </div>
+            <div class="font-body font-700 text-green-900 text-sm mb-2">Need a quick answer?</div>
+            <div class="text-green-700 font-body text-xs leading-relaxed mb-5">Chat directly with our THRASS literacy consultant — fast, friendly, and free.</div>
+            <a href="#" class="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-green-400 text-white font-body font-700 px-7 py-3 rounded-full text-sm shadow-lg shadow-emerald-200 hover:-translate-y-0.5 hover:shadow-emerald-300 transition-all duration-300">
+              <i class="fab fa-whatsapp"></i> Start WhatsApp Chat
+            </a>
+          </div>
+
+          <!-- Response time badge -->
+          <div class="glass-white shadow-xl rounded-3xl p-5 flex items-center gap-4 float-2">
+            <div class="w-12 h-12 bg-gradient-to-br from-azure-500 to-azure-400 rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-bolt text-white text-sm"></i>
+            </div>
+            <div>
+              <div class="font-body font-700 text-ink-900 text-sm">Average Response: Under 4 Hours</div>
+              <div class="text-ink-400 font-body text-xs mt-0.5">During business hours, Mon–Fri</div>
+            </div>
+            <div class="ml-auto w-3 h-3 bg-emerald-400 rounded-full animate-pulse flex-shrink-0"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ MAP ══════════════ -->
+  <section id="map" class="pb-20 bg-white relative">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="reveal relative rounded-3xl overflow-hidden shadow-2xl shadow-ink-900/15 border border-blue-50">
+
+        <!-- Map badge overlay -->
+        <div class="map-badge hidden sm:block">
+          <div class="glass-white shadow-xl rounded-2xl px-4 py-3 flex items-center gap-3 float-1">
+            <div class="w-10 h-10 bg-gradient-to-br from-ink-800 to-azure rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-map-marker-alt text-white text-sm"></i>
+            </div>
+            <div>
+              <div class="font-body font-700 text-ink-900 text-sm">Next Level Learning HQ</div>
+              <div class="text-ink-400 font-body text-xs">17 Dock Road, V&A Waterfront, Cape Town</div>
+            </div>
+          </div>
+        </div>
+
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.4887564182197!2d18.41957631521484!3d-33.90747208064895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc6791c0b2b1c5%3A0x3b2c5e8c9f8d4e2a!2sV%26A%20Waterfront%2C%20Cape%20Town!5e0!3m2!1sen!2sza!4v1700000000000!5m2!1sen!2sza"
+          width="100%" height="440" style="border:0;display:block;"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ FAQ ══════════════ -->
+  <section class="py-28 bg-gradient-to-b from-frost to-white relative overflow-hidden">
+    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-azure/30 to-transparent"></div>
+    <div class="absolute inset-0 dot-bg opacity-50 pointer-events-none"></div>
+    <div class="absolute -top-24 right-0 w-96 h-96 bg-azure-100/50 rounded-full filter blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
+
+      <div class="text-center mb-20 reveal">
+        <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 border border-blue-100 rounded-full px-4 py-2 text-xs font-body font-700 tracking-wider uppercase mb-6">
+          <i class="fas fa-circle-question text-blue-500 text-xs"></i> Quick Answers
+        </div>
+        <h2 class="font-display font-700 text-5xl sm:text-6xl text-ink-900 leading-tight">
+          Frequently Asked <span class="grad-text">Questions</span>
+        </h2>
+        <p class="text-ink-400 font-body max-w-md mx-auto mt-5 text-sm leading-relaxed">Everything you need to know before reaching out — straight answers, no jargon.</p>
+        <div class="w-20 h-1 bg-gradient-to-r from-blue-600 to-azure mx-auto mt-6 rounded-full"></div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="reveal faq-bar group relative bg-white rounded-3xl p-7 border border-blue-50 shadow-sm hover:shadow-2xl hover:shadow-azure/10 hover:-translate-y-2 hover:border-azure/20 transition-all duration-400 overflow-hidden cursor-default" style="transition-delay:0s">
+          <div class="w-12 h-12 bg-gradient-to-br from-ink-800 to-azure rounded-2xl flex items-center justify-center mb-5 shadow-md shadow-azure/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+            <i class="fas fa-box-open text-white text-sm"></i>
+          </div>
+          <h3 class="font-display font-700 text-xl text-ink-900 mb-3">How do I order THRASS resources?</h3>
+          <p class="text-ink-400 font-body text-sm leading-relaxed">Order via our contact form, email us directly, or call our office. We offer bulk discounts for schools purchasing multiple sets.</p>
+        </div>
+
+        <div class="reveal faq-bar group relative bg-white rounded-3xl p-7 border border-blue-50 shadow-sm hover:shadow-2xl hover:shadow-azure/10 hover:-translate-y-2 hover:border-azure/20 transition-all duration-400 overflow-hidden cursor-default" style="transition-delay:0.08s">
+          <div class="w-12 h-12 bg-gradient-to-br from-azure-700 to-azure-400 rounded-2xl flex items-center justify-center mb-5 shadow-md shadow-azure/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+            <i class="fas fa-chalkboard-user text-white text-sm"></i>
+          </div>
+          <h3 class="font-display font-700 text-xl text-ink-900 mb-3">Do you offer teacher training?</h3>
+          <p class="text-ink-400 font-body text-sm leading-relaxed">Yes — in-person and virtual THRASS teacher training available. Contact us to schedule a session for your school, district, or department.</p>
+        </div>
+
+        <div class="reveal faq-bar group relative bg-white rounded-3xl p-7 border border-blue-50 shadow-sm hover:shadow-2xl hover:shadow-azure/10 hover:-translate-y-2 hover:border-azure/20 transition-all duration-400 overflow-hidden cursor-default" style="transition-delay:0.16s">
+          <div class="w-12 h-12 bg-gradient-to-br from-blue-700 to-blue-500 rounded-2xl flex items-center justify-center mb-5 shadow-md shadow-blue-500/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+            <i class="fas fa-truck-fast text-white text-sm"></i>
+          </div>
+          <h3 class="font-display font-700 text-xl text-ink-900 mb-3">What's the order turnaround time?</h3>
+          <p class="text-ink-400 font-body text-sm leading-relaxed">Orders are processed within 2–3 business days. Delivery within South Africa typically takes 3–7 working days depending on location.</p>
+        </div>
+
+        <div class="reveal faq-bar group relative bg-white rounded-3xl p-7 border border-blue-50 shadow-sm hover:shadow-2xl hover:shadow-azure/10 hover:-translate-y-2 hover:border-azure/20 transition-all duration-400 overflow-hidden cursor-default" style="transition-delay:0s">
+          <div class="w-12 h-12 bg-gradient-to-br from-ink-800 to-blue-600 rounded-2xl flex items-center justify-center mb-5 shadow-md shadow-ink-900/15 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+            <i class="fas fa-handshake text-white text-sm"></i>
+          </div>
+          <h3 class="font-display font-700 text-xl text-ink-900 mb-3">Can we become a school partner?</h3>
+          <p class="text-ink-400 font-body text-sm leading-relaxed">Absolutely! Our school partnership programme offers preferential pricing, dedicated support, and ongoing professional development for your staff.</p>
+        </div>
+
+        <div class="reveal faq-bar group relative bg-white rounded-3xl p-7 border border-blue-50 shadow-sm hover:shadow-2xl hover:shadow-azure/10 hover:-translate-y-2 hover:border-azure/20 transition-all duration-400 overflow-hidden cursor-default" style="transition-delay:0.08s">
+          <div class="w-12 h-12 bg-gradient-to-br from-azure-600 to-sky-400 rounded-2xl flex items-center justify-center mb-5 shadow-md shadow-azure/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+            <i class="fas fa-tablet-screen-button text-white text-sm"></i>
+          </div>
+          <h3 class="font-display font-700 text-xl text-ink-900 mb-3">Are digital resources available?</h3>
+          <p class="text-ink-400 font-body text-sm leading-relaxed">Yes — interactive digital phonics charts, e-workbooks, and online teacher training modules are available alongside our print materials.</p>
+        </div>
+
+        <div class="reveal faq-bar group relative bg-white rounded-3xl p-7 border border-blue-50 shadow-sm hover:shadow-2xl hover:shadow-azure/10 hover:-translate-y-2 hover:border-azure/20 transition-all duration-400 overflow-hidden cursor-default" style="transition-delay:0.16s">
+          <div class="w-12 h-12 bg-gradient-to-br from-azure-500 to-azure-400 rounded-2xl flex items-center justify-center mb-5 shadow-md shadow-azure/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+            <i class="fas fa-phone-volume text-white text-sm"></i>
+          </div>
+          <h3 class="font-display font-700 text-xl text-ink-900 mb-3">Can I get a free consultation?</h3>
+          <p class="text-ink-400 font-body text-sm leading-relaxed">Of course! Our literacy specialists offer complimentary consultations to assess your school's needs. Fill in the form above and we'll schedule a call.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ SOCIAL BAND ══════════════ -->
+  <section class="relative py-24 overflow-hidden noise parallax-bg"
+    style="background-image:url('./assets/nllcont2.png'); background-size:cover; background-position:center;">
+    <div class="absolute inset-0 bg-gradient-to-br from-ink-900/94 via-ink-900/87 to-azure-900/78"></div>
+    <div class="absolute inset-0 grid-pattern opacity-20"></div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 relative text-center">
+      <div class="reveal">
+        <div class="inline-flex items-center gap-2 glass border border-white/20 rounded-full px-4 py-2 text-xs font-body font-700 text-white/75 tracking-wider uppercase mb-8">
+          <i class="fas fa-share-nodes text-azure-300 text-xs"></i> Follow Our Journey
+        </div>
+        <h2 class="font-display font-700 text-4xl sm:text-5xl text-white mb-5">
+          Follow Our <span class="grad-text-light">Literacy Journey</span>
+        </h2>
+        <p class="text-white/55 font-body max-w-md mx-auto mb-12 text-sm leading-relaxed">Stay updated with new resources, upcoming workshops, and literacy insights from across Africa.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="#" class="group social-fb inline-flex items-center gap-3 glass border border-white/20 text-white font-body font-600 px-6 py-3 rounded-full hover:-translate-y-1 transition-all duration-300 text-sm">
+            <i class="fab fa-facebook-f text-[#4267B2] group-hover:text-white transition-colors"></i>
+            <span class="hidden sm:inline">Facebook</span>
+          </a>
+          <a href="#" class="group social-tw inline-flex items-center gap-3 glass border border-white/20 text-white font-body font-600 px-6 py-3 rounded-full hover:-translate-y-1 transition-all duration-300 text-sm">
+            <i class="fab fa-twitter text-[#1DA1F2] group-hover:text-white transition-colors"></i>
+            <span class="hidden sm:inline">Twitter</span>
+          </a>
+          <a href="#" class="group social-ig inline-flex items-center gap-3 glass border border-white/20 text-white font-body font-600 px-6 py-3 rounded-full hover:-translate-y-1 transition-all duration-300 text-sm">
+            <i class="fab fa-instagram text-pink-400 group-hover:text-white transition-colors"></i>
+            <span class="hidden sm:inline">Instagram</span>
+          </a>
+          <a href="#" class="group social-li inline-flex items-center gap-3 glass border border-white/20 text-white font-body font-600 px-6 py-3 rounded-full hover:-translate-y-1 transition-all duration-300 text-sm">
+            <i class="fab fa-linkedin-in text-[#0A66C2] group-hover:text-white transition-colors"></i>
+            <span class="hidden sm:inline">LinkedIn</span>
+          </a>
+          <a href="#" class="group social-yt inline-flex items-center gap-3 glass border border-white/20 text-white font-body font-600 px-6 py-3 rounded-full hover:-translate-y-1 transition-all duration-300 text-sm">
+            <i class="fab fa-youtube text-red-400 group-hover:text-white transition-colors"></i>
+            <span class="hidden sm:inline">YouTube</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer class="bg-ink-900 pt-20 pb-8 relative overflow-hidden noise">
+    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-azure/40 to-transparent"></div>
+    <div class="absolute top-0 right-0 w-80 h-80 bg-azure/5 rounded-full filter blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-600/5 rounded-full filter blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+
+        <div class="sm:col-span-2 lg:col-span-1">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 bg-gradient-to-br from-ink-700 to-azure rounded-xl flex items-center justify-center">
+              <i class="fas fa-book-open-reader text-white text-sm"></i>
+            </div>
+            <div>
+              <div class="font-display font-700 text-white text-lg leading-none">Next Level Learning</div>
+              <div class="text-azure-400 text-[0.6rem] font-body font-700 tracking-wider uppercase mt-0.5">THRASS Africa</div>
+            </div>
+          </div>
+          <p class="text-white/45 font-body text-sm leading-relaxed mb-6">Empowering African literacy through THRASS — innovative phonics and reading solutions for every classroom.</p>
+          <div class="flex gap-3">
+            <a href="#" class="w-9 h-9 rounded-xl bg-white/6 border border-white/10 flex items-center justify-center text-white/50 hover:bg-azure hover:text-white hover:border-azure hover:-translate-y-1 transition-all duration-300 text-sm"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="w-9 h-9 rounded-xl bg-white/6 border border-white/10 flex items-center justify-center text-white/50 hover:bg-azure hover:text-white hover:border-azure hover:-translate-y-1 transition-all duration-300 text-sm"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="w-9 h-9 rounded-xl bg-white/6 border border-white/10 flex items-center justify-center text-white/50 hover:bg-azure hover:text-white hover:border-azure hover:-translate-y-1 transition-all duration-300 text-sm"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="w-9 h-9 rounded-xl bg-white/6 border border-white/10 flex items-center justify-center text-white/50 hover:bg-azure hover:text-white hover:border-azure hover:-translate-y-1 transition-all duration-300 text-sm"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h5 class="text-white font-body font-700 text-xs uppercase tracking-widest mb-6">Quick Links</h5>
+          <ul class="space-y-3">
+            <li><a href="about.html"    class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> About THRASS</a></li>
+            <li><a href="services.html" class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> Resource Catalogue</a></li>
+            <li><a href="#"             class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> Workshops</a></li>
+            <li><a href="#"             class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> Blog &amp; Insights</a></li>
+            <li><a href="#"             class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> Become a Partner</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="text-white font-body font-700 text-xs uppercase tracking-widest mb-6">Support</h5>
+          <ul class="space-y-3">
+            <li><a href="#"              class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> FAQs</a></li>
+            <li><a href="#"              class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> Shipping Policy</a></li>
+            <li><a href="#"              class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> Returns</a></li>
+            <li><a href="#"              class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> Privacy Policy</a></li>
+            <li><a href="contact.html"   class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> Contact Support</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="text-white font-body font-700 text-xs uppercase tracking-widest mb-6">Newsletter</h5>
+          <p class="text-white/45 font-body text-sm leading-relaxed mb-5">Literacy tips, new resources, and THRASS insights straight to your inbox.</p>
+          <div class="space-y-3">
+            <input type="email" placeholder="Your email address" class="w-full px-4 py-3 rounded-xl bg-white/6 border border-white/12 text-white text-sm font-body placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-azure/40 focus:border-azure/50 transition-all duration-300">
+            <button class="w-full btn-shimmer text-white font-body font-700 py-3 rounded-xl text-sm flex items-center justify-center gap-2 hover:-translate-y-0.5 transition-transform duration-300">
+              <i class="fas fa-paper-plane text-xs"></i> Subscribe
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-white/8 pt-7 flex flex-col sm:flex-row items-center justify-between gap-4 text-white/35 font-body text-xs">
+        <span>© 2026 Next Level Learning | THRASS Africa — Shaping readers, one sound at a time.</span>
+        <div class="flex gap-5">
+          <a href="#" class="hover:text-azure-300 transition-colors">Privacy</a>
+          <a href="#" class="hover:text-azure-300 transition-colors">Terms</a>
+          <a href="#" class="hover:text-azure-300 transition-colors">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ─── Header scroll ───
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        header.style.background = 'rgba(4,17,43,0.92)';
+        header.style.backdropFilter = 'blur(24px)';
+        header.style.boxShadow = '0 4px 32px rgba(0,0,0,0.25)';
+      } else {
+        header.style.background = 'transparent';
+        header.style.backdropFilter = 'none';
+        header.style.boxShadow = 'none';
+      }
+    });
+
+    // ─── Mobile menu ───
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    let menuOpen = false;
+    menuBtn.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('open', menuOpen);
+      const bars = menuBtn.querySelectorAll('span');
+      if (menuOpen) {
+        bars[0].style.transform = 'rotate(45deg) translate(5px,5px)';
+        bars[1].style.opacity  = '0';
+        bars[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
+      } else {
+        bars.forEach(b => { b.style.transform = ''; b.style.opacity = ''; });
+      }
+    });
+    document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      menuOpen = false;
+      menuBtn.querySelectorAll('span').forEach(b => { b.style.transform = ''; b.style.opacity = ''; });
+    }));
+
+    // ─── Scroll reveal ───
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const delay = parseFloat(entry.target.style.transitionDelay || 0);
+          setTimeout(() => entry.target.classList.add('up'), delay * 1000 + 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+    // ─── Contact form ───
+    window.handleSubmit = function(e) {
+      e.preventDefault();
+      const name    = document.getElementById('fullName').value.trim();
+      const email   = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value.trim();
+
+      if (!name)                    { showError('Please enter your full name.'); return; }
+      if (!email || !email.includes('@')) { showError('Please enter a valid email address.'); return; }
+      if (!subject)                 { showError('Please select a topic.'); return; }
+      if (!message)                 { showError('Please enter your message.'); return; }
+
+      const btn = document.getElementById('submitBtn');
+      btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Sending...';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.innerHTML = '<i class="fas fa-check"></i> Message Sent Successfully!';
+        btn.style.background = 'linear-gradient(135deg, #10b981, #34d399)';
+        btn.style.animation = 'none';
+        setTimeout(() => {
+          btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+          btn.style.background = '';
+          btn.style.animation = '';
+          btn.disabled = false;
+          document.getElementById('contactForm').reset();
+        }, 3500);
+      }, 1200);
+    };
+
+    function showError(msg) {
+      const btn = document.getElementById('submitBtn');
+      const orig = btn.innerHTML;
+      btn.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${msg}`;
+      btn.style.background = 'linear-gradient(135deg, #ef4444, #f87171)';
+      btn.style.animation = 'none';
+      setTimeout(() => {
+        btn.innerHTML = orig;
+        btn.style.background = '';
+        btn.style.animation = '';
+      }, 2500);
+    }
+  </script>
+</body>
+</html>

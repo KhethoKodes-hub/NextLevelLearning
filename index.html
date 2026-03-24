@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="blue">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#1D4ED8">
+  <title>Next Level Learning | AI Education Hub</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy:        '#0A1628',
+            'navy-mid':  '#1E3A6E',
+            blue:        '#3B82F6',
+            'blue-dark': '#1D4ED8',
+            'blue-br':   '#60A5FA',
+          },
+          fontFamily: {
+            syne: ['Syne', 'sans-serif'],
+            dm:   ['DM Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- NLL Premium Theme -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       THEME TOGGLE BUTTON
+       Blue theme  → shows ☀ icon (switch to light)
+       White theme → shows 🌙 icon (switch to dark)
+       ═══════════════════════════════════════════════ -->
+  <button id="theme-toggle" title="Toggle theme" aria-label="Toggle colour theme">
+    <i class="fas fa-sun" id="toggle-icon"></i>
+  </button>
+
+  <!-- App root — app.js renders everything here -->
+  <div id="app-root"></div>
+
+  <!-- App logic -->
+  <script src="app.js"></script>
+
+  <!-- ═══════════════════════════════════════════════
+       THEME TOGGLE SCRIPT
+       ═══════════════════════════════════════════════ -->
+  <script>
+    (function () {
+      var html   = document.documentElement;
+      var btn    = document.getElementById('theme-toggle');
+      var icon   = document.getElementById('toggle-icon');
+      var stored = localStorage.getItem('nll_theme') || 'blue';
+
+      /* Apply saved theme on load */
+      applyTheme(stored);
+
+      btn.addEventListener('click', function () {
+        var next = html.getAttribute('data-theme') === 'blue' ? 'white' : 'blue';
+        applyTheme(next);
+        localStorage.setItem('nll_theme', next);
+      });
+
+      function applyTheme(t) {
+        html.setAttribute('data-theme', t);
+        if (t === 'white') {
+          icon.className = 'fas fa-moon';
+          btn.title = 'Switch to Blue theme';
+        } else {
+          icon.className = 'fas fa-sun';
+          btn.title = 'Switch to Light theme';
+        }
+      }
+    })();
+  </script>
+
+  <!-- ═══════════════════════════════════════════════
+       ICON PATCH — replaces emoji used in app.js
+       rendered HTML with Font Awesome icons
+       ═══════════════════════════════════════════════ -->
+  <script>
+    /* Run after app.js finishes first render */
+    (function patchIcons() {
+      /* Map of text/emoji → FA icon html */
+      var iconMap = {
+        /* Book covers in library */
+        '📐': '<i class="fas fa-ruler-combined" style="font-size:22px;color:inherit"></i>',
+        '⚡': '<i class="fas fa-bolt" style="font-size:22px;color:inherit"></i>',
+        '✍️': '<i class="fas fa-pen-nib" style="font-size:22px;color:inherit"></i>',
+        '🔬': '<i class="fas fa-microscope" style="font-size:22px;color:inherit"></i>',
+        '📈': '<i class="fas fa-chart-line" style="font-size:22px;color:inherit"></i>',
+        '🧾': '<i class="fas fa-file-invoice" style="font-size:22px;color:inherit"></i>',
+        /* Auth page icon */
+        '🎓': '<i class="fas fa-graduation-cap" style="font-size:22px;color:inherit"></i>',
+      };
+
+      /* Patch text nodes inside .book-cover elements */
+      function patchBookCovers() {
+        document.querySelectorAll('.book-cover').forEach(function(el) {
+          var txt = el.textContent.trim();
+          if (iconMap[txt]) {
+            el.innerHTML = iconMap[txt];
+          } else if (txt && !el.querySelector('i')) {
+            /* Generic fallback */
+            el.innerHTML = '<i class="fas fa-book-open" style="font-size:22px;color:inherit"></i>';
+          }
+        });
+      }
+
+      /* Observe DOM for dynamic renders (app.js re-draws on tab switch) */
+      var observer = new MutationObserver(function(mutations) {
+        var hasNew = mutations.some(function(m){ return m.addedNodes.length > 0; });
+        if (hasNew) patchBookCovers();
+      });
+
+      observer.observe(document.getElementById('app-root'), { childList: true, subtree: true });
+
+      /* Initial run after a tick */
+      setTimeout(patchBookCovers, 100);
+    })();
+  </script>
+
+</body>
+</html>
