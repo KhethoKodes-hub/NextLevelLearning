@@ -99,7 +99,7 @@
 
     /* ===== HERO ===== */
     .hero { min-height: 68vh; position: relative; display: flex; align-items: center; overflow: hidden; padding-top: 72px; }
-    .hero-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=1800&q=80'); background-size: cover; background-position: center 40%; filter: brightness(.42) saturate(1.15); transform: scale(1.04); animation: slowZoom 22s ease-in-out infinite alternate; }
+    .hero-bg { position: absolute; inset: 0; background-image: url('./assets/enhance11.png'); background-size: cover; background-position: center 40%; filter: brightness(.42) saturate(1.15); transform: scale(1.04); animation: slowZoom 22s ease-in-out infinite alternate; }
     @keyframes slowZoom { from { transform: scale(1.04); } to { transform: scale(1.1); } }
     .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(20,24,40,.72) 0%, rgba(29,95,206,.22) 60%, rgba(249,115,22,.12) 100%); }
     .hero-content { position: relative; z-index: 10; width: 100%; padding: 3rem 0; }
@@ -280,8 +280,7 @@
 
     /* ===== CTA ===== */
     .cta-section { position: relative; overflow: hidden; min-height: 360px; display: flex; align-items: center; }
-    .cta-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=1800&q=80'); background-size: cover; background-position: center 40%; filter: brightness(.28) saturate(1.1); }
-    .cta-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(14,18,36,.97) 28%, rgba(14,18,36,.72) 100%); }
+    .cta-bg { position: absolute; inset: 0; background-image: url('./assets/dieselmech.png'); background-size: cover; background-position: center 40%; filter: brightness(.28) saturate(1.1); }
     .cta-inner { position: relative; z-index: 10; width: 100%; }
     .cta-row { display: flex; justify-content: space-between; align-items: center; gap: 3rem; flex-wrap: wrap; padding: 80px 0; }
     .cta-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(1.8rem,3.5vw,2.8rem); color: #fff; line-height: 1.1; }
@@ -350,8 +349,8 @@
   <div class="mob-nav" id="mobNav">
     <button class="mob-close" id="mobClose"><i class="fas fa-times"></i></button>
     <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="services.html" style="color:var(--orange)">Services</a>
+    <a href="gallery.html">Our Facility</a>
+    <a href="services.html" style="color:var(--orange)">Company</a>
     <a href="contact.html">Contact</a>
     <a href="portal.html" style="color:var(--orange)">Student Portal</a>
   </div>
@@ -367,11 +366,9 @@
     </a>
     <div class="nav-links">
       <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html" class="active">Services</a>
-      <a href="#">Trade Test</a>
-      <a href="#">ARPL</a>
-      <a href="#">THRASS</a>
+      <a href="gallery.html">Our Facility</a>
+      <a href="services.html" class="active">Company</a>
+      
       <a href="contact.html">Contact</a>
     </div>
     <div style="display:flex;align-items:center;gap:1rem">
@@ -391,14 +388,14 @@
           <i class="fas fa-angle-right"></i>
           <span style="color:var(--orange-warm)">Services</span>
         </div>
-        <div class="hero-badge"><span class="bdot"></span><i class="fas fa-cogs"></i> Comprehensive Solutions</div>
+        <div ></div>
         <h1 class="hero-title">
           <span class="l1">Our</span>
           <span class="l2">Services</span>
         </h1>
         <p class="hero-desc">From accredited automotive trades to THRASS® educator publishing — end-to-end skill solutions that transform careers and communities.</p>
         <div class="hero-actions">
-          <a href="#courses" class="btn-orange"><i class="fas fa-tools"></i> View Courses</a>
+          <a href="portal.html" class="btn-orange"><i class="fas fa-tools"></i> View Courses</a>
           <a href="#trade-test" class="btn-outline-hero"><i class="fas fa-certificate"></i> Trade Test Info</a>
         </div>
         <div class="hero-pills">
@@ -428,7 +425,7 @@
         <div class="course-card cc-blue rev">
           <div class="cc-top-bar"></div>
           <div class="cc-image">
-            <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&q=80" alt="Motor Mechanic">
+            <img src="assets/enhance2.png" alt="Motor Mechanic">
             <div class="cc-image-overlay"></div>
             <div class="cc-badge" style="background:rgba(29,95,206,.15);border:1px solid rgba(29,95,206,.3);color:var(--blue)"><i class="fas fa-circle" style="font-size:5px"></i> Motor Mechanic</div>
           </div>
@@ -453,7 +450,7 @@
         <div class="course-card cc-orange rev d1">
           <div class="cc-top-bar"></div>
           <div class="cc-image">
-            <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80" alt="Diesel Mechanic">
+            <img src="assets/enhance14.png" alt="Diesel Mechanic">
             <div class="cc-image-overlay"></div>
             <div class="cc-badge" style="background:rgba(249,115,22,.14);border:1px solid rgba(249,115,22,.3);color:var(--orange)"><i class="fas fa-circle" style="font-size:5px"></i> Diesel Mechanic</div>
           </div>
@@ -478,7 +475,7 @@
         <div class="course-card cc-purple rev d2">
           <div class="cc-top-bar"></div>
           <div class="cc-image">
-            <img src="https://images.unsplash.com/photo-1630818895023-0e91e979d676?w=800&q=80" alt="Auto Electrician">
+            <img src="assets/enhance5.png" alt="Auto Electrician">
             <div class="cc-image-overlay"></div>
             <div class="cc-badge" style="background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.28);color:var(--purple)"><i class="fas fa-circle" style="font-size:5px"></i> Auto Electrician</div>
           </div>
@@ -607,7 +604,7 @@
     <div class="container">
       <div class="thrass-grid">
         <div class="thrass-image rev">
-          <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80" alt="THRASS Education">
+          <img src="assets/enhance15.png" alt="THRASS Education">
           <div class="thrass-image-overlay"></div>
           <div class="thrass-letters">
             <div class="t-let">T</div><div class="t-let">H</div><div class="t-let">R</div>
