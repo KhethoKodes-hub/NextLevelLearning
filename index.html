@@ -2,787 +2,1550 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Next Level Learning | THRASS Africa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Next Level Skills Academy | Where Passion Meets Precision</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cabinet+Grotesk:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            display: ['Cormorant Garamond', 'serif'],
-            body: ['Cabinet Grotesk', 'sans-serif'],
-          },
-          colors: {
-            ink:    { DEFAULT: '#04112B', 50: '#EFF4FF', 100: '#D6E4FF', 200: '#AFC9FE', 300: '#7CAAFD', 400: '#4082FB', 500: '#1658F0', 600: '#0942D3', 700: '#0A32A4', 800: '#0D2780', 900: '#04112B' },
-            azure:  { DEFAULT: '#0ea5e9', 50: '#F0FBFF', 100: '#DDFAFF', 200: '#B3F1FE', 300: '#7AE6FC', 400: '#38D1F5', 500: '#0ea5e9', 600: '#0484C8', 700: '#066FA8', 800: '#0A5A88', 900: '#0C3F5E' },
-            frost:  '#F0F7FF',
-          },
-          animation: {
-            'float': 'float 6s ease-in-out infinite',
-            'float-slow': 'float 9s ease-in-out infinite',
-            'pulse-soft': 'pulseSoft 4s ease-in-out infinite',
-            'slide-up': 'slideUp 0.7s cubic-bezier(0.16,1,0.3,1) both',
-            'fade-in': 'fadeIn 0.6s ease both',
-            'shimmer': 'shimmer 2.5s linear infinite',
-            'spin-slow': 'spin 20s linear infinite',
-          },
-          keyframes: {
-            float: { '0%,100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-16px)' } },
-            pulseSoft: { '0%,100%': { opacity: '0.6' }, '50%': { opacity: '1' } },
-            slideUp: { from: { opacity: '0', transform: 'translateY(32px)' }, to: { opacity: '1', transform: 'translateY(0)' } },
-            fadeIn: { from: { opacity: '0' }, to: { opacity: '1' } },
-            shimmer: { '0%': { backgroundPosition: '-200% 0' }, '100%': { backgroundPosition: '200% 0' } },
-          },
-          backdropBlur: { xs: '2px' },
-          backgroundImage: {
-            'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234082FB' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
-          },
-        }
-      }
-    }
-  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --blue-deep: #0a1628;
+      --blue-mid: #1a3a6b;
+      --blue-bright: #1d5fce;
+      --blue-electric: #3b82f6;
+      --orange: #f97316;
+      --orange-warm: #fb923c;
+      --red: #dc2626;
+      --red-light: #ef4444;
+      --purple: #7c3aed;
+      --purple-soft: #a855f7;
+      --white: #ffffff;
+      --glass: rgba(255,255,255,0.07);
+      --glass-border: rgba(255,255,255,0.15);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     html { scroll-behavior: smooth; }
-    body { font-family: 'Cabinet Grotesk', sans-serif; overflow-x: hidden; }
-    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
 
-    /* Glass card */
-    .glass {
-      background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(255,255,255,0.22);
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--blue-deep);
+      color: var(--white);
+      overflow-x: hidden;
     }
-    .glass-white {
-      background: rgba(255,255,255,0.85);
+
+    h1, h2, h3 { font-family: 'Syne', sans-serif; }
+
+    /* ============ CUSTOM CURSOR ============ */
+    .cursor-dot {
+      width: 8px; height: 8px;
+      background: var(--orange);
+      border-radius: 50%;
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%,-50%);
+      transition: transform 0.1s;
+    }
+    .cursor-ring {
+      width: 36px; height: 36px;
+      border: 2px solid rgba(249,115,22,0.5);
+      border-radius: 50%;
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%,-50%);
+      transition: all 0.12s ease;
+    }
+
+    /* ============ NOISE OVERLAY ============ */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.5;
+    }
+
+    /* ============ NAVBAR ============ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 2rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10,22,40,0.6);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.6);
+      border-bottom: 1px solid var(--glass-border);
+      transition: all 0.3s;
     }
-    .glass-dark {
-      background: rgba(4,17,43,0.45);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.12);
+    nav.scrolled {
+      background: rgba(10,22,40,0.92);
+      height: 60px;
     }
-
-    /* Gradient text */
-    .grad-text {
-      background: linear-gradient(135deg, #3B82F6 0%, #0ea5e9 50%, #38bdf8 100%);
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .nav-logo-icon {
+      width: 42px; height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--blue-bright), var(--orange));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 0 20px rgba(249,115,22,0.35);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .nav-logo:hover .nav-logo-icon {
+      transform: rotate(-5deg) scale(1.1);
+      box-shadow: 0 0 30px rgba(249,115,22,0.55);
+    }
+    .nav-brand-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      line-height: 1.1;
+      background: linear-gradient(90deg, #fff, var(--orange-warm));
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       background-clip: text;
+      color: transparent;
     }
-    .grad-text-light {
-      background: linear-gradient(135deg, #BAE6FD 0%, #93C5FD 50%, #E0F2FE 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .nav-brand-sub {
+      font-size: 10px;
+      color: rgba(255,255,255,0.45);
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
-
-    /* Shimmer button */
-    .btn-shimmer {
-      background: linear-gradient(90deg, #1658F0 0%, #0ea5e9 33%, #38bdf8 66%, #1658F0 100%);
-      background-size: 200% auto;
-      animation: shimmer 3s linear infinite;
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      position: relative;
+      transition: color 0.2s;
     }
-
-    /* Scroll reveal */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1); }
-    .reveal.up { opacity: 1; transform: none; }
-    .reveal-left { opacity: 0; transform: translateX(-28px); transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1); }
-    .reveal-left.up { opacity: 1; transform: none; }
-    .reveal-right { opacity: 0; transform: translateX(28px); transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1); }
-    .reveal-right.up { opacity: 1; transform: none; }
-
-    /* Nav link underline */
-    .nav-link::after {
+    .nav-links a::after {
       content: '';
       position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #1658F0, #0ea5e9);
+      bottom: -3px; left: 0;
+      width: 0; height: 2px;
+      background: var(--orange);
+      transition: width 0.25s ease;
       border-radius: 2px;
-      transition: width 0.35s cubic-bezier(0.16,1,0.3,1);
     }
-    .nav-link:hover::after { width: 100%; }
+    .nav-links a:hover { color: white; }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-login {
+      background: linear-gradient(135deg, var(--blue-bright), var(--blue-mid));
+      color: white;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 9px 22px;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex; align-items: center; gap: 8px;
+      transition: all 0.25s;
+      letter-spacing: 0.03em;
+    }
+    .nav-login:hover {
+      background: linear-gradient(135deg, var(--orange), #ea580c);
+      box-shadow: 0 6px 20px rgba(249,115,22,0.4);
+      transform: translateY(-1px);
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: white;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
 
-    /* Custom scrollbar */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #F0F7FF; }
-    ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #1658F0, #0ea5e9); border-radius: 3px; }
+    /* ============ HERO ============ */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=1800&q=80');
+      background-size: cover;
+      background-position: center 30%;
+      filter: brightness(0.28) saturate(1.2);
+      transform: scale(1.05);
+      animation: slowZoom 20s ease-in-out infinite alternate;
+    }
+    @keyframes slowZoom {
+      0% { transform: scale(1.05); }
+      100% { transform: scale(1.12); }
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 70% 60% at 100% 0%, rgba(124,58,237,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 0% 100%, rgba(220,38,38,0.1) 0%, transparent 50%),
+        linear-gradient(135deg, rgba(10,22,40,0.97) 0%, rgba(26,58,107,0.75) 40%, rgba(10,22,40,0.85) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      padding-top: 80px;
+      width: 100%;
+    }
 
-    /* Parallax image */
-    .parallax-bg { background-attachment: fixed; }
-    @media (max-width: 768px) { .parallax-bg { background-attachment: scroll; } }
+    /* Floating badge */
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(249,115,22,0.12);
+      border: 1px solid rgba(249,115,22,0.35);
+      color: var(--orange-warm);
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      animation: fadeInDown 0.8s ease both;
+      backdrop-filter: blur(10px);
+    }
+    .hero-badge i { animation: pulse 2s infinite; }
 
-    /* Mobile menu */
-    #mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.16,1,0.3,1); }
-    #mobile-menu.open { max-height: 480px; }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 10vw, 9rem);
+      line-height: 0.92;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.9s 0.15s ease both;
+    }
+    .hero-title .line-1 { color: white; display: block; }
+    .hero-title .line-2 {
+      display: block;
+      background: linear-gradient(90deg, var(--orange), var(--red), var(--purple-soft));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-title .line-3 { color: rgba(255,255,255,0.55); display: block; font-size: 60%; letter-spacing: 0.15em; font-family: 'DM Sans', sans-serif; font-weight: 300; text-transform: uppercase; }
 
-    /* Noise texture overlay */
-    .noise::before {
+    .hero-desc {
+      max-width: 540px;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+      animation: fadeInUp 0.9s 0.3s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.9s 0.45s ease both;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--orange), #ea580c);
+      color: white;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.03em;
+    }
+    .btn-primary::before {
       content: '';
       position: absolute;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      background: linear-gradient(135deg, transparent, rgba(255,255,255,0.15));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(249,115,22,0.45);
+    }
+    .btn-primary:hover::before { opacity: 1; }
+    .btn-ghost {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      color: rgba(255,255,255,0.8);
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s;
+      letter-spacing: 0.03em;
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: var(--orange);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      animation: fadeInUp 0.9s 0.6s ease both;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      line-height: 1;
+      background: linear-gradient(135deg, white, var(--orange-warm));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 4px;
+    }
+
+    /* Floating cards on hero right */
+    .hero-float-cards {
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      animation: fadeInRight 1s 0.5s ease both;
+      z-index: 10;
+    }
+    .float-card {
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 16px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 200px;
+      transition: all 0.3s;
+      cursor: default;
+    }
+    .float-card:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: var(--orange);
+      transform: translateX(-6px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    .float-card-icon {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .float-card-text .fc-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: white;
+    }
+    .float-card-text .fc-sub {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* Scroll cue */
+    .scroll-cue {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      z-index: 10;
+      animation: bounce 2s infinite;
+    }
+    .scroll-cue span {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+    .scroll-cue i { color: rgba(255,255,255,0.3); font-size: 14px; }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ============ SECTION COMMON ============ */
+    section { position: relative; z-index: 2; }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange);
+      border: 1px solid rgba(249,115,22,0.3);
+      background: rgba(249,115,22,0.08);
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 1.2rem;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.1;
+      color: white;
+    }
+    .section-sub {
+      color: rgba(255,255,255,0.45);
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 520px;
+    }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+
+    /* ============ DIAGONAL DIVIDER ============ */
+    .divider-diagonal {
+      height: 80px;
+      background: inherit;
+      clip-path: polygon(0 0, 100% 100%, 100% 100%, 0 100%);
+    }
+
+    /* ============ TRADES SECTION ============ */
+    .trades-section {
+      padding: 120px 0;
+      background: linear-gradient(180deg, var(--blue-deep) 0%, #0d1f3c 100%);
+    }
+    .trades-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+    .trade-card {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      cursor: pointer;
+      height: 420px;
+      transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .trade-card:hover { transform: translateY(-10px); }
+    .trade-card-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.3) saturate(1.1);
+      transition: filter 0.5s, transform 0.5s;
+    }
+    .trade-card:hover .trade-card-bg {
+      filter: brightness(0.4) saturate(1.3);
+      transform: scale(1.08);
+    }
+    .trade-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 20%, rgba(10,22,40,0.95) 100%);
+      transition: all 0.4s;
+    }
+    .trade-card:hover .trade-card-overlay {
+      background: linear-gradient(180deg, rgba(10,22,40,0.3) 0%, rgba(10,22,40,0.97) 100%);
+    }
+    .trade-card-content {
+      position: absolute;
+      inset: 0;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .trade-icon {
+      width: 54px; height: 54px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      margin-bottom: 1rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.4s 0.05s;
+    }
+    .trade-card:hover .trade-icon { opacity: 1; transform: translateY(0); }
+    .trade-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+    .trade-card p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s, opacity 0.4s;
+      opacity: 0;
+    }
+    .trade-card:hover p { max-height: 80px; opacity: 1; }
+    .trade-card-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 50px;
+      margin-bottom: 0.75rem;
+    }
+    .trade-arrow {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      display: flex; align-items: center; justify-content: center;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s;
+    }
+    .trade-card:hover .trade-arrow {
+      background: var(--orange);
+      border-color: var(--orange);
+      transform: rotate(45deg);
+    }
+
+    /* ============ TRADE TEST SECTION ============ */
+    .trade-test-section {
+      padding: 120px 0;
+      background: #080f1f;
+      position: relative;
+    }
+    .trade-test-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--blue-electric), var(--orange), transparent);
+    }
+    .tt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 0;
+    }
+    .tt-image {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      height: 520px;
+    }
+    .tt-image img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: brightness(0.5) saturate(1.2);
+      transition: transform 0.6s;
+    }
+    .tt-image:hover img { transform: scale(1.05); }
+    .tt-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(29,95,206,0.5), rgba(220,38,38,0.2));
+      mix-blend-mode: color;
+    }
+    .tt-image-badge {
+      position: absolute;
+      bottom: 2rem;
+      left: 2rem;
+      right: 2rem;
+      background: rgba(10,22,40,0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 18px;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .tt-check-list {
+      list-style: none;
+      margin-top: 2rem;
+      space-y: 1rem;
+    }
+    .tt-check-list li {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: all 0.25s;
+      cursor: default;
+    }
+    .tt-check-list li:last-child { border-bottom: none; }
+    .tt-check-list li:hover { padding-left: 8px; }
+    .tt-check-icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--orange), var(--red));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .tt-check-list li h4 {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: white;
+      margin-bottom: 2px;
+    }
+    .tt-check-list li p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.5;
+    }
+
+    /* ============ ARPL SECTION ============ */
+    .arpl-section {
+      padding: 120px 0;
+      background: linear-gradient(135deg, #0a1628, #0e1e3a, #0a1628);
+      position: relative;
+      overflow: hidden;
+    }
+    .arpl-section::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(124,58,237,0.12), transparent 70%);
       pointer-events: none;
     }
-
-    /* Stats counter */
-    .counter { transition: all 0.3s; }
-
-    /* Floating elements */
-    .float-1 { animation: float 6s ease-in-out infinite; }
-    .float-2 { animation: float 8s ease-in-out 1s infinite; }
-    .float-3 { animation: float 7s ease-in-out 2s infinite; }
-
-    /* Orbit ring */
-    .orbit { animation: spin 20s linear infinite; }
-    .orbit-reverse { animation: spin 25s linear reverse infinite; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* Card hover lift */
-    .card-hover { transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease; }
-    .card-hover:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(4,17,43,0.18); }
-
-    /* Marquee */
-    .marquee-track { display: flex; animation: marquee 24s linear infinite; white-space: nowrap; }
-    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* Line decoration */
-    .line-deco { background: linear-gradient(90deg, transparent, #3B82F6, #0ea5e9, transparent); height: 1px; }
-
-    /* Blob */
-    .blob {
-      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-      animation: blobMove 12s ease-in-out infinite;
+    .arpl-section::after {
+      content: '';
+      position: absolute;
+      bottom: -150px; left: -150px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(220,38,38,0.08), transparent 70%);
+      pointer-events: none;
     }
-    @keyframes blobMove {
-      0%,100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-      33%      { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-      66%      { border-radius: 50% 60% 30% 60% / 30% 40% 60% 50%; }
+    .arpl-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .arpl-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      margin-top: 2.5rem;
+    }
+    .arpl-steps::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--orange), var(--purple-soft));
+    }
+    .arpl-step {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.2rem 0;
+      padding-left: 1rem;
+      cursor: default;
+      transition: all 0.3s;
+    }
+    .arpl-step:hover { transform: translateX(8px); }
+    .step-num {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-bright), var(--purple));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      color: white;
+      flex-shrink: 0;
+      border: 3px solid var(--blue-deep);
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s;
+    }
+    .arpl-step:hover .step-num { transform: scale(1.15); }
+    .step-content h4 { font-weight: 600; font-size: 0.95rem; color: white; margin-bottom: 3px; }
+    .step-content p { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
+    .arpl-image {
+      position: relative;
+      height: 480px;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+    .arpl-image img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: brightness(0.4) saturate(1.1);
+    }
+    .arpl-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(225deg, rgba(124,58,237,0.5), rgba(10,22,40,0.6));
+      mix-blend-mode: color;
+    }
+    .arpl-tags {
+      position: absolute;
+      bottom: 2rem; left: 2rem; right: 2rem;
+      display: flex; gap: 0.75rem; flex-wrap: wrap;
+    }
+    .arpl-tag {
+      background: rgba(10,22,40,0.85);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50px;
+      padding: 6px 16px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
-    /* Dot pattern */
-    .dot-bg { background-image: radial-gradient(circle, #1658F020 1px, transparent 1px); background-size: 28px 28px; }
+    /* ============ THRASS SECTION ============ */
+    .thrass-section {
+      padding: 120px 0;
+      background: #060d1a;
+      position: relative;
+      overflow: hidden;
+    }
+    .thrass-bg-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(8rem, 20vw, 18rem);
+      color: rgba(255,255,255,0.02);
+      white-space: nowrap;
+      pointer-events: none;
+      letter-spacing: 0.05em;
+    }
+    .thrass-inner {
+      position: relative;
+      z-index: 2;
+    }
+    .thrass-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 0;
+    }
+    .thrass-image {
+      height: 500px;
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+    }
+    .thrass-image img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: brightness(0.4) saturate(1.1);
+      transition: transform 0.5s;
+    }
+    .thrass-image:hover img { transform: scale(1.05); }
+    .thrass-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(220,38,38,0.3), rgba(249,115,22,0.3));
+    }
+    .thrass-letters {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem;
+    }
+    .thrass-letter {
+      width: 54px; height: 54px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      color: white;
+      transition: all 0.3s;
+      cursor: default;
+    }
+    .thrass-letter:hover {
+      background: rgba(249,115,22,0.3);
+      border-color: var(--orange);
+      transform: scale(1.1) rotate(-3deg);
+    }
+    .thrass-features {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+    .thrass-feat {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: all 0.3s;
+      cursor: default;
+    }
+    .thrass-feat:hover {
+      background: rgba(249,115,22,0.08);
+      border-color: rgba(249,115,22,0.3);
+      transform: translateX(6px);
+    }
+    .thrass-feat-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .thrass-feat h4 { font-weight: 600; font-size: 0.9rem; color: white; margin-bottom: 2px; }
+    .thrass-feat p { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
 
-    /* Image zoom */
-    .img-zoom img { transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
-    .img-zoom:hover img { transform: scale(1.06); }
+    /* ============ WHY US SECTION ============ */
+    .why-section {
+      padding: 120px 0;
+      background: linear-gradient(180deg, #060d1a, var(--blue-deep));
+      position: relative;
+    }
+    .why-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--purple-soft), transparent);
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+    .why-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+    .why-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.4s;
+      border-radius: 20px;
+    }
+    .why-card:hover::before { opacity: 1; }
+    .why-card:hover {
+      transform: translateY(-10px);
+      border-color: transparent;
+    }
+    .wc-1::before { background: linear-gradient(135deg, rgba(29,95,206,0.15), transparent); }
+    .wc-1:hover { box-shadow: 0 20px 50px rgba(29,95,206,0.2), inset 0 0 0 1px rgba(29,95,206,0.3); }
+    .wc-2::before { background: linear-gradient(135deg, rgba(249,115,22,0.15), transparent); }
+    .wc-2:hover { box-shadow: 0 20px 50px rgba(249,115,22,0.2), inset 0 0 0 1px rgba(249,115,22,0.3); }
+    .wc-3::before { background: linear-gradient(135deg, rgba(220,38,38,0.15), transparent); }
+    .wc-3:hover { box-shadow: 0 20px 50px rgba(220,38,38,0.2), inset 0 0 0 1px rgba(220,38,38,0.3); }
+    .wc-4::before { background: linear-gradient(135deg, rgba(124,58,237,0.15), transparent); }
+    .wc-4:hover { box-shadow: 0 20px 50px rgba(124,58,237,0.2), inset 0 0 0 1px rgba(124,58,237,0.3); }
+    .why-icon {
+      width: 60px; height: 60px;
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      margin: 0 auto 1.2rem;
+      transition: transform 0.3s;
+    }
+    .why-card:hover .why-icon { transform: scale(1.12) rotate(-4deg); }
+    .why-card h3 { font-weight: 700; font-size: 1rem; color: white; margin-bottom: 0.5rem; }
+    .why-card p { font-size: 0.82rem; color: rgba(255,255,255,0.4); line-height: 1.6; }
+
+    /* ============ CTA STRIP ============ */
+    .cta-section {
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=1800&q=80');
+      background-size: cover;
+      background-position: center 40%;
+      filter: brightness(0.2) saturate(1.1);
+    }
+    .cta-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(10,22,40,0.97) 30%, rgba(10,22,40,0.6) 100%);
+    }
+    .cta-content {
+      position: relative;
+      z-index: 10;
+    }
+    .cta-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .cta-contacts {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .contact-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(15px);
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-size: 0.88rem;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    .contact-chip:hover {
+      background: rgba(249,115,22,0.2);
+      border-color: var(--orange);
+      transform: translateY(-3px);
+    }
+    .contact-chip i { color: var(--orange); }
+
+    /* ============ LOCATIONS ============ */
+    .locations-section {
+      padding: 80px 0;
+      background: var(--blue-deep);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .locations-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .location-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 2rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      transition: all 0.35s;
+    }
+    .location-card:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(249,115,22,0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+    .location-pin {
+      width: 50px; height: 50px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--orange), var(--red));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .location-card h4 { font-weight: 700; font-size: 1.05rem; color: white; margin-bottom: 0.5rem; }
+    .location-card p { font-size: 0.84rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+    /* ============ FOOTER ============ */
+    footer {
+      background: #040a14;
+      padding: 60px 0 30px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 3rem;
+    }
+    .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.35); line-height: 1.7; margin-top: 1rem; max-width: 280px; }
+    .footer-col h5 { font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.6rem; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.35);
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: color 0.2s, padding-left 0.2s;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .footer-col ul li a:hover { color: var(--orange); padding-left: 4px; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.2); }
+    .footer-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .footer-tag {
+      font-size: 0.7rem;
+      padding: 3px 10px;
+      border-radius: 50px;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* Mobile nav overlay */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(4,10,20,0.97);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .mobile-nav a:hover { color: var(--orange); transform: scale(1.05); }
+    .mobile-nav-close {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      background: none; border: none;
+      color: white; font-size: 1.5rem; cursor: pointer;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ============ ANIMATIONS ============ */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* Reveal on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 1024px) {
+      .hero-float-cards { display: none; }
+      .tt-grid, .arpl-grid, .thrass-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .trades-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .locations-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: clamp(3.5rem, 15vw, 6rem); }
+      .cursor-dot, .cursor-ring { display: none; }
+      .cta-inner { flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      .why-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.5rem; }
+    }
   </style>
 </head>
-<body class="bg-white text-ink-900">
+<body>
 
-  <!-- ══════════════ HEADER ══════════════ -->
-  <header id="header" class="fixed top-0 inset-x-0 z-50 transition-all duration-500" style="background:transparent;">
-    <div class="max-w-7xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between gap-6">
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
 
-      <!-- Logo -->
-      <a href="#" class="flex items-center gap-3 group flex-shrink-0">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-ink-800 to-azure flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-          <i class="fas fa-book-open-reader text-white text-sm"></i>
-        </div>
-        <div class="leading-tight">
-          <div class="font-display font-bold text-lg text-white leading-none" id="logo-text">Next Level Learning</div>
-          <div class="text-[0.62rem] font-body font-700 tracking-[0.14em] uppercase text-azure-300 leading-none mt-0.5" id="logo-sub">THRASS Africa</div>
-        </div>
-      </a>
-
-      <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center gap-1">
-        <a href="#home" class="nav-link relative px-4 py-2 text-sm font-body font-500 text-white/80 hover:text-white transition-colors duration-200">Home</a>
-        <a href="about.html" class="nav-link relative px-4 py-2 text-sm font-body font-500 text-white/80 hover:text-white transition-colors duration-200">About</a>
-        <a href="services.html" class="nav-link relative px-4 py-2 text-sm font-body font-500 text-white/80 hover:text-white transition-colors duration-200">Resources</a>
-        <a href="contact.html" class="nav-link relative px-4 py-2 text-sm font-body font-500 text-white/80 hover:text-white transition-colors duration-200">Contact</a>
-      </nav>
-
-      <div class="hidden md:flex items-center gap-3">
-        <a href="portal.html" class="glass px-5 py-2.5 rounded-full text-sm font-body font-700 text-white hover:bg-white/20 transition-all duration-300 flex items-center gap-2">
-          <i class="fas fa-sign-in-alt text-azure-300"></i> Login
-        </a>
-        <a href="index.html" class="btn-shimmer px-5 py-2.5 rounded-full text-sm font-body font-700 text-white shadow-lg shadow-azure/30 hover:scale-105 hover:shadow-azure/50 transition-all duration-300 flex items-center gap-2">
-          <i class="fas fa-rocket"></i> Get Started
-        </a>
-      </div>
-
-      <!-- Mobile toggle -->
-      <button id="menuBtn" class="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 group">
-        <span class="w-6 h-0.5 bg-white rounded transition-all duration-300 group-[.open]:rotate-45 group-[.open]:translate-y-2"></span>
-        <span class="w-6 h-0.5 bg-white rounded transition-all duration-300 group-[.open]:opacity-0"></span>
-        <span class="w-6 h-0.5 bg-white rounded transition-all duration-300 group-[.open]:-rotate-45 group-[.open]:-translate-y-2"></span>
-      </button>
-    </div>
-
-    <!-- Mobile Nav -->
-    <div id="mobile-menu" class="md:hidden overflow-hidden bg-ink-900/95 backdrop-blur-xl border-t border-white/10">
-      <div class="px-6 py-4 flex flex-col gap-1">
-        <a href="#home" class="mobile-link py-3 text-white/80 hover:text-white font-body font-500 border-b border-white/8 transition-colors">Home</a>
-        <a href="about.html" class="mobile-link py-3 text-white/80 hover:text-white font-body font-500 border-b border-white/8 transition-colors">About</a>
-        <a href="services.html" class="mobile-link py-3 text-white/80 hover:text-white font-body font-500 border-b border-white/8 transition-colors">Resources</a>
-        <a href="contact.html" class="mobile-link py-3 text-white/80 hover:text-white font-body font-500 transition-colors">Contact</a>
-        <div class="pt-4 flex gap-3">
-          <a href="portal.html" class="flex-1 py-3 rounded-xl text-center text-sm font-700 text-white glass border border-white/20">Login</a>
-          <a href="contact.html" class="flex-1 py-3 rounded-xl text-center text-sm font-700 text-white btn-shimmer shadow-lg">Get Started</a>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- ══════════════ HERO ══════════════ -->
-  <section id="home" class="relative min-h-screen flex items-center noise overflow-hidden parallax-bg"
-    style="background-image: url('./assets/auto1.png'); background-size: cover; background-position: center 30%;">
-
-    <!-- Overlays -->
-    <div class="absolute inset-0 bg-gradient-to-br from-ink-900/95 via-ink-900/80 to-azure-900/60"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-ink-900/70 via-transparent to-transparent"></div>
-    <div class="absolute inset-0 dot-bg opacity-30"></div>
-
-    <!-- Floating orbs -->
-    <div class="absolute top-1/4 right-1/4 w-80 h-80 bg-azure-500/15 blob filter blur-3xl float-1 pointer-events-none"></div>
-    <div class="absolute bottom-1/3 left-1/5 w-64 h-64 bg-blue-600/10 blob filter blur-3xl float-2 pointer-events-none"></div>
-
-    <!-- Orbit decorations -->
-    <div class="absolute right-8 top-1/3 w-72 h-72 hidden xl:block pointer-events-none">
-      <div class="absolute inset-0 orbit rounded-full border border-azure/15"></div>
-      <div class="absolute inset-8 orbit-reverse rounded-full border border-blue-400/12"></div>
-      <div class="absolute inset-16 rounded-full border border-azure/20 animate-pulse-soft"></div>
-      <div class="absolute inset-0 flex items-center justify-center">
-        <div class="w-28 h-28 glass rounded-2xl flex flex-col items-center justify-center gap-1">
-          <i class="fas fa-star-of-david text-azure text-2xl"></i>
-          <span class="text-white text-xs font-700 font-body">Certified</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-36 relative z-10 w-full">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-
-        <!-- Text side -->
-        <div>
-          <!-- Badge -->
-          <div class="inline-flex items-center gap-2 glass border border-white/20 rounded-full px-4 py-2 mb-8 text-xs font-body font-700 text-white/90 tracking-wider uppercase animate-fade-in">
-            <span class="w-2 h-2 bg-azure rounded-full animate-pulse"></span>
-            THRASS Certified · South Africa
-          </div>
-
-          <h1 class="font-display font-700 text-5xl sm:text-6xl lg:text-7xl text-white leading-[1.05] mb-6 animate-slide-up" style="animation-delay:0.1s">
-            Where Every<br>
-            <em class="not-italic grad-text-light">Child's Voice</em><br>
-            Finds Its Sound
-          </h1>
-
-          <p class="font-body text-white/65 text-lg leading-relaxed max-w-md mb-10 animate-slide-up" style="animation-delay:0.2s">
-            Evidence-based THRASS phonics programmes trusted by hundreds of schools across Africa — because reading is the foundation of everything.
-          </p>
-
-          <!-- CTA buttons -->
-          <div class="flex flex-wrap gap-4 animate-slide-up" style="animation-delay:0.3s">
-            <a href="services.html" class="group inline-flex items-center gap-3 bg-white text-ink-900 font-body font-800 px-7 py-3.5 rounded-full shadow-2xl hover:shadow-azure/30 hover:-translate-y-1 transition-all duration-300 text-sm">
-              <span class="w-8 h-8 rounded-full bg-azure flex items-center justify-center group-hover:scale-110 transition-transform">
-                <i class="fas fa-book-open text-white text-xs"></i>
-              </span>
-              Explore Resources
-            </a>
-            <a href="contact.html" class="group inline-flex items-center gap-2 glass border border-white/30 text-white font-body font-700 px-7 py-3.5 rounded-full hover:bg-white/20 hover:-translate-y-1 transition-all duration-300 text-sm">
-              <i class="fas fa-play text-azure-300 text-xs"></i>
-              Get in Touch
-            </a>
-          </div>
-
-          <!-- Trust strip -->
-          <div class="flex flex-wrap items-center gap-6 mt-12 animate-slide-up" style="animation-delay:0.4s">
-            <div class="flex items-center gap-2">
-              <div class="flex -space-x-2">
-                <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=50&auto=format&fit=crop" class="w-8 h-8 rounded-full border-2 border-white/30 object-cover" alt="">
-                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=50&auto=format&fit=crop" class="w-8 h-8 rounded-full border-2 border-white/30 object-cover" alt="">
-                <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=50&auto=format&fit=crop" class="w-8 h-8 rounded-full border-2 border-white/30 object-cover" alt="">
-              </div>
-              <span class="text-white/65 text-xs font-body">24k+ learners impacted</span>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <div class="flex gap-0.5">
-                <i class="fas fa-star text-amber-400 text-xs"></i>
-                <i class="fas fa-star text-amber-400 text-xs"></i>
-                <i class="fas fa-star text-amber-400 text-xs"></i>
-                <i class="fas fa-star text-amber-400 text-xs"></i>
-                <i class="fas fa-star text-amber-400 text-xs"></i>
-              </div>
-              <span class="text-white/65 text-xs font-body">4.9 · 350+ schools</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Stats card side -->
-        <div class="hidden lg:block">
-          <div class="glass border border-white/20 rounded-3xl p-7 float-1">
-            <!-- Image -->
-            <div class="rounded-2xl overflow-hidden img-zoom mb-6 relative">
-              <img src="assets/autoartisan2.png" class="w-full h-52 object-cover" alt="Children reading">
-              <div class="absolute inset-0 bg-gradient-to-t from-ink-900/50 to-transparent"></div>
-              <div class="absolute bottom-4 left-4 glass rounded-xl px-3 py-2 flex items-center gap-2">
-                <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                <span class="text-white text-xs font-body font-700">Live programme active</span>
-              </div>
-            </div>
-
-            <!-- Stats grid -->
-            <div class="grid grid-cols-2 gap-3">
-              <div class="bg-white/8 border border-white/12 rounded-2xl p-4 text-center hover:bg-white/15 transition-all duration-300 group cursor-default">
-                <div class="font-display font-700 text-3xl grad-text-light mb-1 group-hover:scale-110 transition-transform inline-block">350+</div>
-                <div class="text-white/55 text-xs font-body">Partner Schools</div>
-              </div>
-              <div class="bg-white/8 border border-white/12 rounded-2xl p-4 text-center hover:bg-white/15 transition-all duration-300 group cursor-default">
-                <div class="font-display font-700 text-3xl grad-text-light mb-1 group-hover:scale-110 transition-transform inline-block">24k+</div>
-                <div class="text-white/55 text-xs font-body">Learners Reached</div>
-              </div>
-              <div class="bg-white/8 border border-white/12 rounded-2xl p-4 text-center hover:bg-white/15 transition-all duration-300 group cursor-default">
-                <div class="font-display font-700 text-3xl grad-text-light mb-1 group-hover:scale-110 transition-transform inline-block">50+</div>
-                <div class="text-white/55 text-xs font-body">Resource Titles</div>
-              </div>
-              <div class="bg-white/8 border border-white/12 rounded-2xl p-4 text-center hover:bg-white/15 transition-all duration-300 group cursor-default">
-                <div class="font-display font-700 text-3xl grad-text-light mb-1 group-hover:scale-110 transition-transform inline-block">10+</div>
-                <div class="text-white/55 text-xs font-body">Years of Impact</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Bottom wave -->
-    <svg class="absolute bottom-0 left-0 w-full" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,0 C240,80 480,0 720,40 C960,80 1200,10 1440,50 L1440,80 L0,80Z" fill="white"/>
-    </svg>
-  </section>
-
-  <!-- ══════════════ MARQUEE ══════════════ -->
-  <div class="py-5 bg-gradient-to-r from-ink-900 via-ink-800 to-azure-900 overflow-hidden relative">
-    <div class="marquee-track text-white/40 text-sm font-body font-500 tracking-widest uppercase select-none">
-      <span class="mx-8">📚 Phonics Excellence</span><span class="mx-8 text-azure/60">✦</span>
-      <span class="mx-8">🏆 THRASS Certified</span><span class="mx-8 text-azure/60">✦</span>
-      <span class="mx-8">🌍 South Africa & Beyond</span><span class="mx-8 text-azure/60">✦</span>
-      <span class="mx-8">✏️ Teacher Training</span><span class="mx-8 text-azure/60">✦</span>
-      <span class="mx-8">📖 Decodable Readers</span><span class="mx-8 text-azure/60">✦</span>
-      <span class="mx-8">🎓 Literacy Leadership</span><span class="mx-8 text-azure/60">✦</span>
-      <span class="mx-8">📚 Phonics Excellence</span><span class="mx-8 text-azure/60">✦</span>
-      <span class="mx-8">🏆 THRASS Certified</span><span class="mx-8 text-azure/60">✦</span>
-      <span class="mx-8">🌍 South Africa & Beyond</span><span class="mx-8 text-azure/60">✦</span>
-      <span class="mx-8">✏️ Teacher Training</span><span class="mx-8 text-azure/60">✦</span>
-      <span class="mx-8">📖 Decodable Readers</span><span class="mx-8 text-azure/60">✦</span>
-      <span class="mx-8">🎓 Literacy Leadership</span><span class="mx-8 text-azure/60">✦</span>
-    </div>
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" id="mobileNavClose"><i class="fas fa-times"></i></button>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Courses</a>
+    <a href="#">Trade Test</a>
+    <a href="#">ARPL</a>
+    <a href="#">THRASS</a>
+    <a href="#">Contact</a>
+    <a href="portal.html" style="color: var(--orange);">Student Portal</a>
   </div>
 
-  <!-- ══════════════ ABOUT ══════════════ -->
-  <section id="about" class="py-28 bg-white relative overflow-hidden">
-    <div class="absolute top-0 right-0 w-96 h-96 bg-azure-50 rounded-full filter blur-3xl opacity-60 pointer-events-none"></div>
-    <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-50 rounded-full filter blur-3xl opacity-50 pointer-events-none"></div>
-    <div class="absolute inset-0 dot-bg opacity-40 pointer-events-none"></div>
-
-    <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
-      <!-- Section label -->
-      <div class="text-center mb-20 reveal">
-        <div class="inline-flex items-center gap-2 bg-azure-50 text-azure-700 border border-azure-100 rounded-full px-4 py-2 text-xs font-body font-700 tracking-wider uppercase mb-6">
-          <i class="fas fa-seedling text-azure text-xs"></i> Who We Are
-        </div>
-        <h2 class="font-display font-700 text-5xl sm:text-6xl text-ink-900 leading-tight max-w-2xl mx-auto">
-          Redefining <span class="grad-text">Literacy</span><br>Across Africa
-        </h2>
-        <div class="w-20 h-1 bg-gradient-to-r from-blue-600 to-azure mx-auto mt-6 rounded-full"></div>
+  <!-- ==================== NAVBAR ==================== -->
+  <nav id="mainNav">
+    <div class="nav-logo">
+      <div class="nav-logo-icon">
+        <i class="fas fa-wrench" style="color: white;"></i>
       </div>
+      <div>
+        <div class="nav-brand-name">Next Level Skills</div>
+        <div class="nav-brand-sub">Academy · Trade Test Centre</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Courses</a>
+      <a href="#">Trade Test</a>
+      <a href="#">ARPL</a>
+      <a href="#">THRASS</a>
+      <a href="#">Contact</a>
+    </div>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <a href="portal.html" class="nav-login">
+        <i class="fas fa-sign-in-alt" style="font-size: 0.75rem;"></i>
+        Student Portal
+      </a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
 
-      <div class="grid lg:grid-cols-2 gap-20 items-center">
+  <!-- ==================== HERO ==================== -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fas fa-shield-halved"></i>
+        100% Black-owned · BBBEE Level 1 · merSETA Accredited
+      </div>
+      <h1 class="hero-title">
+        <span class="line-1">Master</span>
+        <span class="line-2">Your Trade</span>
+        <span class="line-3">Automotive Excellence · Trade Test Centre · THRASS Education</span>
+      </h1>
+      <p class="hero-desc">
+        South Africa's premier accredited Trade Test Centre for Motor, Diesel &amp; Auto Electric trades. 
+        From hands-on training to ARPL certification — we build the artisans who drive industry forward.
+      </p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary"><i class="fas fa-tools"></i> Explore Courses</a>
+        <a href="#" class="btn-ghost"><i class="fas fa-clipboard-list"></i> Book Trade Test</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Years of excellence</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">5K+</div>
+          <div class="stat-label">Artisans trained</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Campuses nationwide</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Accredited trades</div>
+        </div>
+      </div>
+    </div>
 
-        <!-- Image -->
-        <div class="reveal-left relative">
-          <!-- Main image -->
-          <div class="relative rounded-3xl overflow-hidden img-zoom shadow-2xl shadow-ink-900/20">
-            <img src="./assets/nlLearn.png" class="w-full h-[480px] object-cover" alt="Teacher with students">
-            <div class="absolute inset-0 bg-gradient-to-t from-ink-900/40 to-transparent"></div>
-          </div>
+    <!-- Floating cards right side -->
+    <div class="hero-float-cards">
+      <div class="float-card">
+        <div class="float-card-icon" style="background: linear-gradient(135deg, rgba(29,95,206,0.3), rgba(29,95,206,0.1)); color: #3b82f6;">
+          <i class="fas fa-oil-can"></i>
+        </div>
+        <div class="float-card-text">
+          <div class="fc-title">Motor Mechanic</div>
+          <div class="fc-sub">Level 1 – Red Seal</div>
+        </div>
+      </div>
+      <div class="float-card">
+        <div class="float-card-icon" style="background: linear-gradient(135deg, rgba(249,115,22,0.3), rgba(249,115,22,0.1)); color: #fb923c;">
+          <i class="fas fa-truck-moving"></i>
+        </div>
+        <div class="float-card-text">
+          <div class="fc-title">Diesel Mechanic</div>
+          <div class="fc-sub">Heavy-duty specialists</div>
+        </div>
+      </div>
+      <div class="float-card">
+        <div class="float-card-icon" style="background: linear-gradient(135deg, rgba(124,58,237,0.3), rgba(124,58,237,0.1)); color: #a855f7;">
+          <i class="fas fa-car-battery"></i>
+        </div>
+        <div class="float-card-text">
+          <div class="fc-title">Auto Electrician</div>
+          <div class="fc-sub">EV-ready diagnostics</div>
+        </div>
+      </div>
+      <div class="float-card">
+        <div class="float-card-icon" style="background: linear-gradient(135deg, rgba(220,38,38,0.3), rgba(220,38,38,0.1)); color: #ef4444;">
+          <i class="fas fa-spell-check"></i>
+        </div>
+        <div class="float-card-text">
+          <div class="fc-title">THRASS Education</div>
+          <div class="fc-sub">Teacher publishing</div>
+        </div>
+      </div>
+    </div>
 
-          <!-- Float badge 1 -->
-          <div class="absolute -bottom-6 -right-6 sm:right-8 glass-white shadow-xl rounded-2xl p-5 float-2">
-            <div class="flex items-center gap-3">
-              <div class="w-12 h-12 bg-gradient-to-br from-ink-800 to-azure rounded-xl flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-award text-white"></i>
-              </div>
-              <div>
-                <div class="font-display font-700 text-2xl text-ink-900">10+</div>
-                <div class="text-ink-500 text-xs font-body">Years of Excellence</div>
-              </div>
+    <div class="scroll-cue">
+      <span>Scroll</span>
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- ==================== CORE TRADES ==================== -->
+  <section class="trades-section">
+    <div class="container">
+      <div class="reveal" style="text-align: center; margin-bottom: 1rem;">
+        <div class="section-label" style="justify-content: center;"><i class="fas fa-wrench"></i> Core Trades</div>
+        <h2 class="section-title">Industry-Driven<br><span style="background: linear-gradient(90deg, var(--orange), var(--red), var(--purple-soft)); -webkit-background-clip: text; background-clip: text; color: transparent;">Automotive Training</span></h2>
+      </div>
+      <p class="section-sub reveal" style="text-align: center; margin: 1rem auto 0; reveal-delay-1: true;">Hands-on, accredited programmes that forge qualified artisans ready for the modern automotive industry.</p>
+
+      <div class="trades-grid" style="margin-top: 3.5rem;">
+        <!-- Motor Mechanic -->
+        <div class="trade-card reveal">
+          <div class="trade-card-bg" style="background-image: url('https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&q=80');"></div>
+          <div class="trade-card-overlay"></div>
+          <div class="trade-card-content">
+            <div class="trade-icon" style="background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(59,130,246,0.05)); border: 1px solid rgba(59,130,246,0.4); color: #60a5fa;">
+              <i class="fas fa-oil-can"></i>
             </div>
+            <div class="trade-card-tag" style="background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.35); color: #93c5fd;">
+              <i class="fas fa-circle" style="font-size: 6px;"></i> Motor Mechanic
+            </div>
+            <h3>Motor Mechanic</h3>
+            <p>From basic maintenance to advanced diagnostics, engine overhaul, and modern vehicle systems. Full Red Seal pathway.</p>
           </div>
+          <div class="trade-arrow"><i class="fas fa-arrow-right" style="font-size: 14px; color: white;"></i></div>
+        </div>
+        <!-- Diesel Mechanic -->
+        <div class="trade-card reveal reveal-delay-1">
+          <div class="trade-card-bg" style="background-image: url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80');"></div>
+          <div class="trade-card-overlay"></div>
+          <div class="trade-card-content">
+            <div class="trade-icon" style="background: linear-gradient(135deg, rgba(249,115,22,0.2), rgba(249,115,22,0.05)); border: 1px solid rgba(249,115,22,0.4); color: #fb923c;">
+              <i class="fas fa-truck-moving"></i>
+            </div>
+            <div class="trade-card-tag" style="background: rgba(249,115,22,0.15); border: 1px solid rgba(249,115,22,0.35); color: #fdba74;">
+              <i class="fas fa-circle" style="font-size: 6px;"></i> Diesel Mechanic
+            </div>
+            <h3>Diesel Mechanic</h3>
+            <p>Heavy-duty diesel engines, servicing, complete overhauls. Built for transport, construction, and mining sectors.</p>
+          </div>
+          <div class="trade-arrow"><i class="fas fa-arrow-right" style="font-size: 14px; color: white;"></i></div>
+        </div>
+        <!-- Auto Electrician -->
+        <div class="trade-card reveal reveal-delay-2">
+          <div class="trade-card-bg" style="background-image: url('https://images.unsplash.com/photo-1630818895023-0e91e979d676?w=800&q=80');"></div>
+          <div class="trade-card-overlay"></div>
+          <div class="trade-card-content">
+            <div class="trade-icon" style="background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(124,58,237,0.05)); border: 1px solid rgba(124,58,237,0.4); color: #c084fc;">
+              <i class="fas fa-car-battery"></i>
+            </div>
+            <div class="trade-card-tag" style="background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.35); color: #d8b4fe;">
+              <i class="fas fa-circle" style="font-size: 6px;"></i> Auto Electrician
+            </div>
+            <h3>Automotive Electrician</h3>
+            <p>Modern vehicle electrical & electronic systems — diagnosis, repair, hybrid & EV-ready training.</p>
+          </div>
+          <div class="trade-arrow"><i class="fas fa-arrow-right" style="font-size: 14px; color: white;"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <!-- Float badge 2 -->
-          <div class="absolute -top-6 -left-0 sm:-left-6 glass-white shadow-xl rounded-2xl px-4 py-3 float-3">
-            <div class="flex items-center gap-2">
-              <div class="flex gap-0.5">
-                <i class="fas fa-star text-amber-400 text-xs"></i>
-                <i class="fas fa-star text-amber-400 text-xs"></i>
-                <i class="fas fa-star text-amber-400 text-xs"></i>
-                <i class="fas fa-star text-amber-400 text-xs"></i>
-                <i class="fas fa-star text-amber-400 text-xs"></i>
-              </div>
-              <span class="text-ink-700 text-xs font-body font-700">500+ schools</span>
+  <!-- ==================== TRADE TEST SECTION ==================== -->
+  <section class="trade-test-section">
+    <div class="container">
+      <div class="tt-grid">
+        <div class="tt-image reveal">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Trade Test Centre">
+          <div class="tt-image-overlay"></div>
+          <div class="tt-image-badge">
+            <div style="width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, var(--orange), var(--red)); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <i class="fas fa-certificate" style="color: white;"></i>
+            </div>
+            <div>
+              <div style="font-weight: 700; font-size: 0.9rem;">Accredited Trade Test Centre</div>
+              <div style="font-size: 0.75rem; color: rgba(255,255,255,0.45);">merSETA aligned · QCTO ready</div>
+            </div>
+            <div style="margin-left: auto; display: flex; gap: 6px;">
+              <span style="width: 8px; height: 8px; border-radius: 50%; background: #22c55e; display: block; animation: pulse 2s infinite;"></span>
             </div>
           </div>
         </div>
 
-        <!-- Text -->
-        <div class="reveal-right">
-          <p class="text-ink-500 leading-relaxed text-lg mb-6 font-body">
-            Next Level Learning is a pioneering South African educational publisher dedicated to transforming literacy through the evidence-based <strong class="text-ink-900">THRASS</strong> (Teaching Handwriting Reading And Spelling Skills) programme — the gold standard in systematic phonics instruction.
-          </p>
-          <p class="text-ink-500 leading-relaxed mb-10 font-body">
-            We equip teachers, parents, and learners with structured, research-driven resources that unlock reading fluency from the very first sounds. Our mission: <em class="text-azure-700 font-700 not-italic">"No child left behind in literacy."</em>
-          </p>
-
-          <!-- Feature list -->
-          <div class="space-y-4">
-            <div class="group flex items-center gap-4 bg-frost border border-blue-100 rounded-2xl p-4 hover:border-azure/40 hover:shadow-lg hover:shadow-azure/8 hover:-translate-y-0.5 transition-all duration-300 cursor-default">
-              <div class="w-10 h-10 bg-gradient-to-br from-ink-800 to-azure-600 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                <i class="fas fa-graduation-cap text-white text-sm"></i>
-              </div>
+        <div class="reveal reveal-delay-1">
+          <div class="section-label"><i class="fas fa-id-card"></i> Trade Test Centre</div>
+          <h2 class="section-title" style="margin-bottom: 1rem;">Your Gateway to<br><span style="color: var(--orange);">Artisan Qualification</span></h2>
+          <p class="section-sub" style="max-width: 100%;">We are an accredited TTC conducting level testing, final Red Seal trade tests, and formal ARPL assessments with fairness and full transparency.</p>
+          
+          <ul class="tt-check-list" style="margin-top: 2rem;">
+            <li>
+              <div class="tt-check-icon"><i class="fas fa-layer-group" style="color: white; font-size: 14px;"></i></div>
               <div>
-                <div class="font-body font-700 text-ink-900 text-sm">10+ Years of Educational Impact</div>
-                <div class="font-body text-ink-400 text-xs mt-0.5">Proven track record across South African classrooms</div>
+                <h4>Legacy Trade Level Testing</h4>
+                <p>Structured progression through trade levels with official assessment at each stage.</p>
               </div>
-            </div>
-
-            <div class="group flex items-center gap-4 bg-frost border border-blue-100 rounded-2xl p-4 hover:border-azure/40 hover:shadow-lg hover:shadow-azure/8 hover:-translate-y-0.5 transition-all duration-300 cursor-default">
-              <div class="w-10 h-10 bg-gradient-to-br from-azure-600 to-azure-400 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                <i class="fas fa-school text-white text-sm"></i>
-              </div>
+            </li>
+            <li>
+              <div class="tt-check-icon"><i class="fas fa-star" style="color: white; font-size: 14px;"></i></div>
               <div>
-                <div class="font-body font-700 text-ink-900 text-sm">500+ Schools Reached Nationwide</div>
-                <div class="font-body text-ink-400 text-xs mt-0.5">From urban centres to rural communities</div>
+                <h4>Final Red Seal Trade Tests</h4>
+                <p>The nationally recognised qualification — the gold standard for South African artisans.</p>
               </div>
-            </div>
-
-            <div class="group flex items-center gap-4 bg-frost border border-blue-100 rounded-2xl p-4 hover:border-azure/40 hover:shadow-lg hover:shadow-azure/8 hover:-translate-y-0.5 transition-all duration-300 cursor-default">
-              <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-ink-700 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                <i class="fas fa-certificate text-white text-sm"></i>
-              </div>
+            </li>
+            <li>
+              <div class="tt-check-icon"><i class="fas fa-route" style="color: white; font-size: 14px;"></i></div>
               <div>
-                <div class="font-body font-700 text-ink-900 text-sm">Officially THRASS Accredited</div>
-                <div class="font-body text-ink-400 text-xs mt-0.5">Internationally recognised methodology and materials</div>
+                <h4>ARPL Pathway</h4>
+                <p>Recognition of Prior Learning for experienced candidates without formal apprenticeship.</p>
               </div>
-            </div>
-          </div>
-
-          <a href="#contact" class="inline-flex items-center gap-3 mt-10 btn-shimmer text-white font-body font-700 px-7 py-3.5 rounded-full shadow-lg shadow-azure/30 hover:scale-105 hover:shadow-azure/50 transition-all duration-300 text-sm">
-            <i class="fas fa-arrow-right"></i> Learn More About Us
+            </li>
+            <li>
+              <div class="tt-check-icon"><i class="fas fa-scale-balanced" style="color: white; font-size: 14px;"></i></div>
+              <div>
+                <h4>Fair & Transparent Assessment</h4>
+                <p>Independent assessors, standardised criteria, full candidate feedback.</p>
+              </div>
+            </li>
+          </ul>
+          <a href="#" class="btn-primary" style="margin-top: 2rem; display: inline-flex;">
+            <i class="fas fa-calendar-check"></i> Book Your Trade Test
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════ STATS BAND ══════════════ -->
-  <section class="relative py-24 overflow-hidden noise parallax-bg"
-    style="background-image: url('https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=1400&auto=format&fit=crop&q=70'); background-size: cover; background-position: center;">
-    <div class="absolute inset-0 bg-gradient-to-br from-ink-900/92 via-ink-900/85 to-azure-900/75"></div>
-    <div class="absolute inset-0 grid-pattern opacity-30"></div>
+  <!-- ==================== ARPL SECTION ==================== -->
+  <section class="arpl-section">
+    <div class="container">
+      <div class="arpl-grid">
+        <div class="reveal">
+          <div class="section-label"><i class="fas fa-route"></i> ARPL Services</div>
+          <h2 class="section-title" style="margin-bottom: 1rem;">Experience Is Your<br><span style="background: linear-gradient(90deg, var(--purple-soft), var(--blue-electric)); -webkit-background-clip: text; background-clip: text; color: transparent;">Qualification</span></h2>
+          <p class="section-sub" style="max-width: 100%;">No formal apprenticeship? No problem. The Artisan Recognition of Prior Learning pathway allows experienced tradespeople to earn formal qualifications.</p>
 
-    <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="reveal glass border border-white/12 rounded-3xl p-8 text-center group hover:bg-white/12 hover:-translate-y-2 transition-all duration-400 cursor-default">
-          <div class="text-3xl mb-4 group-hover:scale-125 transition-transform duration-300 inline-block">
-            <i class="fas fa-school grad-text-light"></i>
+          <div class="arpl-steps">
+            <div class="arpl-step">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h4>Initial Consultation & Application</h4>
+                <p>We assess your experience and determine eligibility for the ARPL pathway.</p>
+              </div>
+            </div>
+            <div class="arpl-step">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h4>Evidence Portfolio Compilation</h4>
+                <p>We guide you through documenting your skills, experience, and competencies.</p>
+              </div>
+            </div>
+            <div class="arpl-step">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h4>Bridging Programme (if required)</h4>
+                <p>Targeted upskilling to close any gaps before the formal assessment.</p>
+              </div>
+            </div>
+            <div class="arpl-step">
+              <div class="step-num">4</div>
+              <div class="step-content">
+                <h4>Trade Test Admission & Certification</h4>
+                <p>Sit your Red Seal trade test and receive your formal artisan qualification.</p>
+              </div>
+            </div>
           </div>
-          <div class="font-display font-700 text-5xl grad-text-light mb-2">350+</div>
-          <div class="font-body text-white/55 text-sm">Partner Schools</div>
         </div>
-        <div class="reveal glass border border-white/12 rounded-3xl p-8 text-center group hover:bg-white/12 hover:-translate-y-2 transition-all duration-400 cursor-default" style="transition-delay:0.1s">
-          <div class="text-3xl mb-4 group-hover:scale-125 transition-transform duration-300 inline-block">
-            <i class="fas fa-users grad-text-light"></i>
+        <div class="arpl-image reveal reveal-delay-2">
+          <img src="https://images.unsplash.com/photo-1609619385002-f40f1df9b7eb?w=800&q=80" alt="ARPL Services">
+          <div class="arpl-image-overlay"></div>
+          <div class="arpl-tags">
+            <span class="arpl-tag" style="color: #c084fc;">merSETA Aligned</span>
+            <span class="arpl-tag" style="color: #60a5fa;">QCTO Ready</span>
+            <span class="arpl-tag" style="color: #fb923c;">Red Seal Pathway</span>
           </div>
-          <div class="font-display font-700 text-5xl grad-text-light mb-2">24k+</div>
-          <div class="font-body text-white/55 text-sm">Learners Impacted</div>
-        </div>
-        <div class="reveal glass border border-white/12 rounded-3xl p-8 text-center group hover:bg-white/12 hover:-translate-y-2 transition-all duration-400 cursor-default" style="transition-delay:0.2s">
-          <div class="text-3xl mb-4 group-hover:scale-125 transition-transform duration-300 inline-block">
-            <i class="fas fa-book grad-text-light"></i>
-          </div>
-          <div class="font-display font-700 text-5xl grad-text-light mb-2">50+</div>
-          <div class="font-body text-white/55 text-sm">Resource Titles</div>
-        </div>
-        <div class="reveal glass border border-white/12 rounded-3xl p-8 text-center group hover:bg-white/12 hover:-translate-y-2 transition-all duration-400 cursor-default" style="transition-delay:0.3s">
-          <div class="text-3xl mb-4 group-hover:scale-125 transition-transform duration-300 inline-block">
-            <i class="fas fa-trophy grad-text-light"></i>
-          </div>
-          <div class="font-display font-700 text-5xl grad-text-light mb-2">8</div>
-          <div class="font-body text-white/55 text-sm">Educational Awards</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════ RESOURCES ══════════════ -->
-  <section id="resources" class="py-28 bg-gradient-to-b from-frost to-white relative overflow-hidden">
-    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-azure/30 to-transparent"></div>
-    <div class="absolute bottom-0 left-0 right-0 h-px line-deco"></div>
-    <div class="absolute inset-0 dot-bg opacity-50 pointer-events-none"></div>
-    <div class="absolute -top-32 right-0 w-96 h-96 bg-azure-100/60 rounded-full filter blur-3xl pointer-events-none"></div>
+  <!-- ==================== THRASS SECTION ==================== -->
+  <section class="thrass-section">
+    <div class="thrass-bg-text">THRASS</div>
+    <div class="thrass-inner">
+      <div class="container">
+        <div class="thrass-grid">
+          <div class="reveal">
+            <div class="section-label" style="background: rgba(220,38,38,0.1); border-color: rgba(220,38,38,0.3); color: #ef4444;"><i class="fas fa-chalkboard-teacher"></i> Education Publishing</div>
+            <h2 class="section-title" style="margin-bottom: 1rem;">
+              Building Educators.<br>
+              <span style="background: linear-gradient(90deg, var(--orange), var(--red)); -webkit-background-clip: text; background-clip: text; color: transparent;">Building Minds.</span>
+            </h2>
+            <p class="section-sub" style="max-width: 100%; margin-bottom: 2.5rem;">Beyond automotive mastery, Next Level Skills Academy publishes specialist training materials for educators based on the <strong style="color: white;">THRASS® methodology</strong> — Teaching Handwriting, Reading And Spelling Skills.</p>
 
-    <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
-      <!-- Head -->
-      <div class="text-center mb-20 reveal">
-        <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 border border-blue-100 rounded-full px-4 py-2 text-xs font-body font-700 tracking-wider uppercase mb-6">
-          <i class="fas fa-toolbox text-blue-500 text-xs"></i> Our Tools
-        </div>
-        <h2 class="font-display font-700 text-5xl sm:text-6xl text-ink-900 leading-tight max-w-2xl mx-auto">
-          Comprehensive <span class="grad-text">THRASS</span> Resources
-        </h2>
-        <p class="text-ink-400 font-body max-w-md mx-auto mt-5 leading-relaxed">
-          Innovative, classroom-tested materials that make phonics engaging, systematic, and effective for every learner.
-        </p>
-        <div class="w-20 h-1 bg-gradient-to-r from-blue-600 to-azure mx-auto mt-6 rounded-full"></div>
-      </div>
+            <div class="thrass-features">
+              <div class="thrass-feat">
+                <div class="thrass-feat-icon" style="background: linear-gradient(135deg, rgba(249,115,22,0.2), rgba(249,115,22,0.05)); border: 1px solid rgba(249,115,22,0.3); color: var(--orange);">
+                  <i class="fas fa-pen-fancy"></i>
+                </div>
+                <div>
+                  <h4>Handwriting Fluency</h4>
+                  <p>Structured motor-skill development programmes for early learners.</p>
+                </div>
+              </div>
+              <div class="thrass-feat">
+                <div class="thrass-feat-icon" style="background: linear-gradient(135deg, rgba(220,38,38,0.2), rgba(220,38,38,0.05)); border: 1px solid rgba(220,38,38,0.3); color: var(--red-light);">
+                  <i class="fas fa-book-open-reader"></i>
+                </div>
+                <div>
+                  <h4>Reading & Phonics Mastery</h4>
+                  <p>Phonetic-based reading methodology grounded in proven literacy science.</p>
+                </div>
+              </div>
+              <div class="thrass-feat">
+                <div class="thrass-feat-icon" style="background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(59,130,246,0.05)); border: 1px solid rgba(59,130,246,0.3); color: var(--blue-electric);">
+                  <i class="fas fa-chalkboard"></i>
+                </div>
+                <div>
+                  <h4>Educator Training & Resources</h4>
+                  <p>Published materials and CPD workshops for classroom teachers at all levels.</p>
+                </div>
+              </div>
+              <div class="thrass-feat">
+                <div class="thrass-feat-icon" style="background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(124,58,237,0.05)); border: 1px solid rgba(124,58,237,0.3); color: var(--purple-soft);">
+                  <i class="fas fa-spell-check"></i>
+                </div>
+                <div>
+                  <h4>Spelling Skills Development</h4>
+                  <p>Systematic spelling acquisition aligned with national literacy curricula.</p>
+                </div>
+              </div>
+            </div>
 
-      <!-- Cards -->
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-
-        <!-- Card 1 -->
-        <div class="reveal card-hover bg-white rounded-3xl overflow-hidden border border-blue-50 shadow-sm hover:border-azure/20 group cursor-pointer" style="transition-delay:0s">
-          <div class="h-44 overflow-hidden img-zoom relative">
-            <img src="assets/guide.png" class="w-full h-full object-cover" alt="Teacher guides">
-            <div class="absolute inset-0 bg-gradient-to-t from-ink-900/50 to-transparent"></div>
-            <div class="absolute top-3 right-3 glass rounded-full px-2.5 py-1 text-white text-[10px] font-body font-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300">New ✦</div>
-          </div>
-          <div class="p-6">
-            <div class="w-12 h-12 bg-gradient-to-br from-ink-800 to-azure rounded-2xl flex items-center justify-center mb-4 -mt-10 relative z-10 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-              <i class="fas fa-chalkboard-teacher text-white text-sm"></i>
-            </div>
-            <h3 class="font-display font-700 text-xl text-ink-900 mb-2">Teacher Guides</h3>
-            <p class="text-ink-400 text-sm font-body leading-relaxed">Step-by-step lesson plans, assessments, and THRASS methodology handbooks for educators at every level.</p>
-            <div class="flex items-center gap-1.5 mt-5 text-azure text-xs font-body font-700 opacity-0 group-hover:opacity-100 translate-x-0 group-hover:translate-x-1 transition-all duration-300">
-              Learn more <i class="fas fa-arrow-right text-[10px]"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="reveal card-hover bg-white rounded-3xl overflow-hidden border border-blue-50 shadow-sm hover:border-azure/20 group cursor-pointer" style="transition-delay:0.08s">
-          <div class="h-44 overflow-hidden img-zoom relative">
-            <img src="assets/workbook.png" class="w-full h-full object-cover" alt="Workbooks">
-            <div class="absolute inset-0 bg-gradient-to-t from-ink-900/50 to-transparent"></div>
-          </div>
-          <div class="p-6">
-            <div class="w-12 h-12 bg-gradient-to-br from-azure-700 to-azure-400 rounded-2xl flex items-center justify-center mb-4 -mt-10 relative z-10 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-              <i class="fas fa-pencil-alt text-white text-sm"></i>
-            </div>
-            <h3 class="font-display font-700 text-xl text-ink-900 mb-2">Student Workbooks</h3>
-            <p class="text-ink-400 text-sm font-body leading-relaxed">Interactive activity books covering phoneme-grapheme mapping, spelling patterns, and handwriting practice.</p>
-            <div class="flex items-center gap-1.5 mt-5 text-azure text-xs font-body font-700 opacity-0 group-hover:opacity-100 translate-x-0 group-hover:translate-x-1 transition-all duration-300">
-              Explore <i class="fas fa-arrow-right text-[10px]"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="reveal card-hover bg-white rounded-3xl overflow-hidden border border-blue-50 shadow-sm hover:border-azure/20 group cursor-pointer" style="transition-delay:0.16s">
-          <div class="h-44 overflow-hidden img-zoom relative">
-            <img src="assets/phonics.png" class="w-full h-full object-cover" alt="Charts">
-            <div class="absolute inset-0 bg-gradient-to-t from-ink-900/50 to-transparent"></div>
-          </div>
-          <div class="p-6">
-            <div class="w-12 h-12 bg-gradient-to-br from-blue-700 to-blue-500 rounded-2xl flex items-center justify-center mb-4 -mt-10 relative z-10 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-              <i class="fas fa-chart-bar text-white text-sm"></i>
-            </div>
-            <h3 class="font-display font-700 text-xl text-ink-900 mb-2">Phonics Charts</h3>
-            <p class="text-ink-400 text-sm font-body leading-relaxed">Visual wall charts, interactive posters, and digital aids for sound mapping and spelling patterns.</p>
-            <div class="flex items-center gap-1.5 mt-5 text-azure text-xs font-body font-700 opacity-0 group-hover:opacity-100 translate-x-0 group-hover:translate-x-1 transition-all duration-300">
-              View charts <i class="fas fa-arrow-right text-[10px]"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="reveal card-hover bg-white rounded-3xl overflow-hidden border border-blue-50 shadow-sm hover:border-azure/20 group cursor-pointer" style="transition-delay:0.24s">
-          <div class="h-44 overflow-hidden img-zoom relative">
-            <img src="assets/reading.png" class="w-full h-full object-cover" alt="Reading books">
-            <div class="absolute inset-0 bg-gradient-to-t from-ink-900/50 to-transparent"></div>
-          </div>
-          <div class="p-6">
-            <div class="w-12 h-12 bg-gradient-to-br from-ink-800 to-blue-600 rounded-2xl flex items-center justify-center mb-4 -mt-10 relative z-10 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-              <i class="fas fa-book-reader text-white text-sm"></i>
-            </div>
-            <h3 class="font-display font-700 text-xl text-ink-900 mb-2">Reading Books</h3>
-            <p class="text-ink-400 text-sm font-body leading-relaxed">Decodable readers and leveled storybooks aligned to the THRASS progression framework for lasting fluency.</p>
-            <div class="flex items-center gap-1.5 mt-5 text-azure text-xs font-body font-700 opacity-0 group-hover:opacity-100 translate-x-0 group-hover:translate-x-1 transition-all duration-300">
-              Shop now <i class="fas fa-arrow-right text-[10px]"></i>
-            </div>
-          </div>
-        </div>
-      </div>
- 
-      <!-- CTA Banner -->
-      <div class="reveal relative rounded-3xl overflow-hidden noise parallax-bg"
-        style="background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=1400&auto=format&fit=crop&q=75'); background-size: cover; background-position: center 40%;">
-        <div class="absolute inset-0 bg-gradient-to-r from-ink-900/95 via-ink-900/85 to-azure-800/70"></div>
-        <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 p-10 md:p-14">
-          <div class="text-center md:text-left">
-            <div class="inline-flex items-center gap-2 glass border border-white/20 rounded-full px-3 py-1 text-white/70 text-xs font-body font-700 tracking-wider uppercase mb-4">
-              <i class="fas fa-gem text-azure-300"></i> Complete Kit
-            </div>
-            <h3 class="font-display font-700 text-3xl sm:text-4xl text-white mb-3">Complete THRASS Literacy Kit</h3>
-            <p class="text-white/60 font-body text-sm max-w-lg">Bundle includes teacher guide, student materials, phonics charts, and digital resources — everything to launch your literacy programme today.</p>
-          </div>
-          <div class="flex-shrink-0 flex flex-col sm:flex-row gap-3">
-            <a href="#contact" class="inline-flex items-center gap-2 bg-white text-ink-900 font-body font-800 px-8 py-4 rounded-full shadow-2xl hover:shadow-azure/30 hover:-translate-y-1 transition-all duration-300 text-sm whitespace-nowrap">
-              <i class="fas fa-gem text-azure"></i> Request a Quote
-            </a>
-            <a href="#contact" class="inline-flex items-center gap-2 glass border border-white/30 text-white font-body font-700 px-6 py-4 rounded-full hover:bg-white/15 hover:-translate-y-1 transition-all duration-300 text-sm whitespace-nowrap">
-              <i class="fas fa-phone text-azure-300"></i> Call Us
+            <a href="#" class="btn-ghost" style="margin-top: 2rem; display: inline-flex; border-color: rgba(220,38,38,0.4);">
+              <i class="fas fa-graduation-cap"></i> Explore THRASS Resources
             </a>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ══════════════ HOW IT WORKS ══════════════ -->
-  <section class="py-28 bg-white relative overflow-hidden">
-    <div class="absolute inset-0 dot-bg opacity-40"></div>
-    <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
-      <div class="text-center mb-20 reveal">
-        <div class="inline-flex items-center gap-2 bg-azure-50 text-azure-700 border border-azure-100 rounded-full px-4 py-2 text-xs font-body font-700 tracking-wider uppercase mb-6">
-          <i class="fas fa-route text-azure text-xs"></i> The Journey
-        </div>
-        <h2 class="font-display font-700 text-5xl sm:text-6xl text-ink-900 leading-tight">
-          How <span class="grad-text">THRASS</span> Works
-        </h2>
-        <div class="w-20 h-1 bg-gradient-to-r from-blue-600 to-azure mx-auto mt-6 rounded-full"></div>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="reveal group text-center" style="transition-delay:0s">
-          <div class="relative mx-auto w-24 h-24 mb-8">
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-azure rounded-3xl rotate-6 group-hover:rotate-12 transition-transform duration-500 opacity-20"></div>
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-azure rounded-3xl flex items-center justify-center group-hover:-rotate-3 transition-transform duration-500">
-              <i class="fas fa-ear-listen text-white text-3xl"></i>
-            </div>
-            <div class="absolute -top-2 -right-2 w-8 h-8 bg-amber-400 rounded-full flex items-center justify-center text-ink-900 font-body font-800 text-sm shadow-lg">1</div>
-          </div>
-          <h3 class="font-display font-700 text-2xl text-ink-900 mb-3">Sound Recognition</h3>
-          <p class="text-ink-400 font-body text-sm leading-relaxed max-w-xs mx-auto">Children learn to identify and categorise the 44 speech sounds of the English language through systematic, multisensory activities.</p>
-        </div>
-
-        <div class="reveal group text-center" style="transition-delay:0.1s">
-          <div class="relative mx-auto w-24 h-24 mb-8">
-            <div class="absolute inset-0 bg-gradient-to-br from-azure to-sky-400 rounded-3xl rotate-6 group-hover:rotate-12 transition-transform duration-500 opacity-20"></div>
-            <div class="absolute inset-0 bg-gradient-to-br from-azure to-sky-400 rounded-3xl flex items-center justify-center group-hover:-rotate-3 transition-transform duration-500">
-              <i class="fas fa-pen-nib text-white text-3xl"></i>
-            </div>
-            <div class="absolute -top-2 -right-2 w-8 h-8 bg-amber-400 rounded-full flex items-center justify-center text-ink-900 font-body font-800 text-sm shadow-lg">2</div>
-          </div>
-          <h3 class="font-display font-700 text-2xl text-ink-900 mb-3">Grapheme Mapping</h3>
-          <p class="text-ink-400 font-body text-sm leading-relaxed max-w-xs mx-auto">Students discover how sounds connect to written letters and letter combinations — building a complete, logical map of English spelling.</p>
-        </div>
-
-        <div class="reveal group text-center" style="transition-delay:0.2s">
-          <div class="relative mx-auto w-24 h-24 mb-8">
-            <div class="absolute inset-0 bg-gradient-to-br from-ink-800 to-blue-600 rounded-3xl rotate-6 group-hover:rotate-12 transition-transform duration-500 opacity-20"></div>
-            <div class="absolute inset-0 bg-gradient-to-br from-ink-800 to-blue-600 rounded-3xl flex items-center justify-center group-hover:-rotate-3 transition-transform duration-500">
-              <i class="fas fa-book-open text-white text-3xl"></i>
-            </div>
-            <div class="absolute -top-2 -right-2 w-8 h-8 bg-amber-400 rounded-full flex items-center justify-center text-ink-900 font-body font-800 text-sm shadow-lg">3</div>
-          </div>
-          <h3 class="font-display font-700 text-2xl text-ink-900 mb-3">Fluent Reading</h3>
-          <p class="text-ink-400 font-body text-sm leading-relaxed max-w-xs mx-auto">Armed with phonics knowledge, learners decode any word confidently and develop genuine reading fluency and a love for books.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════ TESTIMONIALS ══════════════ -->
-  <section id="testimonials" class="relative py-28 overflow-hidden noise parallax-bg"
-    style="background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1600&auto=format&fit=crop&q=75'); background-size: cover; background-position: center 30%;">
-    <div class="absolute inset-0 bg-gradient-to-br from-ink-900/94 via-ink-900/88 to-azure-900/80"></div>
-    <div class="absolute inset-0 grid-pattern opacity-20"></div>
-
-    <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
-      <div class="text-center mb-20 reveal">
-        <div class="inline-flex items-center gap-2 glass border border-white/20 rounded-full px-4 py-2 text-xs font-body font-700 text-white/80 tracking-wider uppercase mb-6">
-          <i class="fas fa-quote-right text-azure-300 text-xs"></i> Real Stories
-        </div>
-        <h2 class="font-display font-700 text-5xl sm:text-6xl text-white leading-tight">
-          Trusted by <span class="grad-text-light">Educators</span><br>& Parents
-        </h2>
-        <div class="w-20 h-1 bg-gradient-to-r from-blue-400 to-azure-300 mx-auto mt-6 rounded-full"></div>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-7">
-
-        <div class="reveal glass border border-white/15 rounded-3xl p-8 hover:bg-white/15 hover:-translate-y-2 transition-all duration-400 cursor-default group" style="transition-delay:0s">
-          <div class="flex items-center gap-0.5 mb-5">
-            <i class="fas fa-star text-amber-400 text-sm"></i>
-            <i class="fas fa-star text-amber-400 text-sm"></i>
-            <i class="fas fa-star text-amber-400 text-sm"></i>
-            <i class="fas fa-star text-amber-400 text-sm"></i>
-            <i class="fas fa-star text-amber-400 text-sm"></i>
-          </div>
-          <p class="text-white/70 font-body text-sm leading-relaxed mb-8">THRASS completely transformed reading outcomes in my Grade 2 class. Within one term, 80% of my learners were decoding confidently. The teacher guide is thorough and easy to follow.</p>
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-2xl overflow-hidden border-2 border-white/20 img-zoom flex-shrink-0">
-              <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&auto=format&fit=crop" class="w-full h-full object-cover" alt="">
-            </div>
-            <div>
-              <div class="text-white font-body font-700 text-sm">Nomsa Dlamini</div>
-              <div class="text-azure-300 font-body text-xs mt-0.5">Grade 2 Teacher · Soweto</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="reveal glass border border-white/15 rounded-3xl p-8 hover:bg-white/15 hover:-translate-y-2 transition-all duration-400 cursor-default group" style="transition-delay:0.1s">
-          <div class="flex items-center gap-0.5 mb-5">
-            <i class="fas fa-star text-amber-400 text-sm"></i>
-            <i class="fas fa-star text-amber-400 text-sm"></i>
-            <i class="fas fa-star text-amber-400 text-sm"></i>
-            <i class="fas fa-star text-amber-400 text-sm"></i>
-            <i class="fas fa-star text-amber-400 text-sm"></i>
-          </div>
-          <p class="text-white/70 font-body text-sm leading-relaxed mb-8">As a principal, I have seen many literacy programmes come and go. THRASS through Next Level Learning is the first to show consistent, measurable improvement across all language groups.</p>
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-2xl overflow-hidden border-2 border-white/20 img-zoom flex-shrink-0">
-              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&auto=format&fit=crop" class="w-full h-full object-cover" alt="">
-            </div>
-            <div>
-              <div class="text-white font-body font-700 text-sm">Mr. Johan Meyer</div>
-              <div class="text-azure-300 font-body text-xs mt-0.5">School Principal · Pretoria</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="reveal glass border border-white/15 rounded-3xl p-8 hover:bg-white/15 hover:-translate-y-2 transition-all duration-400 cursor-default group" style="transition-delay:0.2s">
-          <div class="flex items-center gap-0.5 mb-5">
-            <i class="fas fa-star text-amber-400 text-sm"></i>
-            <i class="fas fa-star text-amber-400 text-sm"></i>
-            <i class="fas fa-star text-amber-400 text-sm"></i>
-            <i class="fas fa-star text-amber-400 text-sm"></i>
-            <i class="fas fa-star text-amber-400 text-sm"></i>
-          </div>
-          <p class="text-white/70 font-body text-sm leading-relaxed mb-8">My daughter struggled with reading for two years. After six months with THRASS workbooks at home, she is now reading chapter books independently. I cannot recommend this enough.</p>
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-2xl overflow-hidden border-2 border-white/20 img-zoom flex-shrink-0">
-              <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=100&auto=format&fit=crop" class="w-full h-full object-cover" alt="">
-            </div>
-            <div>
-              <div class="text-white font-body font-700 text-sm">Adaeze Okonkwo</div>
-              <div class="text-azure-300 font-body text-xs mt-0.5">Parent · Cape Town</div>
+          <div class="thrass-image reveal reveal-delay-2">
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80" alt="THRASS Education">
+            <div class="thrass-image-overlay"></div>
+            <div class="thrass-letters">
+              <div class="thrass-letter">T</div>
+              <div class="thrass-letter">H</div>
+              <div class="thrass-letter">R</div>
+              <div class="thrass-letter">A</div>
+              <div class="thrass-letter">S</div>
+              <div class="thrass-letter">S</div>
             </div>
           </div>
         </div>
@@ -790,271 +1553,207 @@
     </div>
   </section>
 
-  <!-- ══════════════ CONTACT ══════════════ -->
-  <section id="contact" class="py-28 bg-gradient-to-b from-frost to-white relative overflow-hidden">
-    <div class="absolute inset-0 dot-bg opacity-50 pointer-events-none"></div>
-    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-azure/30 to-transparent"></div>
-    <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-96 h-96 bg-azure-100/80 rounded-full filter blur-3xl pointer-events-none"></div>
-
-    <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
-      <div class="text-center mb-20 reveal">
-        <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 border border-blue-100 rounded-full px-4 py-2 text-xs font-body font-700 tracking-wider uppercase mb-6">
-          <i class="fas fa-headset text-blue-500 text-xs"></i> Get in Touch
-        </div>
-        <h2 class="font-display font-700 text-5xl sm:text-6xl text-ink-900 leading-tight max-w-2xl mx-auto">
-          Ready to Elevate <span class="grad-text">Literacy</span><br>in Your School?
-        </h2>
-        <p class="text-ink-400 font-body max-w-md mx-auto mt-5 text-sm leading-relaxed">Speak with our THRASS specialists about workshops, resources, and training tailored to your context.</p>
-        <div class="w-20 h-1 bg-gradient-to-r from-blue-600 to-azure mx-auto mt-6 rounded-full"></div>
+  <!-- ==================== WHY CHOOSE US ==================== -->
+  <section class="why-section">
+    <div class="container">
+      <div style="text-align: center;" class="reveal">
+        <div class="section-label" style="justify-content: center;"><i class="fas fa-trophy"></i> Why Choose Us</div>
+        <h2 class="section-title">The Next Level<br><span style="color: var(--orange);">Difference</span></h2>
       </div>
+      <div class="why-grid">
+        <div class="why-card wc-1 reveal">
+          <div class="why-icon" style="background: linear-gradient(135deg, rgba(29,95,206,0.2), rgba(29,95,206,0.05)); border: 1px solid rgba(29,95,206,0.3); color: #60a5fa;">
+            <i class="fas fa-user-graduate"></i>
+          </div>
+          <h3>Expert Instructors</h3>
+          <p>Seasoned artisans with decades of real-world field experience leading every session.</p>
+        </div>
+        <div class="why-card wc-2 reveal reveal-delay-1">
+          <div class="why-icon" style="background: linear-gradient(135deg, rgba(249,115,22,0.2), rgba(249,115,22,0.05)); border: 1px solid rgba(249,115,22,0.3); color: #fb923c;">
+            <i class="fas fa-microchip"></i>
+          </div>
+          <h3>Modern Diagnostics</h3>
+          <p>Cutting-edge tools, live vehicle bays, and up-to-date diagnostic equipment.</p>
+        </div>
+        <div class="why-card wc-3 reveal reveal-delay-2">
+          <div class="why-icon" style="background: linear-gradient(135deg, rgba(220,38,38,0.2), rgba(220,38,38,0.05)); border: 1px solid rgba(220,38,38,0.3); color: #f87171;">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <h3>Industry Partnerships</h3>
+          <p>Strong ties with automotive leaders, ensuring employment-ready graduates.</p>
+        </div>
+        <div class="why-card wc-4 reveal reveal-delay-3">
+          <div class="why-icon" style="background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(124,58,237,0.05)); border: 1px solid rgba(124,58,237,0.3); color: #c084fc;">
+            <i class="fas fa-map-location-dot"></i>
+          </div>
+          <h3>Two Prime Campuses</h3>
+          <p>Midrand (Gauteng) and Pinetown (KZN) — convenient access across South Africa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <div class="grid lg:grid-cols-5 gap-10 items-start">
+  <!-- ==================== CTA ==================== -->
+  <section class="cta-section">
+    <div class="cta-bg"></div>
+    <div class="cta-overlay"></div>
+    <div class="container cta-content">
+      <div class="cta-inner">
+        <div class="reveal">
+          <div class="section-label"><i class="fas fa-rocket"></i> Get Started</div>
+          <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem);">Ready to Accelerate<br><span style="color: var(--orange);">Your Career?</span></h2>
+          <p class="section-sub" style="margin-top: 0.75rem;">Call us or visit one of our training centres in Gauteng &amp; KZN.</p>
+        </div>
+        <div class="cta-contacts reveal reveal-delay-1">
+          <a href="tel:0113148775" class="contact-chip">
+            <i class="fas fa-phone-alt"></i> 011 314 8775
+          </a>
+          <a href="mailto:info@nextlsa.co.za" class="contact-chip">
+            <i class="fas fa-envelope"></i> info@nextlsa.co.za
+          </a>
+          <a href="portal.html" class="btn-primary">
+            <i class="fas fa-arrow-right-to-bracket"></i> Student Portal
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Form -->
-        <div class="lg:col-span-3 reveal-left">
-          <div class="bg-white rounded-3xl p-8 sm:p-12 shadow-2xl shadow-ink-900/8 border border-blue-50">
-            <h3 class="font-display font-700 text-3xl text-ink-900 mb-1">Send a Message</h3>
-            <p class="text-ink-400 font-body text-sm mb-8">We reply within 24 hours — committed to next level support.</p>
-
-            <form id="contactForm" onsubmit="handleSubmit(event)" class="space-y-5">
-              <div>
-                <label class="block text-xs font-body font-700 text-ink-700 mb-2 flex items-center gap-1.5"><i class="fas fa-user text-azure text-[11px]"></i> Full Name</label>
-                <input id="cName" type="text" placeholder="e.g. Sipho Ndlovu" class="w-full px-5 py-3.5 rounded-2xl border-1.5 border-blue-100 bg-frost text-sm font-body text-ink-900 placeholder-ink-300 focus:outline-none focus:ring-2 focus:ring-azure/30 focus:border-azure transition-all duration-300">
-              </div>
-              <div>
-                <label class="block text-xs font-body font-700 text-ink-700 mb-2 flex items-center gap-1.5"><i class="fas fa-envelope text-azure text-[11px]"></i> Email Address</label>
-                <input id="cEmail" type="email" placeholder="hello@school.co.za" class="w-full px-5 py-3.5 rounded-2xl border border-blue-100 bg-frost text-sm font-body text-ink-900 placeholder-ink-300 focus:outline-none focus:ring-2 focus:ring-azure/30 focus:border-azure transition-all duration-300">
-              </div>
-              <div>
-                <label class="block text-xs font-body font-700 text-ink-700 mb-2 flex items-center gap-1.5"><i class="fas fa-school text-azure text-[11px]"></i> School / Organisation</label>
-                <input id="cSchool" type="text" placeholder="e.g. Sunrise Primary School" class="w-full px-5 py-3.5 rounded-2xl border border-blue-100 bg-frost text-sm font-body text-ink-900 placeholder-ink-300 focus:outline-none focus:ring-2 focus:ring-azure/30 focus:border-azure transition-all duration-300">
-              </div>
-              <div>
-                <label class="block text-xs font-body font-700 text-ink-700 mb-2 flex items-center gap-1.5"><i class="fas fa-comment-dots text-azure text-[11px]"></i> Your Message</label>
-                <textarea id="cMsg" rows="4" placeholder="I'm interested in THRASS training for our school..." class="w-full px-5 py-3.5 rounded-2xl border border-blue-100 bg-frost text-sm font-body text-ink-900 placeholder-ink-300 focus:outline-none focus:ring-2 focus:ring-azure/30 focus:border-azure transition-all duration-300 resize-none"></textarea>
-              </div>
-              <button type="submit" class="w-full btn-shimmer text-white font-body font-800 py-4 rounded-2xl flex items-center justify-center gap-3 shadow-lg shadow-azure/30 hover:shadow-azure/50 hover:-translate-y-0.5 transition-all duration-300 text-sm">
-                <i class="fas fa-paper-plane"></i> Send Message
-              </button>
-            </form>
+  <!-- ==================== LOCATIONS ==================== -->
+  <section class="locations-section">
+    <div class="container">
+      <div class="reveal" style="text-align: center; margin-bottom: 1rem;">
+        <div class="section-label" style="justify-content: center;"><i class="fas fa-location-dot"></i> Our Campuses</div>
+        <h2 class="section-title">Find Us</h2>
+      </div>
+      <div class="locations-grid">
+        <div class="location-card reveal">
+          <div class="location-pin"><i class="fas fa-building" style="color: white;"></i></div>
+          <div>
+            <h4>Johannesburg HQ — Midrand</h4>
+            <p>Unit 4 Corporate Park South, Corner Tsessebe &amp; Suni Avenue, Randjespark, Midrand, Gauteng</p>
           </div>
         </div>
-
-        <!-- Info -->
-        <div class="lg:col-span-2 reveal-right space-y-4">
-
-          <div class="group flex items-start gap-5 bg-white border border-blue-50 rounded-3xl p-6 shadow-sm hover:shadow-xl hover:shadow-azure/8 hover:-translate-y-1 hover:border-azure/20 transition-all duration-300 cursor-default">
-            <div class="w-12 h-12 bg-gradient-to-br from-ink-800 to-azure rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-              <i class="fas fa-map-marker-alt text-white text-sm"></i>
-            </div>
-            <div>
-              <div class="font-body font-700 text-ink-900 text-sm mb-1">Visit Us</div>
-              <div class="text-ink-400 font-body text-xs leading-relaxed">17 Dock Road, V&A Waterfront,<br>Cape Town, South Africa</div>
-            </div>
-          </div>
-
-          <div class="group flex items-start gap-5 bg-white border border-blue-50 rounded-3xl p-6 shadow-sm hover:shadow-xl hover:shadow-azure/8 hover:-translate-y-1 hover:border-azure/20 transition-all duration-300 cursor-default">
-            <div class="w-12 h-12 bg-gradient-to-br from-azure-600 to-azure-400 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-              <i class="fas fa-phone-alt text-white text-sm"></i>
-            </div>
-            <div>
-              <div class="font-body font-700 text-ink-900 text-sm mb-1">Call / WhatsApp</div>
-              <div class="text-ink-400 font-body text-xs">+27 21 012 3456</div>
-            </div>
-          </div>
-
-          <div class="group flex items-start gap-5 bg-white border border-blue-50 rounded-3xl p-6 shadow-sm hover:shadow-xl hover:shadow-azure/8 hover:-translate-y-1 hover:border-azure/20 transition-all duration-300 cursor-default">
-            <div class="w-12 h-12 bg-gradient-to-br from-blue-700 to-blue-500 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-              <i class="fas fa-envelope-open-text text-white text-sm"></i>
-            </div>
-            <div>
-              <div class="font-body font-700 text-ink-900 text-sm mb-1">Email Us</div>
-              <div class="text-ink-400 font-body text-xs">hello@nextlevellearning.co.za</div>
-            </div>
-          </div>
-
-          <!-- WhatsApp card -->
-          <div class="bg-gradient-to-br from-emerald-50 to-green-50 border border-emerald-100 rounded-3xl p-7 text-center hover:-translate-y-1 transition-all duration-300">
-            <div class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-green-400 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-emerald-200">
-              <i class="fab fa-whatsapp text-white text-2xl"></i>
-            </div>
-            <div class="font-body font-700 text-green-900 text-sm mb-1">Quick literacy consultation?</div>
-            <div class="text-green-700 font-body text-xs mb-5">Chat directly with our THRASS specialist — fast, friendly, free.</div>
-            <a href="#" class="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-green-400 text-white font-body font-700 px-6 py-2.5 rounded-full text-sm shadow-lg shadow-emerald-200 hover:-translate-y-0.5 hover:shadow-emerald-300 transition-all duration-300">
-              <i class="fab fa-whatsapp"></i> Start Chat
-            </a>
+        <div class="location-card reveal reveal-delay-1">
+          <div class="location-pin" style="background: linear-gradient(135deg, var(--blue-bright), var(--purple));"><i class="fas fa-building-user" style="color: white;"></i></div>
+          <div>
+            <h4>Durban Branch — Pinetown</h4>
+            <p>Unit 16 Palm River Industrial Park, 1 Devon Road, Pinetown, KwaZulu-Natal</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════ FOOTER ══════════════ -->
-  <footer class="bg-ink-900 pt-20 pb-8 relative overflow-hidden noise">
-    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-azure/40 to-transparent"></div>
-    <div class="absolute top-0 right-0 w-80 h-80 bg-azure/5 rounded-full filter blur-3xl pointer-events-none"></div>
-    <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-600/5 rounded-full filter blur-3xl pointer-events-none"></div>
-
-    <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
-      <!-- Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-
-        <!-- Brand -->
-        <div class="sm:col-span-2 lg:col-span-1">
-          <div class="flex items-center gap-3 mb-5">
-            <div class="w-10 h-10 bg-gradient-to-br from-ink-700 to-azure rounded-xl flex items-center justify-center">
-              <i class="fas fa-book-open-reader text-white text-sm"></i>
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo" style="margin-bottom: 1rem;">
+            <div class="nav-logo-icon" style="width: 36px; height: 36px; border-radius: 10px; font-size: 14px;">
+              <i class="fas fa-wrench" style="color: white;"></i>
             </div>
             <div>
-              <div class="font-display font-700 text-white text-lg leading-none">Next Level Learning</div>
-              <div class="text-azure-400 text-[0.6rem] font-body font-700 tracking-wider uppercase mt-0.5">THRASS Africa</div>
+              <div class="nav-brand-name">Next Level Skills</div>
+              <div class="nav-brand-sub">Academy · Trade Test Centre</div>
             </div>
           </div>
-          <p class="text-white/45 font-body text-sm leading-relaxed mb-6">Empowering African literacy through THRASS — innovative phonics and reading solutions for every classroom.</p>
-          <div class="flex gap-3">
-            <a href="#" class="w-9 h-9 rounded-xl bg-white/6 border border-white/10 flex items-center justify-center text-white/50 hover:bg-azure hover:text-white hover:border-azure hover:-translate-y-1 transition-all duration-300 text-sm"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="w-9 h-9 rounded-xl bg-white/6 border border-white/10 flex items-center justify-center text-white/50 hover:bg-azure hover:text-white hover:border-azure hover:-translate-y-1 transition-all duration-300 text-sm"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="w-9 h-9 rounded-xl bg-white/6 border border-white/10 flex items-center justify-center text-white/50 hover:bg-azure hover:text-white hover:border-azure hover:-translate-y-1 transition-all duration-300 text-sm"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" class="w-9 h-9 rounded-xl bg-white/6 border border-white/10 flex items-center justify-center text-white/50 hover:bg-azure hover:text-white hover:border-azure hover:-translate-y-1 transition-all duration-300 text-sm"><i class="fab fa-youtube"></i></a>
+          <p>Accredited Trade Test Centre &amp; Automotive Training Academy. Proudly 100% Black-owned, BBBEE Level 1 Contributor, merSETA accredited.</p>
+          <div style="display: flex; gap: 8px; margin-top: 1.2rem;">
+            <a href="#" style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); text-decoration: none; transition: all 0.25s;" onmouseover="this.style.background='rgba(249,115,22,0.15)'; this.style.borderColor='rgba(249,115,22,0.4)'; this.style.color='#fb923c'" onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.borderColor='rgba(255,255,255,0.1)'; this.style.color='rgba(255,255,255,0.4)'"><i class="fab fa-facebook-f" style="font-size: 14px;"></i></a>
+            <a href="#" style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); text-decoration: none; transition: all 0.25s;" onmouseover="this.style.background='rgba(249,115,22,0.15)'; this.style.borderColor='rgba(249,115,22,0.4)'; this.style.color='#fb923c'" onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.borderColor='rgba(255,255,255,0.1)'; this.style.color='rgba(255,255,255,0.4)'"><i class="fab fa-linkedin-in" style="font-size: 14px;"></i></a>
+            <a href="#" style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); text-decoration: none; transition: all 0.25s;" onmouseover="this.style.background='rgba(249,115,22,0.15)'; this.style.borderColor='rgba(249,115,22,0.4)'; this.style.color='#fb923c'" onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.borderColor='rgba(255,255,255,0.1)'; this.style.color='rgba(255,255,255,0.4)'"><i class="fab fa-instagram" style="font-size: 14px;"></i></a>
           </div>
         </div>
-
-        <!-- Links -->
-        <div>
-          <h5 class="text-white font-body font-700 text-xs uppercase tracking-widest mb-6">Quick Links</h5>
-          <ul class="space-y-3">
-            <li><a href="#" class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> About THRASS</a></li>
-            <li><a href="#" class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> Resource Catalogue</a></li>
-            <li><a href="#" class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> Workshops</a></li>
-            <li><a href="#" class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> Blog & Insights</a></li>
-            <li><a href="#" class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> Become a Partner</a></li>
+        <div class="footer-col">
+          <h5>Training Programmes</h5>
+          <ul>
+            <li><a href="#"><i class="fas fa-angle-right" style="font-size: 10px;"></i>Motor Mechanic Course</a></li>
+            <li><a href="#"><i class="fas fa-angle-right" style="font-size: 10px;"></i>Diesel Mechanic Training</a></li>
+            <li><a href="#"><i class="fas fa-angle-right" style="font-size: 10px;"></i>Auto Electric Programme</a></li>
+            <li><a href="#"><i class="fas fa-angle-right" style="font-size: 10px;"></i>ARPL Assessment</a></li>
+            <li><a href="#"><i class="fas fa-angle-right" style="font-size: 10px;"></i>THRASS Teacher Resources</a></li>
+            <li><a href="portal.html" style="color: var(--orange) !important;"><i class="fas fa-arrow-right" style="font-size: 10px;"></i>Student Portal Login</a></li>
           </ul>
         </div>
-
-        <!-- Support -->
-        <div>
-          <h5 class="text-white font-body font-700 text-xs uppercase tracking-widest mb-6">Support</h5>
-          <ul class="space-y-3">
-            <li><a href="#" class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> FAQs</a></li>
-            <li><a href="#" class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> Shipping Policy</a></li>
-            <li><a href="#" class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> Returns</a></li>
-            <li><a href="#" class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> Privacy Policy</a></li>
-            <li><a href="#" class="text-white/45 font-body text-sm hover:text-azure-300 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2"><i class="fas fa-chevron-right text-[10px] text-azure/50"></i> Contact Support</a></li>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="tel:0113148775"><i class="fas fa-phone" style="font-size: 10px;"></i>011 314 8775</a></li>
+            <li><a href="mailto:info@nextlsa.co.za"><i class="fas fa-envelope" style="font-size: 10px;"></i>info@nextlsa.co.za</a></li>
+            <li style="margin-top: 0.8rem;"><a href="#" style="cursor: default; pointer-events: none;"><i class="fas fa-map-pin" style="font-size: 10px;"></i>Midrand, Gauteng</a></li>
+            <li><a href="#" style="cursor: default; pointer-events: none;"><i class="fas fa-map-pin" style="font-size: 10px;"></i>Pinetown, KZN</a></li>
           </ul>
         </div>
-
-        <!-- Newsletter -->
-        <div>
-          <h5 class="text-white font-body font-700 text-xs uppercase tracking-widest mb-6">Newsletter</h5>
-          <p class="text-white/45 font-body text-sm leading-relaxed mb-5">Literacy tips, new resources, and THRASS insights straight to your inbox.</p>
-          <div class="space-y-3">
-            <input type="email" placeholder="Your email address" class="w-full px-4 py-3 rounded-xl bg-white/6 border border-white/12 text-white text-sm font-body placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-azure/40 focus:border-azure/50 transition-all duration-300">
-            <button class="w-full btn-shimmer text-white font-body font-700 py-3 rounded-xl text-sm flex items-center justify-center gap-2 hover:-translate-y-0.5 transition-transform duration-300">
-              <i class="fas fa-paper-plane text-xs"></i> Subscribe
-            </button>
-          </div>
-        </div>
       </div>
-
-      <!-- Bottom -->
-      <div class="border-t border-white/8 pt-7 flex flex-col sm:flex-row items-center justify-between gap-4 text-white/35 font-body text-xs">
-        <span>© 2026 Next Level Learning | THRASS Africa — Shaping readers, one sound at a time.</span>
-        <div class="flex gap-5">
-          <a href="#" class="hover:text-azure-300 transition-colors">Privacy</a>
-          <a href="#" class="hover:text-azure-300 transition-colors">Terms</a>
-          <a href="#" class="hover:text-azure-300 transition-colors">Cookies</a>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Next Level Skills Academy. All Rights Reserved.</p>
+        <div class="footer-tags">
+          <span class="footer-tag">BBBEE Level 1</span>
+          <span class="footer-tag">merSETA Accredited</span>
+          <span class="footer-tag">QCTO Ready</span>
         </div>
       </div>
     </div>
   </footer>
 
   <script>
-    // ─── Header scroll effect ───
-    const header = document.getElementById('header');
-    const logoText = document.getElementById('logo-text');
-    const logoSub = document.getElementById('logo-sub');
-    let lastScroll = 0;
-
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      if (y > 60) {
-        header.style.background = 'rgba(4,17,43,0.92)';
-        header.style.backdropFilter = 'blur(24px)';
-        header.style.boxShadow = '0 4px 32px rgba(0,0,0,0.25)';
-      } else {
-        header.style.background = 'transparent';
-        header.style.backdropFilter = 'none';
-        header.style.boxShadow = 'none';
-      }
-      lastScroll = y;
+    // ===== CUSTOM CURSOR =====
+    const dot = document.getElementById('cursorDot');
+    const ring = document.getElementById('cursorRing');
+    let mouseX = 0, mouseY = 0;
+    let ringX = 0, ringY = 0;
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX; mouseY = e.clientY;
+      dot.style.left = mouseX + 'px';
+      dot.style.top = mouseY + 'px';
     });
-
-    // ─── Mobile menu ───
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    let menuOpen = false;
-
-    menuBtn.addEventListener('click', () => {
-      menuOpen = !menuOpen;
-      if (menuOpen) {
-        mobileMenu.classList.add('open');
-        menuBtn.classList.add('open');
-      } else {
-        mobileMenu.classList.remove('open');
-        menuBtn.classList.remove('open');
-      }
-    });
-
-    mobileMenu.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('open');
-        menuBtn.classList.remove('open');
-        menuOpen = false;
+    function animateRing() {
+      ringX += (mouseX - ringX) * 0.12;
+      ringY += (mouseY - ringY) * 0.12;
+      ring.style.left = ringX + 'px';
+      ring.style.top = ringY + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+    document.querySelectorAll('a, button, .trade-card, .why-card, .thrass-feat, .arpl-step').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        ring.style.width = '54px'; ring.style.height = '54px';
+        ring.style.borderColor = 'rgba(249,115,22,0.8)';
+        dot.style.transform = 'translate(-50%,-50%) scale(2)';
+      });
+      el.addEventListener('mouseleave', () => {
+        ring.style.width = '36px'; ring.style.height = '36px';
+        ring.style.borderColor = 'rgba(249,115,22,0.5)';
+        dot.style.transform = 'translate(-50%,-50%) scale(1)';
       });
     });
 
-    // ─── Scroll reveal ───
+    // ===== NAVBAR SCROLL =====
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ===== MOBILE MENU =====
+    const hamburger = document.getElementById('hamburgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileClose = document.getElementById('mobileNavClose');
+    hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
+    mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
+
+    // ===== SCROLL REVEAL =====
+    const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const delay = parseFloat(entry.target.style.transitionDelay || 0);
-          setTimeout(() => entry.target.classList.add('up'), delay * 1000 + 80);
-          observer.unobserve(entry.target);
+          entry.target.classList.add('revealed');
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
-
-    // ─── Contact form ───
-    window.handleSubmit = function(e) {
-      e.preventDefault();
-      const name = document.getElementById('cName').value.trim();
-      const email = document.getElementById('cEmail').value.trim();
-      const msg = document.getElementById('cMsg').value.trim();
-      if (!name || !email || !msg) {
-        alert('Please fill in all required fields.');
-        return;
-      }
-      if (!email.includes('@')) {
-        alert('Please enter a valid email address.');
-        return;
-      }
-      // Success animation
-      const btn = e.target.querySelector('button[type="submit"]');
-      btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-      btn.style.background = 'linear-gradient(135deg, #10b981, #34d399)';
-      setTimeout(() => {
-        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-        btn.style.background = '';
-        document.getElementById('contactForm').reset();
-      }, 3000);
-    };
-
-    // ─── Stagger nav links on load ───
-    document.querySelectorAll('nav a').forEach((a, i) => {
-      a.style.animationDelay = `${i * 0.05}s`;
-    });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
