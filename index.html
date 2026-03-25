@@ -22,21 +22,23 @@
       --purple: #7c3aed;
       --purple-soft: #a855f7;
       --white: #ffffff;
-      --glass: rgba(255,255,255,0.07);
-      --glass-border: rgba(255,255,255,0.15);
+      --off-white: #f0f4ff;
+      --glass: rgba(255,255,255,0.10);
+      --glass-border: rgba(255,255,255,0.22);
+      /* Lighter section backgrounds */
+      --section-light: #0f1e3a;
+      --section-mid: #101c35;
+      --section-dark: #0c1628;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--blue-deep);
       color: var(--white);
       overflow-x: hidden;
     }
-
     h1, h2, h3 { font-family: 'Syne', sans-serif; }
 
     /* ============ CUSTOM CURSOR ============ */
@@ -44,10 +46,8 @@
       width: 8px; height: 8px;
       background: var(--orange);
       border-radius: 50%;
-      position: fixed;
-      top: 0; left: 0;
-      pointer-events: none;
-      z-index: 9999;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9999;
       transform: translate(-50%,-50%);
       transition: transform 0.1s;
     }
@@ -55,10 +55,8 @@
       width: 36px; height: 36px;
       border: 2px solid rgba(249,115,22,0.5);
       border-radius: 50%;
-      position: fixed;
-      top: 0; left: 0;
-      pointer-events: none;
-      z-index: 9998;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9998;
       transform: translate(-50%,-50%);
       transition: all 0.12s ease;
     }
@@ -66,136 +64,84 @@
     /* ============ NOISE OVERLAY ============ */
     body::before {
       content: '';
-      position: fixed;
-      inset: 0;
+      position: fixed; inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 1;
-      opacity: 0.5;
+      pointer-events: none; z-index: 1; opacity: 0.35;
     }
 
     /* ============ NAVBAR ============ */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      padding: 0 2rem;
-      height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(10,22,40,0.6);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--glass-border);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 0 2rem; height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(10,22,40,0.45);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
       transition: all 0.3s;
     }
     nav.scrolled {
-      background: rgba(10,22,40,0.92);
+      background: rgba(10,22,40,0.88);
       height: 60px;
+      border-bottom-color: rgba(255,255,255,0.08);
     }
-    .nav-logo {
-      display: flex; align-items: center; gap: 12px;
-    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; }
     .nav-logo-icon {
-      width: 42px; height: 42px;
-      border-radius: 12px;
+      width: 42px; height: 42px; border-radius: 12px;
       background: linear-gradient(135deg, var(--blue-bright), var(--orange));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px;
+      display: flex; align-items: center; justify-content: center; font-size: 18px;
       box-shadow: 0 0 20px rgba(249,115,22,0.35);
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
     }
     .nav-logo:hover .nav-logo-icon {
-      transform: rotate(-5deg) scale(1.1);
-      box-shadow: 0 0 30px rgba(249,115,22,0.55);
+      transform: rotate(-8deg) scale(1.12);
+      box-shadow: 0 0 32px rgba(249,115,22,0.6);
     }
     .nav-brand-name {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.2rem;
-      line-height: 1.1;
+      font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; line-height: 1.1;
       background: linear-gradient(90deg, #fff, var(--orange-warm));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      -webkit-background-clip: text; background-clip: text; color: transparent;
     }
-    .nav-brand-sub {
-      font-size: 10px;
-      color: rgba(255,255,255,0.45);
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
+    .nav-brand-sub { font-size: 10px; color: rgba(255,255,255,0.5); font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; }
     .nav-links { display: flex; gap: 2rem; align-items: center; }
     .nav-links a {
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: rgba(255,255,255,0.65);
-      text-decoration: none;
-      letter-spacing: 0.05em;
-      position: relative;
-      transition: color 0.2s;
+      font-size: 0.82rem; font-weight: 500; color: rgba(255,255,255,0.75);
+      text-decoration: none; letter-spacing: 0.05em;
+      position: relative; transition: color 0.2s;
     }
     .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -3px; left: 0;
-      width: 0; height: 2px;
-      background: var(--orange);
-      transition: width 0.25s ease;
-      border-radius: 2px;
+      content: ''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 2px; background: var(--orange);
+      transition: width 0.25s ease; border-radius: 2px;
     }
     .nav-links a:hover { color: white; }
     .nav-links a:hover::after { width: 100%; }
     .nav-login {
       background: linear-gradient(135deg, var(--blue-bright), var(--blue-mid));
-      color: white;
-      border: 1px solid rgba(255,255,255,0.2);
-      padding: 9px 22px;
-      border-radius: 50px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      display: flex; align-items: center; gap: 8px;
-      transition: all 0.25s;
-      letter-spacing: 0.03em;
+      color: white; border: 1px solid rgba(255,255,255,0.25);
+      padding: 9px 22px; border-radius: 50px;
+      font-size: 0.82rem; font-weight: 600; cursor: pointer;
+      text-decoration: none; display: flex; align-items: center; gap: 8px;
+      transition: all 0.3s; letter-spacing: 0.03em;
     }
     .nav-login:hover {
       background: linear-gradient(135deg, var(--orange), #ea580c);
-      box-shadow: 0 6px 20px rgba(249,115,22,0.4);
-      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(249,115,22,0.45);
+      transform: translateY(-2px);
     }
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 6px;
-    }
-    .hamburger span {
-      display: block; width: 24px; height: 2px;
-      background: white;
-      border-radius: 2px;
-      transition: all 0.3s;
-    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: white; border-radius: 2px; transition: all 0.3s; }
 
     /* ============ HERO ============ */
     .hero {
-      min-height: 100vh;
-      position: relative;
-      display: flex;
-      align-items: center;
+      min-height: 100vh; position: relative;
+      display: flex; align-items: center; justify-content: center;
       overflow: hidden;
     }
     .hero-bg {
-      position: absolute;
-      inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=1800&q=80');
-      background-size: cover;
-      background-position: center 30%;
-      filter: brightness(0.28) saturate(1.2);
+      position: absolute; inset: 0;
+      background-image: url('./assets/w7.png');
+      background-size: cover; background-position: center 30%;
+      /* filter: brightness(0.45) saturate(1.15); */
       transform: scale(1.05);
       animation: slowZoom 20s ease-in-out infinite alternate;
     }
@@ -203,942 +149,593 @@
       0% { transform: scale(1.05); }
       100% { transform: scale(1.12); }
     }
+    /* Much lighter overlay — let the image breathe */
     .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: 
-        radial-gradient(ellipse 70% 60% at 100% 0%, rgba(124,58,237,0.18) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 80% at 0% 100%, rgba(220,38,38,0.1) 0%, transparent 50%),
-        linear-gradient(135deg, rgba(10,22,40,0.97) 0%, rgba(26,58,107,0.75) 40%, rgba(10,22,40,0.85) 100%);
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(124,58,237,0.12) 0%, transparent 55%),
+        linear-gradient(180deg,
+          rgba(10,22,40,0.55) 0%,
+          rgba(10,22,40,0.30) 40%,
+          rgba(10,22,40,0.70) 100%);
     }
     .hero-content {
-      position: relative;
-      z-index: 10;
-      max-width: 1280px;
+      position: relative; z-index: 10;
+      max-width: 900px;
       margin: 0 auto;
       padding: 0 2rem;
       padding-top: 80px;
       width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    /* Floating badge */
+    /* Hero badge */
     .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(249,115,22,0.12);
-      border: 1px solid rgba(249,115,22,0.35);
-      color: var(--orange-warm);
-      padding: 8px 18px;
-      border-radius: 50px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 2rem;
-      animation: fadeInDown 0.8s ease both;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(249,115,22,0.15);
+      border: 1px solid rgba(249,115,22,0.45);
+      color: #ffb380;
+      padding: 8px 20px; border-radius: 50px;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 2rem;
       backdrop-filter: blur(10px);
+      opacity: 0; animation: heroBadge 0.9s 0.1s cubic-bezier(0.22,1,0.36,1) forwards;
     }
     .hero-badge i { animation: pulse 2s infinite; }
 
+    @keyframes heroBadge {
+      from { opacity: 0; transform: translateY(-14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hero title — massive, centered, staged entry */
     .hero-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(4rem, 10vw, 9rem);
-      line-height: 0.92;
-      letter-spacing: 0.02em;
-      margin-bottom: 1.5rem;
-      animation: fadeInUp 0.9s 0.15s ease both;
+      font-size: clamp(4.5rem, 11vw, 10rem);
+      line-height: 0.9; letter-spacing: 0.02em;
+      margin-bottom: 1.6rem;
     }
-    .hero-title .line-1 { color: white; display: block; }
+    .hero-title .line-1 {
+      display: block; color: white;
+      opacity: 0; animation: slideUp 0.9s 0.25s cubic-bezier(0.22,1,0.36,1) forwards;
+      text-shadow: 0 4px 40px rgba(0,0,0,0.5);
+    }
     .hero-title .line-2 {
       display: block;
-      background: linear-gradient(90deg, var(--orange), var(--red), var(--purple-soft));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      background: linear-gradient(90deg, var(--orange) 0%, #ff6b35 40%, var(--purple-soft) 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      opacity: 0; animation: slideUp 0.9s 0.4s cubic-bezier(0.22,1,0.36,1) forwards;
+      filter: drop-shadow(0 0 30px rgba(249,115,22,0.4));
     }
-    .hero-title .line-3 { color: rgba(255,255,255,0.55); display: block; font-size: 60%; letter-spacing: 0.15em; font-family: 'DM Sans', sans-serif; font-weight: 300; text-transform: uppercase; }
+    .hero-title .line-3 {
+      display: block; color: rgba(255,255,255,0.7);
+      font-size: 28%; letter-spacing: 0.18em;
+      font-family: 'DM Sans', sans-serif; font-weight: 400;
+      text-transform: uppercase; margin-top: 0.6rem;
+      opacity: 0; animation: slideUp 0.9s 0.55s cubic-bezier(0.22,1,0.36,1) forwards;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
     .hero-desc {
-      max-width: 540px;
-      font-size: 1.05rem;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.75;
-      font-weight: 300;
-      margin-bottom: 2.5rem;
-      animation: fadeInUp 0.9s 0.3s ease both;
+      max-width: 580px;
+      font-size: 1.05rem; color: rgba(255,255,255,0.8);
+      line-height: 1.75; font-weight: 300; margin-bottom: 2.5rem;
+      opacity: 0; animation: slideUp 0.9s 0.65s cubic-bezier(0.22,1,0.36,1) forwards;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.4);
     }
 
     .hero-actions {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      animation: fadeInUp 0.9s 0.45s ease both;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--orange), #ea580c);
-      color: white;
-      padding: 14px 32px;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-      letter-spacing: 0.03em;
-    }
-    .btn-primary::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, transparent, rgba(255,255,255,0.15));
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 35px rgba(249,115,22,0.45);
-    }
-    .btn-primary:hover::before { opacity: 1; }
-    .btn-ghost {
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      color: rgba(255,255,255,0.8);
-      padding: 14px 32px;
-      border-radius: 50px;
-      font-weight: 500;
-      font-size: 0.9rem;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      backdrop-filter: blur(10px);
-      transition: all 0.3s;
-      letter-spacing: 0.03em;
-    }
-    .btn-ghost:hover {
-      background: rgba(255,255,255,0.12);
-      border-color: var(--orange);
-      color: white;
-      transform: translateY(-3px);
+      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+      opacity: 0; animation: slideUp 0.9s 0.78s cubic-bezier(0.22,1,0.36,1) forwards;
     }
 
+    /* Hero stat bar floats below actions */
     .hero-stats {
-      display: flex;
-      gap: 2.5rem;
-      flex-wrap: wrap;
-      margin-top: 4rem;
-      padding-top: 3rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      animation: fadeInUp 0.9s 0.6s ease both;
+      display: flex; gap: 2.5rem; flex-wrap: wrap; justify-content: center;
+      margin-top: 4rem; padding-top: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.18);
+      opacity: 0; animation: slideUp 0.9s 0.9s cubic-bezier(0.22,1,0.36,1) forwards;
     }
     .stat-item { text-align: center; }
     .stat-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.8rem;
-      line-height: 1;
-      background: linear-gradient(135deg, white, var(--orange-warm));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      font-family: 'Bebas Neue', sans-serif; font-size: 3rem; line-height: 1;
+      background: linear-gradient(135deg, white 0%, var(--orange-warm) 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
     }
-    .stat-label {
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.4);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-top: 4px;
-    }
-
-    /* Floating cards on hero right */
-    .hero-float-cards {
-      position: absolute;
-      right: 5%;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      animation: fadeInRight 1s 0.5s ease both;
-      z-index: 10;
-    }
-    .float-card {
-      background: rgba(255,255,255,0.07);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 16px;
-      padding: 14px 18px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 200px;
-      transition: all 0.3s;
-      cursor: default;
-    }
-    .float-card:hover {
-      background: rgba(255,255,255,0.12);
-      border-color: var(--orange);
-      transform: translateX(-6px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-    .float-card-icon {
-      width: 38px; height: 38px;
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px;
-      flex-shrink: 0;
-    }
-    .float-card-text .fc-title {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: white;
-    }
-    .float-card-text .fc-sub {
-      font-size: 0.7rem;
-      color: rgba(255,255,255,0.45);
-    }
+    .stat-label { font-size: 0.72rem; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
 
     /* Scroll cue */
     .scroll-cue {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      z-index: 10;
-      animation: bounce 2s infinite;
+      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      z-index: 10; animation: scrollBounce 2.5s 1.5s infinite;
+      opacity: 0; animation: fadeIn 1s 1.4s ease forwards, scrollBounce 2.5s 2.5s infinite;
     }
-    .scroll-cue span {
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
-    }
-    .scroll-cue i { color: rgba(255,255,255,0.3); font-size: 14px; }
-    @keyframes bounce {
+    .scroll-cue span { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+    .scroll-cue i { color: rgba(255,255,255,0.35); font-size: 13px; }
+    @keyframes scrollBounce {
       0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(8px); }
+      50% { transform: translateX(-50%) translateY(9px); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+
+    /* ============ BTN STYLES ============ */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--orange), #ea580c);
+      color: white; padding: 14px 32px; border-radius: 50px;
+      font-weight: 700; font-size: 0.9rem; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 10px;
+      transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+      position: relative; overflow: hidden; letter-spacing: 0.03em;
+      box-shadow: 0 4px 20px rgba(249,115,22,0.3);
+    }
+    .btn-primary::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 16px 40px rgba(249,115,22,0.55);
+    }
+    .btn-primary:hover::after { opacity: 1; }
+
+    .btn-ghost {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.9); padding: 14px 32px; border-radius: 50px;
+      font-weight: 500; font-size: 0.9rem; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 10px;
+      backdrop-filter: blur(10px);
+      transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1); letter-spacing: 0.03em;
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.18);
+      border-color: var(--orange); color: white;
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
     }
 
     /* ============ SECTION COMMON ============ */
     section { position: relative; z-index: 2; }
     .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--orange);
-      border: 1px solid rgba(249,115,22,0.3);
-      background: rgba(249,115,22,0.08);
-      padding: 6px 16px;
-      border-radius: 50px;
-      margin-bottom: 1.2rem;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--orange); border: 1px solid rgba(249,115,22,0.35);
+      background: rgba(249,115,22,0.1); padding: 6px 16px; border-radius: 50px; margin-bottom: 1.2rem;
     }
     .section-title {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1.1;
-      color: white;
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.1; color: white;
     }
     .section-sub {
-      color: rgba(255,255,255,0.45);
-      font-size: 1rem;
-      font-weight: 300;
-      line-height: 1.7;
-      max-width: 520px;
+      color: rgba(255,255,255,0.55); font-size: 1rem; font-weight: 300; line-height: 1.7; max-width: 520px;
     }
     .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
-
-    /* ============ DIAGONAL DIVIDER ============ */
-    .divider-diagonal {
-      height: 80px;
-      background: inherit;
-      clip-path: polygon(0 0, 100% 100%, 100% 100%, 0 100%);
-    }
 
     /* ============ TRADES SECTION ============ */
     .trades-section {
       padding: 120px 0;
-      background: linear-gradient(180deg, var(--blue-deep) 0%, #0d1f3c 100%);
+      background: linear-gradient(180deg, #0d1e38 0%, #111f3d 100%);
+      position: relative;
+    }
+    .trades-section::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(249,115,22,0.4), transparent);
     }
     .trades-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 1.5rem;
-      margin-top: 4rem;
+      gap: 1.5rem; margin-top: 4rem;
     }
     .trade-card {
-      position: relative;
-      border-radius: 24px;
-      overflow: hidden;
-      cursor: pointer;
-      height: 420px;
-      transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative; border-radius: 24px; overflow: hidden;
+      cursor: pointer; height: 420px;
+      transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.45s;
     }
-    .trade-card:hover { transform: translateY(-10px); }
+    .trade-card:hover {
+      transform: translateY(-12px) scale(1.01);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+    }
     .trade-card-bg {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
-      filter: brightness(0.3) saturate(1.1);
-      transition: filter 0.5s, transform 0.5s;
+      position: absolute; inset: 0; background-size: cover; background-position: center;
+      filter: brightness(0.42) saturate(1.1);
+      transition: filter 0.5s, transform 0.55s;
     }
-    .trade-card:hover .trade-card-bg {
-      filter: brightness(0.4) saturate(1.3);
-      transform: scale(1.08);
-    }
+    .trade-card:hover .trade-card-bg { filter: brightness(0.55) saturate(1.3); transform: scale(1.07); }
     .trade-card-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 20%, rgba(10,22,40,0.95) 100%);
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 15%, rgba(10,22,40,0.92) 100%);
       transition: all 0.4s;
     }
     .trade-card:hover .trade-card-overlay {
-      background: linear-gradient(180deg, rgba(10,22,40,0.3) 0%, rgba(10,22,40,0.97) 100%);
+      background: linear-gradient(180deg, rgba(10,22,40,0.15) 0%, rgba(10,22,40,0.94) 100%);
     }
     .trade-card-content {
-      position: absolute;
-      inset: 0;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+      position: absolute; inset: 0; padding: 2rem;
+      display: flex; flex-direction: column; justify-content: flex-end;
     }
     .trade-icon {
-      width: 54px; height: 54px;
-      border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px;
-      margin-bottom: 1rem;
-      opacity: 0;
-      transform: translateY(10px);
+      width: 54px; height: 54px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center; font-size: 22px;
+      margin-bottom: 1rem; opacity: 0; transform: translateY(12px);
       transition: all 0.4s 0.05s;
     }
     .trade-card:hover .trade-icon { opacity: 1; transform: translateY(0); }
-    .trade-card h3 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.5rem;
-      color: white;
-      margin-bottom: 0.5rem;
-    }
+    .trade-card h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.55rem; color: white; margin-bottom: 0.5rem; }
     .trade-card p {
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.6;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s, opacity 0.4s;
-      opacity: 0;
+      font-size: 0.88rem; color: rgba(255,255,255,0.7); line-height: 1.6;
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.5s ease, opacity 0.4s; opacity: 0;
     }
     .trade-card:hover p { max-height: 80px; opacity: 1; }
     .trade-card-tag {
       display: inline-flex; align-items: center; gap: 6px;
       font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 4px 12px; border-radius: 50px;
-      margin-bottom: 0.75rem;
+      padding: 4px 12px; border-radius: 50px; margin-bottom: 0.75rem;
     }
     .trade-arrow {
-      position: absolute;
-      top: 1.5rem; right: 1.5rem;
-      width: 40px; height: 40px;
-      border-radius: 50%;
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.25);
       display: flex; align-items: center; justify-content: center;
       backdrop-filter: blur(10px);
-      transition: all 0.3s;
+      transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
     }
     .trade-card:hover .trade-arrow {
-      background: var(--orange);
-      border-color: var(--orange);
-      transform: rotate(45deg);
+      background: var(--orange); border-color: var(--orange);
+      transform: rotate(45deg) scale(1.1);
+      box-shadow: 0 0 20px rgba(249,115,22,0.5);
     }
 
     /* ============ TRADE TEST SECTION ============ */
     .trade-test-section {
       padding: 120px 0;
-      background: #080f1f;
+      background: #0c1830;
       position: relative;
     }
     .trade-test-section::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
       background: linear-gradient(90deg, transparent, var(--blue-electric), var(--orange), transparent);
     }
-    .tt-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-      margin-top: 0;
-    }
-    .tt-image {
-      position: relative;
-      border-radius: 28px;
-      overflow: hidden;
-      height: 520px;
-    }
+    .tt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .tt-image { position: relative; border-radius: 28px; overflow: hidden; height: 520px; }
     .tt-image img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      filter: brightness(0.5) saturate(1.2);
-      transition: transform 0.6s;
+      width: 100%; height: 100%; object-fit: cover;
+      filter: brightness(0.55) saturate(1.2);
+      transition: transform 0.6s, filter 0.6s;
     }
-    .tt-image:hover img { transform: scale(1.05); }
+    .tt-image:hover img { transform: scale(1.04); filter: brightness(0.65) saturate(1.3); }
     .tt-image-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(29,95,206,0.5), rgba(220,38,38,0.2));
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(29,95,206,0.4), rgba(220,38,38,0.15));
       mix-blend-mode: color;
     }
     .tt-image-badge {
-      position: absolute;
-      bottom: 2rem;
-      left: 2rem;
-      right: 2rem;
-      background: rgba(10,22,40,0.85);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 18px;
-      padding: 1.2rem 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+      position: absolute; bottom: 2rem; left: 2rem; right: 2rem;
+      background: rgba(12,24,48,0.82); backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.18); border-radius: 18px;
+      padding: 1.2rem 1.5rem; display: flex; align-items: center; gap: 1rem;
     }
-    .tt-check-list {
-      list-style: none;
-      margin-top: 2rem;
-      space-y: 1rem;
-    }
+    .tt-check-list { list-style: none; margin-top: 2rem; }
     .tt-check-list li {
-      display: flex;
-      gap: 1rem;
-      padding: 1rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      transition: all 0.25s;
-      cursor: default;
+      display: flex; gap: 1rem; padding: 1rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      transition: all 0.3s; cursor: default;
     }
     .tt-check-list li:last-child { border-bottom: none; }
-    .tt-check-list li:hover { padding-left: 8px; }
+    .tt-check-list li:hover { padding-left: 10px; background: rgba(249,115,22,0.03); border-radius: 8px; }
     .tt-check-icon {
-      width: 36px; height: 36px;
-      border-radius: 10px;
+      width: 36px; height: 36px; border-radius: 10px;
       background: linear-gradient(135deg, var(--orange), var(--red));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 14px;
-      flex-shrink: 0;
-      margin-top: 2px;
+      display: flex; align-items: center; justify-content: center; font-size: 14px;
+      flex-shrink: 0; margin-top: 2px;
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
     }
-    .tt-check-list li h4 {
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: white;
-      margin-bottom: 2px;
+    .tt-check-list li:hover .tt-check-icon {
+      transform: scale(1.15) rotate(-5deg);
+      box-shadow: 0 6px 18px rgba(249,115,22,0.4);
     }
-    .tt-check-list li p {
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.45);
-      line-height: 1.5;
-    }
+    .tt-check-list li h4 { font-weight: 600; font-size: 0.95rem; color: white; margin-bottom: 2px; }
+    .tt-check-list li p { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
 
     /* ============ ARPL SECTION ============ */
     .arpl-section {
       padding: 120px 0;
-      background: linear-gradient(135deg, #0a1628, #0e1e3a, #0a1628);
-      position: relative;
-      overflow: hidden;
+      background: linear-gradient(135deg, #0e1e3c, #0a1628, #101d38);
+      position: relative; overflow: hidden;
     }
     .arpl-section::before {
-      content: '';
-      position: absolute;
-      top: -200px; right: -200px;
+      content: ''; position: absolute; top: -200px; right: -200px;
       width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(124,58,237,0.12), transparent 70%);
+      background: radial-gradient(circle, rgba(124,58,237,0.1), transparent 70%);
       pointer-events: none;
     }
-    .arpl-section::after {
-      content: '';
-      position: absolute;
-      bottom: -150px; left: -150px;
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(220,38,38,0.08), transparent 70%);
-      pointer-events: none;
-    }
-    .arpl-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-    .arpl-steps {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      position: relative;
-      margin-top: 2.5rem;
-    }
+    .arpl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .arpl-steps { display: flex; flex-direction: column; gap: 0; position: relative; margin-top: 2.5rem; }
     .arpl-steps::before {
-      content: '';
-      position: absolute;
-      left: 20px;
-      top: 0; bottom: 0;
-      width: 2px;
+      content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px;
       background: linear-gradient(180deg, var(--orange), var(--purple-soft));
     }
     .arpl-step {
-      display: flex;
-      gap: 1.5rem;
-      padding: 1.2rem 0;
-      padding-left: 1rem;
-      cursor: default;
-      transition: all 0.3s;
+      display: flex; gap: 1.5rem; padding: 1.2rem 0; padding-left: 1rem;
+      cursor: default; transition: all 0.3s;
     }
-    .arpl-step:hover { transform: translateX(8px); }
+    .arpl-step:hover { transform: translateX(10px); }
     .step-num {
-      width: 40px; height: 40px;
-      border-radius: 50%;
+      width: 40px; height: 40px; border-radius: 50%;
       background: linear-gradient(135deg, var(--blue-bright), var(--purple));
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.1rem;
-      color: white;
-      flex-shrink: 0;
-      border: 3px solid var(--blue-deep);
-      position: relative;
-      z-index: 1;
-      transition: transform 0.3s;
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: white;
+      flex-shrink: 0; border: 3px solid #0e1e3c;
+      position: relative; z-index: 1;
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
     }
-    .arpl-step:hover .step-num { transform: scale(1.15); }
+    .arpl-step:hover .step-num { transform: scale(1.2); box-shadow: 0 0 20px rgba(124,58,237,0.5); }
     .step-content h4 { font-weight: 600; font-size: 0.95rem; color: white; margin-bottom: 3px; }
-    .step-content p { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
-    .arpl-image {
-      position: relative;
-      height: 480px;
-      border-radius: 24px;
-      overflow: hidden;
-    }
+    .step-content p { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
+    .arpl-image { position: relative; height: 480px; border-radius: 24px; overflow: hidden; }
     .arpl-image img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      filter: brightness(0.4) saturate(1.1);
+      width: 100%; height: 100%; object-fit: cover;
+      filter: brightness(0.5) saturate(1.1); transition: transform 0.6s, filter 0.5s;
     }
+    .arpl-image:hover img { transform: scale(1.04); filter: brightness(0.6) saturate(1.2); }
     .arpl-image-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(225deg, rgba(124,58,237,0.5), rgba(10,22,40,0.6));
+      position: absolute; inset: 0;
+      background: linear-gradient(225deg, rgba(124,58,237,0.45), rgba(10,22,40,0.5));
       mix-blend-mode: color;
     }
-    .arpl-tags {
-      position: absolute;
-      bottom: 2rem; left: 2rem; right: 2rem;
-      display: flex; gap: 0.75rem; flex-wrap: wrap;
-    }
+    .arpl-tags { position: absolute; bottom: 2rem; left: 2rem; right: 2rem; display: flex; gap: 0.75rem; flex-wrap: wrap; }
     .arpl-tag {
-      background: rgba(10,22,40,0.85);
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 50px;
-      padding: 6px 16px;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      background: rgba(10,22,40,0.82); backdrop-filter: blur(15px);
+      border: 1px solid rgba(255,255,255,0.18); border-radius: 50px;
+      padding: 6px 16px; font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      transition: all 0.3s;
     }
+    .arpl-tag:hover { background: rgba(249,115,22,0.2); border-color: var(--orange); transform: translateY(-3px); }
 
     /* ============ THRASS SECTION ============ */
     .thrass-section {
       padding: 120px 0;
-      background: #060d1a;
-      position: relative;
-      overflow: hidden;
+      background: #090f1e; position: relative; overflow: hidden;
     }
     .thrass-bg-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
+      position: absolute; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       font-family: 'Bebas Neue', sans-serif;
       font-size: clamp(8rem, 20vw, 18rem);
-      color: rgba(255,255,255,0.02);
-      white-space: nowrap;
-      pointer-events: none;
-      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.025); white-space: nowrap;
+      pointer-events: none; letter-spacing: 0.05em;
     }
-    .thrass-inner {
-      position: relative;
-      z-index: 2;
-    }
-    .thrass-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 5rem;
-      align-items: center;
-      margin-top: 0;
-    }
-    .thrass-image {
-      height: 500px;
-      border-radius: 28px;
-      overflow: hidden;
-      position: relative;
-    }
+    .thrass-inner { position: relative; z-index: 2; }
+    .thrass-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 5rem; align-items: center; }
+    .thrass-image { height: 500px; border-radius: 28px; overflow: hidden; position: relative; }
     .thrass-image img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      filter: brightness(0.4) saturate(1.1);
-      transition: transform 0.5s;
+      width: 100%; height: 100%; object-fit: cover;
+      filter: brightness(0.5) saturate(1.1); transition: transform 0.5s, filter 0.5s;
     }
-    .thrass-image:hover img { transform: scale(1.05); }
+    .thrass-image:hover img { transform: scale(1.05); filter: brightness(0.6) saturate(1.2); }
     .thrass-image-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(220,38,38,0.3), rgba(249,115,22,0.3));
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(220,38,38,0.25), rgba(249,115,22,0.25));
     }
     .thrass-letters {
-      position: absolute;
-      top: 50%; left: 50%;
+      position: absolute; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.6rem;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem;
     }
     .thrass-letter {
       width: 54px; height: 54px;
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 12px;
+      background: rgba(255,255,255,0.12); backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.25); border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.6rem;
-      color: white;
-      transition: all 0.3s;
-      cursor: default;
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: white;
+      transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1); cursor: default;
     }
     .thrass-letter:hover {
-      background: rgba(249,115,22,0.3);
-      border-color: var(--orange);
-      transform: scale(1.1) rotate(-3deg);
+      background: rgba(249,115,22,0.35); border-color: var(--orange);
+      transform: scale(1.15) rotate(-4deg);
+      box-shadow: 0 8px 24px rgba(249,115,22,0.4);
     }
-    .thrass-features {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
-      margin-top: 2.5rem;
-    }
+    .thrass-features { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 2.5rem; }
     .thrass-feat {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-      padding: 1.2rem 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      transition: all 0.3s;
-      cursor: default;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 16px;
+      padding: 1.2rem 1.5rem; display: flex; align-items: center; gap: 1rem;
+      transition: all 0.35s cubic-bezier(0.23,1,0.32,1); cursor: default;
     }
     .thrass-feat:hover {
-      background: rgba(249,115,22,0.08);
-      border-color: rgba(249,115,22,0.3);
-      transform: translateX(6px);
+      background: rgba(249,115,22,0.08); border-color: rgba(249,115,22,0.35);
+      transform: translateX(8px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
     }
     .thrass-feat-icon {
-      width: 44px; height: 44px;
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px;
-      flex-shrink: 0;
+      width: 44px; height: 44px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
     }
+    .thrass-feat:hover .thrass-feat-icon { transform: scale(1.15) rotate(-5deg); }
     .thrass-feat h4 { font-weight: 600; font-size: 0.9rem; color: white; margin-bottom: 2px; }
-    .thrass-feat p { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+    .thrass-feat p { font-size: 0.8rem; color: rgba(255,255,255,0.45); }
 
     /* ============ WHY US SECTION ============ */
     .why-section {
       padding: 120px 0;
-      background: linear-gradient(180deg, #060d1a, var(--blue-deep));
+      background: linear-gradient(180deg, #090f1e, #0d1e38);
       position: relative;
     }
     .why-section::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
       background: linear-gradient(90deg, transparent, var(--purple-soft), transparent);
     }
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-      margin-top: 4rem;
-    }
+    .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 4rem; }
     .why-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
-      padding: 2rem 1.5rem;
-      text-align: center;
-      transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
-      cursor: default;
-      position: relative;
-      overflow: hidden;
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 20px;
+      padding: 2rem 1.5rem; text-align: center;
+      transition: all 0.45s cubic-bezier(0.23,1,0.32,1); cursor: default;
+      position: relative; overflow: hidden;
     }
     .why-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transition: opacity 0.4s;
-      border-radius: 20px;
+      content: ''; position: absolute; inset: 0; opacity: 0;
+      transition: opacity 0.4s; border-radius: 20px;
     }
     .why-card:hover::before { opacity: 1; }
-    .why-card:hover {
-      transform: translateY(-10px);
-      border-color: transparent;
-    }
-    .wc-1::before { background: linear-gradient(135deg, rgba(29,95,206,0.15), transparent); }
-    .wc-1:hover { box-shadow: 0 20px 50px rgba(29,95,206,0.2), inset 0 0 0 1px rgba(29,95,206,0.3); }
-    .wc-2::before { background: linear-gradient(135deg, rgba(249,115,22,0.15), transparent); }
-    .wc-2:hover { box-shadow: 0 20px 50px rgba(249,115,22,0.2), inset 0 0 0 1px rgba(249,115,22,0.3); }
-    .wc-3::before { background: linear-gradient(135deg, rgba(220,38,38,0.15), transparent); }
-    .wc-3:hover { box-shadow: 0 20px 50px rgba(220,38,38,0.2), inset 0 0 0 1px rgba(220,38,38,0.3); }
-    .wc-4::before { background: linear-gradient(135deg, rgba(124,58,237,0.15), transparent); }
-    .wc-4:hover { box-shadow: 0 20px 50px rgba(124,58,237,0.2), inset 0 0 0 1px rgba(124,58,237,0.3); }
+    .why-card:hover { transform: translateY(-12px); border-color: transparent; }
+    .wc-1::before { background: linear-gradient(135deg, rgba(29,95,206,0.18), transparent); }
+    .wc-1:hover { box-shadow: 0 24px 55px rgba(29,95,206,0.22), inset 0 0 0 1px rgba(29,95,206,0.35); }
+    .wc-2::before { background: linear-gradient(135deg, rgba(249,115,22,0.18), transparent); }
+    .wc-2:hover { box-shadow: 0 24px 55px rgba(249,115,22,0.22), inset 0 0 0 1px rgba(249,115,22,0.35); }
+    .wc-3::before { background: linear-gradient(135deg, rgba(220,38,38,0.18), transparent); }
+    .wc-3:hover { box-shadow: 0 24px 55px rgba(220,38,38,0.22), inset 0 0 0 1px rgba(220,38,38,0.35); }
+    .wc-4::before { background: linear-gradient(135deg, rgba(124,58,237,0.18), transparent); }
+    .wc-4:hover { box-shadow: 0 24px 55px rgba(124,58,237,0.22), inset 0 0 0 1px rgba(124,58,237,0.35); }
     .why-icon {
-      width: 60px; height: 60px;
-      border-radius: 16px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 24px;
+      width: 60px; height: 60px; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center; font-size: 24px;
       margin: 0 auto 1.2rem;
-      transition: transform 0.3s;
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
     }
-    .why-card:hover .why-icon { transform: scale(1.12) rotate(-4deg); }
+    .why-card:hover .why-icon { transform: scale(1.18) rotate(-6deg); }
+    .wc-1:hover .why-icon { box-shadow: 0 8px 24px rgba(29,95,206,0.4); }
+    .wc-2:hover .why-icon { box-shadow: 0 8px 24px rgba(249,115,22,0.4); }
+    .wc-3:hover .why-icon { box-shadow: 0 8px 24px rgba(220,38,38,0.4); }
+    .wc-4:hover .why-icon { box-shadow: 0 8px 24px rgba(124,58,237,0.4); }
     .why-card h3 { font-weight: 700; font-size: 1rem; color: white; margin-bottom: 0.5rem; }
-    .why-card p { font-size: 0.82rem; color: rgba(255,255,255,0.4); line-height: 1.6; }
+    .why-card p { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
 
     /* ============ CTA STRIP ============ */
-    .cta-section {
-      padding: 100px 0;
-      position: relative;
-      overflow: hidden;
-    }
+    .cta-section { padding: 100px 0; position: relative; overflow: hidden; }
     .cta-bg {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background-image: url('https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=1800&q=80');
-      background-size: cover;
-      background-position: center 40%;
-      filter: brightness(0.2) saturate(1.1);
+      background-size: cover; background-position: center 40%;
+      filter: brightness(0.3) saturate(1.1);
     }
     .cta-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, rgba(10,22,40,0.97) 30%, rgba(10,22,40,0.6) 100%);
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(10,22,40,0.95) 25%, rgba(10,22,40,0.55) 100%);
     }
-    .cta-content {
-      position: relative;
-      z-index: 10;
-    }
-    .cta-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 3rem;
-      flex-wrap: wrap;
-    }
-    .cta-contacts {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
+    .cta-content { position: relative; z-index: 10; }
+    .cta-inner { display: flex; justify-content: space-between; align-items: center; gap: 3rem; flex-wrap: wrap; }
+    .cta-contacts { display: flex; gap: 1rem; flex-wrap: wrap; }
     .contact-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: blur(15px);
-      padding: 12px 24px;
-      border-radius: 50px;
-      font-size: 0.88rem;
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.3s;
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25);
+      backdrop-filter: blur(15px); padding: 12px 24px; border-radius: 50px;
+      font-size: 0.88rem; color: white; text-decoration: none; font-weight: 500;
+      transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
     }
     .contact-chip:hover {
-      background: rgba(249,115,22,0.2);
-      border-color: var(--orange);
-      transform: translateY(-3px);
+      background: rgba(249,115,22,0.22); border-color: var(--orange);
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 12px 28px rgba(249,115,22,0.25);
     }
     .contact-chip i { color: var(--orange); }
 
     /* ============ LOCATIONS ============ */
     .locations-section {
       padding: 80px 0;
-      background: var(--blue-deep);
-      border-top: 1px solid rgba(255,255,255,0.06);
+      background: #0d1e38;
+      border-top: 1px solid rgba(255,255,255,0.07);
     }
-    .locations-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-top: 3rem;
-    }
+    .locations-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
     .location-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
-      padding: 2rem;
-      display: flex;
-      gap: 1.5rem;
-      align-items: flex-start;
-      transition: all 0.35s;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px; padding: 2rem; display: flex; gap: 1.5rem; align-items: flex-start;
+      transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
     }
     .location-card:hover {
-      background: rgba(255,255,255,0.07);
-      border-color: rgba(249,115,22,0.3);
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+      background: rgba(255,255,255,0.09); border-color: rgba(249,115,22,0.35);
+      transform: translateY(-6px); box-shadow: 0 18px 45px rgba(0,0,0,0.3);
     }
     .location-pin {
-      width: 50px; height: 50px;
-      border-radius: 14px;
+      width: 50px; height: 50px; border-radius: 14px;
       background: linear-gradient(135deg, var(--orange), var(--red));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20px;
-      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
     }
+    .location-card:hover .location-pin { transform: scale(1.12) rotate(-5deg); }
     .location-card h4 { font-weight: 700; font-size: 1.05rem; color: white; margin-bottom: 0.5rem; }
-    .location-card p { font-size: 0.84rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
+    .location-card p { font-size: 0.84rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
 
     /* ============ FOOTER ============ */
     footer {
-      background: #040a14;
+      background: #050c18;
       padding: 60px 0 30px;
-      border-top: 1px solid rgba(255,255,255,0.06);
+      border-top: 1px solid rgba(255,255,255,0.07);
     }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 4rem;
-      margin-bottom: 3rem;
-    }
-    .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.35); line-height: 1.7; margin-top: 1rem; max-width: 280px; }
-    .footer-col h5 { font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 4rem; margin-bottom: 3rem; }
+    .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.38); line-height: 1.7; margin-top: 1rem; max-width: 280px; }
+    .footer-col h5 { font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.55); margin-bottom: 1rem; }
     .footer-col ul { list-style: none; }
     .footer-col ul li { margin-bottom: 0.6rem; }
     .footer-col ul li a {
-      color: rgba(255,255,255,0.35);
-      font-size: 0.88rem;
-      text-decoration: none;
-      transition: color 0.2s, padding-left 0.2s;
+      color: rgba(255,255,255,0.38); font-size: 0.88rem; text-decoration: none;
+      transition: color 0.2s, padding-left 0.25s;
       display: inline-flex; align-items: center; gap: 6px;
     }
-    .footer-col ul li a:hover { color: var(--orange); padding-left: 4px; }
+    .footer-col ul li a:hover { color: var(--orange); padding-left: 5px; }
     .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding-top: 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.07); padding-top: 1.5rem;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
     }
-    .footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.2); }
+    .footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.22); }
     .footer-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
     .footer-tag {
-      font-size: 0.7rem;
-      padding: 3px 10px;
-      border-radius: 50px;
-      border: 1px solid rgba(255,255,255,0.1);
-      color: rgba(255,255,255,0.3);
+      font-size: 0.7rem; padding: 3px 10px; border-radius: 50px;
+      border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.32);
     }
 
     /* Mobile nav overlay */
     .mobile-nav {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(4,10,20,0.97);
-      backdrop-filter: blur(20px);
-      z-index: 999;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
+      display: none; position: fixed; inset: 0;
+      background: rgba(5,12,24,0.97); backdrop-filter: blur(20px);
+      z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
     }
     .mobile-nav.open { display: flex; }
     .mobile-nav a {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.5rem;
-      color: rgba(255,255,255,0.7);
-      text-decoration: none;
-      letter-spacing: 0.05em;
-      transition: color 0.2s, transform 0.2s;
+      font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem;
+      color: rgba(255,255,255,0.75); text-decoration: none; letter-spacing: 0.05em;
+      transition: color 0.2s, transform 0.25s;
     }
-    .mobile-nav a:hover { color: var(--orange); transform: scale(1.05); }
+    .mobile-nav a:hover { color: var(--orange); transform: scale(1.06); }
     .mobile-nav-close {
-      position: absolute;
-      top: 1.5rem; right: 1.5rem;
-      background: none; border: none;
+      position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none;
       color: white; font-size: 1.5rem; cursor: pointer;
-      width: 44px; height: 44px;
-      border-radius: 50%;
+      width: 44px; height: 44px; border-radius: 50%;
       background: rgba(255,255,255,0.08);
       display: flex; align-items: center; justify-content: center;
     }
 
-    /* ============ ANIMATIONS ============ */
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInRight {
-      from { opacity: 0; transform: translateX(40px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-
-    /* Reveal on scroll */
+    /* ============ REVEAL ON SCROLL ============ */
     .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
     }
-    .reveal.revealed {
-      opacity: 1;
-      transform: translateY(0);
+    .reveal.revealed { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.12s; }
+    .reveal-delay-2 { transition-delay: 0.24s; }
+    .reveal-delay-3 { transition-delay: 0.36s; }
+    .reveal-delay-4 { transition-delay: 0.48s; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; } 50% { opacity: 0.5; }
     }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
 
     /* ============ RESPONSIVE ============ */
     @media (max-width: 1024px) {
-      .hero-float-cards { display: none; }
       .tt-grid, .arpl-grid, .thrass-grid { grid-template-columns: 1fr; }
       .why-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -1162,11 +759,10 @@
 </head>
 <body>
 
-  <!-- Custom Cursor -->
   <div class="cursor-dot" id="cursorDot"></div>
   <div class="cursor-ring" id="cursorRing"></div>
 
-  <!-- Mobile Nav Overlay -->
+  <!-- Mobile Nav -->
   <div class="mobile-nav" id="mobileNav">
     <button class="mobile-nav-close" id="mobileNavClose"><i class="fas fa-times"></i></button>
     <a href="#">Home</a>
@@ -1182,9 +778,7 @@
   <!-- ==================== NAVBAR ==================== -->
   <nav id="mainNav">
     <div class="nav-logo">
-      <div class="nav-logo-icon">
-        <i class="fas fa-wrench" style="color: white;"></i>
-      </div>
+      <div class="nav-logo-icon"><i class="fas fa-wrench" style="color: white;"></i></div>
       <div>
         <div class="nav-brand-name">Next Level Skills</div>
         <div class="nav-brand-sub">Academy · Trade Test Centre</div>
@@ -1201,8 +795,7 @@
     </div>
     <div style="display: flex; align-items: center; gap: 1rem;">
       <a href="portal.html" class="nav-login">
-        <i class="fas fa-sign-in-alt" style="font-size: 0.75rem;"></i>
-        Student Portal
+        <i class="fas fa-sign-in-alt" style="font-size: 0.75rem;"></i> Student Portal
       </a>
       <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
         <span></span><span></span><span></span>
@@ -1213,82 +806,44 @@
   <!-- ==================== HERO ==================== -->
   <section class="hero">
     <div class="hero-bg"></div>
-    <div class="hero-overlay"></div>
-    
+    <!--<div class="hero-overlay"></div>-->
+
     <div class="hero-content">
-      <div class="hero-badge">
-        <i class="fas fa-shield-halved"></i>
-        100% Black-owned · BBBEE Level 1 · merSETA Accredited
+      <div >
       </div>
+
       <h1 class="hero-title">
         <span class="line-1">Master</span>
         <span class="line-2">Your Trade</span>
-        <span class="line-3">Automotive Excellence · Trade Test Centre · THRASS Education</span>
+        <!--<span class="line-3">Automotive Excellence · Trade Test Centre · THRASS Education</span>-->
       </h1>
-      <p class="hero-desc">
-        South Africa's premier accredited Trade Test Centre for Motor, Diesel &amp; Auto Electric trades. 
+
+      <!--<p class="hero-desc">
+        South Africa's premier accredited Trade Test Centre for Motor, Diesel &amp; Auto Electric trades.
         From hands-on training to ARPL certification — we build the artisans who drive industry forward.
-      </p>
+      </p>-->
+
       <div class="hero-actions">
         <a href="#" class="btn-primary"><i class="fas fa-tools"></i> Explore Courses</a>
         <a href="#" class="btn-ghost"><i class="fas fa-clipboard-list"></i> Book Trade Test</a>
       </div>
+
       <div class="hero-stats">
         <div class="stat-item">
           <div class="stat-num">10+</div>
-          <div class="stat-label">Years of excellence</div>
+          <div class="stat-label">Years of Excellence</div>
         </div>
         <div class="stat-item">
           <div class="stat-num">5K+</div>
-          <div class="stat-label">Artisans trained</div>
+          <div class="stat-label">Artisans Trained</div>
         </div>
         <div class="stat-item">
           <div class="stat-num">2</div>
-          <div class="stat-label">Campuses nationwide</div>
+          <div class="stat-label">Campuses Nationwide</div>
         </div>
         <div class="stat-item">
           <div class="stat-num">3</div>
-          <div class="stat-label">Accredited trades</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Floating cards right side -->
-    <div class="hero-float-cards">
-      <div class="float-card">
-        <div class="float-card-icon" style="background: linear-gradient(135deg, rgba(29,95,206,0.3), rgba(29,95,206,0.1)); color: #3b82f6;">
-          <i class="fas fa-oil-can"></i>
-        </div>
-        <div class="float-card-text">
-          <div class="fc-title">Motor Mechanic</div>
-          <div class="fc-sub">Level 1 – Red Seal</div>
-        </div>
-      </div>
-      <div class="float-card">
-        <div class="float-card-icon" style="background: linear-gradient(135deg, rgba(249,115,22,0.3), rgba(249,115,22,0.1)); color: #fb923c;">
-          <i class="fas fa-truck-moving"></i>
-        </div>
-        <div class="float-card-text">
-          <div class="fc-title">Diesel Mechanic</div>
-          <div class="fc-sub">Heavy-duty specialists</div>
-        </div>
-      </div>
-      <div class="float-card">
-        <div class="float-card-icon" style="background: linear-gradient(135deg, rgba(124,58,237,0.3), rgba(124,58,237,0.1)); color: #a855f7;">
-          <i class="fas fa-car-battery"></i>
-        </div>
-        <div class="float-card-text">
-          <div class="fc-title">Auto Electrician</div>
-          <div class="fc-sub">EV-ready diagnostics</div>
-        </div>
-      </div>
-      <div class="float-card">
-        <div class="float-card-icon" style="background: linear-gradient(135deg, rgba(220,38,38,0.3), rgba(220,38,38,0.1)); color: #ef4444;">
-          <i class="fas fa-spell-check"></i>
-        </div>
-        <div class="float-card-text">
-          <div class="fc-title">THRASS Education</div>
-          <div class="fc-sub">Teacher publishing</div>
+          <div class="stat-label">Accredited Trades</div>
         </div>
       </div>
     </div>
@@ -1306,52 +861,36 @@
         <div class="section-label" style="justify-content: center;"><i class="fas fa-wrench"></i> Core Trades</div>
         <h2 class="section-title">Industry-Driven<br><span style="background: linear-gradient(90deg, var(--orange), var(--red), var(--purple-soft)); -webkit-background-clip: text; background-clip: text; color: transparent;">Automotive Training</span></h2>
       </div>
-      <p class="section-sub reveal" style="text-align: center; margin: 1rem auto 0; reveal-delay-1: true;">Hands-on, accredited programmes that forge qualified artisans ready for the modern automotive industry.</p>
-
+      <p class="section-sub reveal reveal-delay-1" style="text-align: center; margin: 1rem auto 0;">Hands-on, accredited programmes that forge qualified artisans ready for the modern automotive industry.</p>
       <div class="trades-grid" style="margin-top: 3.5rem;">
-        <!-- Motor Mechanic -->
         <div class="trade-card reveal">
           <div class="trade-card-bg" style="background-image: url('https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&q=80');"></div>
           <div class="trade-card-overlay"></div>
           <div class="trade-card-content">
-            <div class="trade-icon" style="background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(59,130,246,0.05)); border: 1px solid rgba(59,130,246,0.4); color: #60a5fa;">
-              <i class="fas fa-oil-can"></i>
-            </div>
-            <div class="trade-card-tag" style="background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.35); color: #93c5fd;">
-              <i class="fas fa-circle" style="font-size: 6px;"></i> Motor Mechanic
-            </div>
+            <div class="trade-icon" style="background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(59,130,246,0.05)); border: 1px solid rgba(59,130,246,0.4); color: #60a5fa;"><i class="fas fa-oil-can"></i></div>
+            <div class="trade-card-tag" style="background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.35); color: #93c5fd;"><i class="fas fa-circle" style="font-size: 6px;"></i> Motor Mechanic</div>
             <h3>Motor Mechanic</h3>
             <p>From basic maintenance to advanced diagnostics, engine overhaul, and modern vehicle systems. Full Red Seal pathway.</p>
           </div>
           <div class="trade-arrow"><i class="fas fa-arrow-right" style="font-size: 14px; color: white;"></i></div>
         </div>
-        <!-- Diesel Mechanic -->
         <div class="trade-card reveal reveal-delay-1">
           <div class="trade-card-bg" style="background-image: url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80');"></div>
           <div class="trade-card-overlay"></div>
           <div class="trade-card-content">
-            <div class="trade-icon" style="background: linear-gradient(135deg, rgba(249,115,22,0.2), rgba(249,115,22,0.05)); border: 1px solid rgba(249,115,22,0.4); color: #fb923c;">
-              <i class="fas fa-truck-moving"></i>
-            </div>
-            <div class="trade-card-tag" style="background: rgba(249,115,22,0.15); border: 1px solid rgba(249,115,22,0.35); color: #fdba74;">
-              <i class="fas fa-circle" style="font-size: 6px;"></i> Diesel Mechanic
-            </div>
+            <div class="trade-icon" style="background: linear-gradient(135deg, rgba(249,115,22,0.2), rgba(249,115,22,0.05)); border: 1px solid rgba(249,115,22,0.4); color: #fb923c;"><i class="fas fa-truck-moving"></i></div>
+            <div class="trade-card-tag" style="background: rgba(249,115,22,0.15); border: 1px solid rgba(249,115,22,0.35); color: #fdba74;"><i class="fas fa-circle" style="font-size: 6px;"></i> Diesel Mechanic</div>
             <h3>Diesel Mechanic</h3>
             <p>Heavy-duty diesel engines, servicing, complete overhauls. Built for transport, construction, and mining sectors.</p>
           </div>
           <div class="trade-arrow"><i class="fas fa-arrow-right" style="font-size: 14px; color: white;"></i></div>
         </div>
-        <!-- Auto Electrician -->
         <div class="trade-card reveal reveal-delay-2">
           <div class="trade-card-bg" style="background-image: url('https://images.unsplash.com/photo-1630818895023-0e91e979d676?w=800&q=80');"></div>
           <div class="trade-card-overlay"></div>
           <div class="trade-card-content">
-            <div class="trade-icon" style="background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(124,58,237,0.05)); border: 1px solid rgba(124,58,237,0.4); color: #c084fc;">
-              <i class="fas fa-car-battery"></i>
-            </div>
-            <div class="trade-card-tag" style="background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.35); color: #d8b4fe;">
-              <i class="fas fa-circle" style="font-size: 6px;"></i> Auto Electrician
-            </div>
+            <div class="trade-icon" style="background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(124,58,237,0.05)); border: 1px solid rgba(124,58,237,0.4); color: #c084fc;"><i class="fas fa-car-battery"></i></div>
+            <div class="trade-card-tag" style="background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.35); color: #d8b4fe;"><i class="fas fa-circle" style="font-size: 6px;"></i> Auto Electrician</div>
             <h3>Automotive Electrician</h3>
             <p>Modern vehicle electrical & electronic systems — diagnosis, repair, hybrid & EV-ready training.</p>
           </div>
@@ -1361,7 +900,7 @@
     </div>
   </section>
 
-  <!-- ==================== TRADE TEST SECTION ==================== -->
+  <!-- ==================== TRADE TEST ==================== -->
   <section class="trade-test-section">
     <div class="container">
       <div class="tt-grid">
@@ -1369,63 +908,43 @@
           <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Trade Test Centre">
           <div class="tt-image-overlay"></div>
           <div class="tt-image-badge">
-            <div style="width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, var(--orange), var(--red)); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-              <i class="fas fa-certificate" style="color: white;"></i>
-            </div>
+            <div style="width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, var(--orange), var(--red)); display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="fas fa-certificate" style="color: white;"></i></div>
             <div>
               <div style="font-weight: 700; font-size: 0.9rem;">Accredited Trade Test Centre</div>
-              <div style="font-size: 0.75rem; color: rgba(255,255,255,0.45);">merSETA aligned · QCTO ready</div>
+              <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">merSETA aligned · QCTO ready</div>
             </div>
-            <div style="margin-left: auto; display: flex; gap: 6px;">
-              <span style="width: 8px; height: 8px; border-radius: 50%; background: #22c55e; display: block; animation: pulse 2s infinite;"></span>
-            </div>
+            <div style="margin-left: auto;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #22c55e; display: block; animation: pulse 2s infinite;"></span></div>
           </div>
         </div>
-
         <div class="reveal reveal-delay-1">
           <div class="section-label"><i class="fas fa-id-card"></i> Trade Test Centre</div>
           <h2 class="section-title" style="margin-bottom: 1rem;">Your Gateway to<br><span style="color: var(--orange);">Artisan Qualification</span></h2>
           <p class="section-sub" style="max-width: 100%;">We are an accredited TTC conducting level testing, final Red Seal trade tests, and formal ARPL assessments with fairness and full transparency.</p>
-          
           <ul class="tt-check-list" style="margin-top: 2rem;">
             <li>
               <div class="tt-check-icon"><i class="fas fa-layer-group" style="color: white; font-size: 14px;"></i></div>
-              <div>
-                <h4>Legacy Trade Level Testing</h4>
-                <p>Structured progression through trade levels with official assessment at each stage.</p>
-              </div>
+              <div><h4>Legacy Trade Level Testing</h4><p>Structured progression through trade levels with official assessment at each stage.</p></div>
             </li>
             <li>
               <div class="tt-check-icon"><i class="fas fa-star" style="color: white; font-size: 14px;"></i></div>
-              <div>
-                <h4>Final Red Seal Trade Tests</h4>
-                <p>The nationally recognised qualification — the gold standard for South African artisans.</p>
-              </div>
+              <div><h4>Final Red Seal Trade Tests</h4><p>The nationally recognised qualification — the gold standard for South African artisans.</p></div>
             </li>
             <li>
               <div class="tt-check-icon"><i class="fas fa-route" style="color: white; font-size: 14px;"></i></div>
-              <div>
-                <h4>ARPL Pathway</h4>
-                <p>Recognition of Prior Learning for experienced candidates without formal apprenticeship.</p>
-              </div>
+              <div><h4>ARPL Pathway</h4><p>Recognition of Prior Learning for experienced candidates without formal apprenticeship.</p></div>
             </li>
             <li>
               <div class="tt-check-icon"><i class="fas fa-scale-balanced" style="color: white; font-size: 14px;"></i></div>
-              <div>
-                <h4>Fair & Transparent Assessment</h4>
-                <p>Independent assessors, standardised criteria, full candidate feedback.</p>
-              </div>
+              <div><h4>Fair & Transparent Assessment</h4><p>Independent assessors, standardised criteria, full candidate feedback.</p></div>
             </li>
           </ul>
-          <a href="#" class="btn-primary" style="margin-top: 2rem; display: inline-flex;">
-            <i class="fas fa-calendar-check"></i> Book Your Trade Test
-          </a>
+          <a href="#" class="btn-primary" style="margin-top: 2rem; display: inline-flex;"><i class="fas fa-calendar-check"></i> Book Your Trade Test</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== ARPL SECTION ==================== -->
+  <!-- ==================== ARPL ==================== -->
   <section class="arpl-section">
     <div class="container">
       <div class="arpl-grid">
@@ -1433,36 +952,11 @@
           <div class="section-label"><i class="fas fa-route"></i> ARPL Services</div>
           <h2 class="section-title" style="margin-bottom: 1rem;">Experience Is Your<br><span style="background: linear-gradient(90deg, var(--purple-soft), var(--blue-electric)); -webkit-background-clip: text; background-clip: text; color: transparent;">Qualification</span></h2>
           <p class="section-sub" style="max-width: 100%;">No formal apprenticeship? No problem. The Artisan Recognition of Prior Learning pathway allows experienced tradespeople to earn formal qualifications.</p>
-
           <div class="arpl-steps">
-            <div class="arpl-step">
-              <div class="step-num">1</div>
-              <div class="step-content">
-                <h4>Initial Consultation & Application</h4>
-                <p>We assess your experience and determine eligibility for the ARPL pathway.</p>
-              </div>
-            </div>
-            <div class="arpl-step">
-              <div class="step-num">2</div>
-              <div class="step-content">
-                <h4>Evidence Portfolio Compilation</h4>
-                <p>We guide you through documenting your skills, experience, and competencies.</p>
-              </div>
-            </div>
-            <div class="arpl-step">
-              <div class="step-num">3</div>
-              <div class="step-content">
-                <h4>Bridging Programme (if required)</h4>
-                <p>Targeted upskilling to close any gaps before the formal assessment.</p>
-              </div>
-            </div>
-            <div class="arpl-step">
-              <div class="step-num">4</div>
-              <div class="step-content">
-                <h4>Trade Test Admission & Certification</h4>
-                <p>Sit your Red Seal trade test and receive your formal artisan qualification.</p>
-              </div>
-            </div>
+            <div class="arpl-step"><div class="step-num">1</div><div class="step-content"><h4>Initial Consultation & Application</h4><p>We assess your experience and determine eligibility for the ARPL pathway.</p></div></div>
+            <div class="arpl-step"><div class="step-num">2</div><div class="step-content"><h4>Evidence Portfolio Compilation</h4><p>We guide you through documenting your skills, experience, and competencies.</p></div></div>
+            <div class="arpl-step"><div class="step-num">3</div><div class="step-content"><h4>Bridging Programme (if required)</h4><p>Targeted upskilling to close any gaps before the formal assessment.</p></div></div>
+            <div class="arpl-step"><div class="step-num">4</div><div class="step-content"><h4>Trade Test Admission & Certification</h4><p>Sit your Red Seal trade test and receive your formal artisan qualification.</p></div></div>
           </div>
         </div>
         <div class="arpl-image reveal reveal-delay-2">
@@ -1478,7 +972,7 @@
     </div>
   </section>
 
-  <!-- ==================== THRASS SECTION ==================== -->
+  <!-- ==================== THRASS ==================== -->
   <section class="thrass-section">
     <div class="thrass-bg-text">THRASS</div>
     <div class="thrass-inner">
@@ -1486,66 +980,34 @@
         <div class="thrass-grid">
           <div class="reveal">
             <div class="section-label" style="background: rgba(220,38,38,0.1); border-color: rgba(220,38,38,0.3); color: #ef4444;"><i class="fas fa-chalkboard-teacher"></i> Education Publishing</div>
-            <h2 class="section-title" style="margin-bottom: 1rem;">
-              Building Educators.<br>
-              <span style="background: linear-gradient(90deg, var(--orange), var(--red)); -webkit-background-clip: text; background-clip: text; color: transparent;">Building Minds.</span>
-            </h2>
+            <h2 class="section-title" style="margin-bottom: 1rem;">Building Educators.<br><span style="background: linear-gradient(90deg, var(--orange), var(--red)); -webkit-background-clip: text; background-clip: text; color: transparent;">Building Minds.</span></h2>
             <p class="section-sub" style="max-width: 100%; margin-bottom: 2.5rem;">Beyond automotive mastery, Next Level Skills Academy publishes specialist training materials for educators based on the <strong style="color: white;">THRASS® methodology</strong> — Teaching Handwriting, Reading And Spelling Skills.</p>
-
             <div class="thrass-features">
               <div class="thrass-feat">
-                <div class="thrass-feat-icon" style="background: linear-gradient(135deg, rgba(249,115,22,0.2), rgba(249,115,22,0.05)); border: 1px solid rgba(249,115,22,0.3); color: var(--orange);">
-                  <i class="fas fa-pen-fancy"></i>
-                </div>
-                <div>
-                  <h4>Handwriting Fluency</h4>
-                  <p>Structured motor-skill development programmes for early learners.</p>
-                </div>
+                <div class="thrass-feat-icon" style="background: linear-gradient(135deg, rgba(249,115,22,0.2), rgba(249,115,22,0.05)); border: 1px solid rgba(249,115,22,0.3); color: var(--orange);"><i class="fas fa-pen-fancy"></i></div>
+                <div><h4>Handwriting Fluency</h4><p>Structured motor-skill development programmes for early learners.</p></div>
               </div>
               <div class="thrass-feat">
-                <div class="thrass-feat-icon" style="background: linear-gradient(135deg, rgba(220,38,38,0.2), rgba(220,38,38,0.05)); border: 1px solid rgba(220,38,38,0.3); color: var(--red-light);">
-                  <i class="fas fa-book-open-reader"></i>
-                </div>
-                <div>
-                  <h4>Reading & Phonics Mastery</h4>
-                  <p>Phonetic-based reading methodology grounded in proven literacy science.</p>
-                </div>
+                <div class="thrass-feat-icon" style="background: linear-gradient(135deg, rgba(220,38,38,0.2), rgba(220,38,38,0.05)); border: 1px solid rgba(220,38,38,0.3); color: var(--red-light);"><i class="fas fa-book-open-reader"></i></div>
+                <div><h4>Reading & Phonics Mastery</h4><p>Phonetic-based reading methodology grounded in proven literacy science.</p></div>
               </div>
               <div class="thrass-feat">
-                <div class="thrass-feat-icon" style="background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(59,130,246,0.05)); border: 1px solid rgba(59,130,246,0.3); color: var(--blue-electric);">
-                  <i class="fas fa-chalkboard"></i>
-                </div>
-                <div>
-                  <h4>Educator Training & Resources</h4>
-                  <p>Published materials and CPD workshops for classroom teachers at all levels.</p>
-                </div>
+                <div class="thrass-feat-icon" style="background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(59,130,246,0.05)); border: 1px solid rgba(59,130,246,0.3); color: var(--blue-electric);"><i class="fas fa-chalkboard"></i></div>
+                <div><h4>Educator Training & Resources</h4><p>Published materials and CPD workshops for classroom teachers at all levels.</p></div>
               </div>
               <div class="thrass-feat">
-                <div class="thrass-feat-icon" style="background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(124,58,237,0.05)); border: 1px solid rgba(124,58,237,0.3); color: var(--purple-soft);">
-                  <i class="fas fa-spell-check"></i>
-                </div>
-                <div>
-                  <h4>Spelling Skills Development</h4>
-                  <p>Systematic spelling acquisition aligned with national literacy curricula.</p>
-                </div>
+                <div class="thrass-feat-icon" style="background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(124,58,237,0.05)); border: 1px solid rgba(124,58,237,0.3); color: var(--purple-soft);"><i class="fas fa-spell-check"></i></div>
+                <div><h4>Spelling Skills Development</h4><p>Systematic spelling acquisition aligned with national literacy curricula.</p></div>
               </div>
             </div>
-
-            <a href="#" class="btn-ghost" style="margin-top: 2rem; display: inline-flex; border-color: rgba(220,38,38,0.4);">
-              <i class="fas fa-graduation-cap"></i> Explore THRASS Resources
-            </a>
+            <a href="#" class="btn-ghost" style="margin-top: 2rem; display: inline-flex; border-color: rgba(220,38,38,0.4);"><i class="fas fa-graduation-cap"></i> Explore THRASS Resources</a>
           </div>
-
           <div class="thrass-image reveal reveal-delay-2">
             <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80" alt="THRASS Education">
             <div class="thrass-image-overlay"></div>
             <div class="thrass-letters">
-              <div class="thrass-letter">T</div>
-              <div class="thrass-letter">H</div>
-              <div class="thrass-letter">R</div>
-              <div class="thrass-letter">A</div>
-              <div class="thrass-letter">S</div>
-              <div class="thrass-letter">S</div>
+              <div class="thrass-letter">T</div><div class="thrass-letter">H</div><div class="thrass-letter">R</div>
+              <div class="thrass-letter">A</div><div class="thrass-letter">S</div><div class="thrass-letter">S</div>
             </div>
           </div>
         </div>
@@ -1562,32 +1024,20 @@
       </div>
       <div class="why-grid">
         <div class="why-card wc-1 reveal">
-          <div class="why-icon" style="background: linear-gradient(135deg, rgba(29,95,206,0.2), rgba(29,95,206,0.05)); border: 1px solid rgba(29,95,206,0.3); color: #60a5fa;">
-            <i class="fas fa-user-graduate"></i>
-          </div>
-          <h3>Expert Instructors</h3>
-          <p>Seasoned artisans with decades of real-world field experience leading every session.</p>
+          <div class="why-icon" style="background: linear-gradient(135deg, rgba(29,95,206,0.22), rgba(29,95,206,0.06)); border: 1px solid rgba(29,95,206,0.35); color: #60a5fa;"><i class="fas fa-user-graduate"></i></div>
+          <h3>Expert Instructors</h3><p>Seasoned artisans with decades of real-world field experience leading every session.</p>
         </div>
         <div class="why-card wc-2 reveal reveal-delay-1">
-          <div class="why-icon" style="background: linear-gradient(135deg, rgba(249,115,22,0.2), rgba(249,115,22,0.05)); border: 1px solid rgba(249,115,22,0.3); color: #fb923c;">
-            <i class="fas fa-microchip"></i>
-          </div>
-          <h3>Modern Diagnostics</h3>
-          <p>Cutting-edge tools, live vehicle bays, and up-to-date diagnostic equipment.</p>
+          <div class="why-icon" style="background: linear-gradient(135deg, rgba(249,115,22,0.22), rgba(249,115,22,0.06)); border: 1px solid rgba(249,115,22,0.35); color: #fb923c;"><i class="fas fa-microchip"></i></div>
+          <h3>Modern Diagnostics</h3><p>Cutting-edge tools, live vehicle bays, and up-to-date diagnostic equipment.</p>
         </div>
         <div class="why-card wc-3 reveal reveal-delay-2">
-          <div class="why-icon" style="background: linear-gradient(135deg, rgba(220,38,38,0.2), rgba(220,38,38,0.05)); border: 1px solid rgba(220,38,38,0.3); color: #f87171;">
-            <i class="fas fa-handshake"></i>
-          </div>
-          <h3>Industry Partnerships</h3>
-          <p>Strong ties with automotive leaders, ensuring employment-ready graduates.</p>
+          <div class="why-icon" style="background: linear-gradient(135deg, rgba(220,38,38,0.22), rgba(220,38,38,0.06)); border: 1px solid rgba(220,38,38,0.35); color: #f87171;"><i class="fas fa-handshake"></i></div>
+          <h3>Industry Partnerships</h3><p>Strong ties with automotive leaders, ensuring employment-ready graduates.</p>
         </div>
         <div class="why-card wc-4 reveal reveal-delay-3">
-          <div class="why-icon" style="background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(124,58,237,0.05)); border: 1px solid rgba(124,58,237,0.3); color: #c084fc;">
-            <i class="fas fa-map-location-dot"></i>
-          </div>
-          <h3>Two Prime Campuses</h3>
-          <p>Midrand (Gauteng) and Pinetown (KZN) — convenient access across South Africa.</p>
+          <div class="why-icon" style="background: linear-gradient(135deg, rgba(124,58,237,0.22), rgba(124,58,237,0.06)); border: 1px solid rgba(124,58,237,0.35); color: #c084fc;"><i class="fas fa-map-location-dot"></i></div>
+          <h3>Two Prime Campuses</h3><p>Midrand (Gauteng) and Pinetown (KZN) — convenient access across South Africa.</p>
         </div>
       </div>
     </div>
@@ -1605,15 +1055,9 @@
           <p class="section-sub" style="margin-top: 0.75rem;">Call us or visit one of our training centres in Gauteng &amp; KZN.</p>
         </div>
         <div class="cta-contacts reveal reveal-delay-1">
-          <a href="tel:0113148775" class="contact-chip">
-            <i class="fas fa-phone-alt"></i> 011 314 8775
-          </a>
-          <a href="mailto:info@nextlsa.co.za" class="contact-chip">
-            <i class="fas fa-envelope"></i> info@nextlsa.co.za
-          </a>
-          <a href="portal.html" class="btn-primary">
-            <i class="fas fa-arrow-right-to-bracket"></i> Student Portal
-          </a>
+          <a href="tel:0113148775" class="contact-chip"><i class="fas fa-phone-alt"></i> 011 314 8775</a>
+          <a href="mailto:info@nextlsa.co.za" class="contact-chip"><i class="fas fa-envelope"></i> info@nextlsa.co.za</a>
+          <a href="portal.html" class="btn-primary"><i class="fas fa-arrow-right-to-bracket"></i> Student Portal</a>
         </div>
       </div>
     </div>
@@ -1651,9 +1095,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="nav-logo" style="margin-bottom: 1rem;">
-            <div class="nav-logo-icon" style="width: 36px; height: 36px; border-radius: 10px; font-size: 14px;">
-              <i class="fas fa-wrench" style="color: white;"></i>
-            </div>
+            <div class="nav-logo-icon" style="width: 36px; height: 36px; border-radius: 10px; font-size: 14px;"><i class="fas fa-wrench" style="color: white;"></i></div>
             <div>
               <div class="nav-brand-name">Next Level Skills</div>
               <div class="nav-brand-sub">Academy · Trade Test Centre</div>
@@ -1661,9 +1103,9 @@
           </div>
           <p>Accredited Trade Test Centre &amp; Automotive Training Academy. Proudly 100% Black-owned, BBBEE Level 1 Contributor, merSETA accredited.</p>
           <div style="display: flex; gap: 8px; margin-top: 1.2rem;">
-            <a href="#" style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); text-decoration: none; transition: all 0.25s;" onmouseover="this.style.background='rgba(249,115,22,0.15)'; this.style.borderColor='rgba(249,115,22,0.4)'; this.style.color='#fb923c'" onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.borderColor='rgba(255,255,255,0.1)'; this.style.color='rgba(255,255,255,0.4)'"><i class="fab fa-facebook-f" style="font-size: 14px;"></i></a>
-            <a href="#" style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); text-decoration: none; transition: all 0.25s;" onmouseover="this.style.background='rgba(249,115,22,0.15)'; this.style.borderColor='rgba(249,115,22,0.4)'; this.style.color='#fb923c'" onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.borderColor='rgba(255,255,255,0.1)'; this.style.color='rgba(255,255,255,0.4)'"><i class="fab fa-linkedin-in" style="font-size: 14px;"></i></a>
-            <a href="#" style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); text-decoration: none; transition: all 0.25s;" onmouseover="this.style.background='rgba(249,115,22,0.15)'; this.style.borderColor='rgba(249,115,22,0.4)'; this.style.color='#fb923c'" onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.borderColor='rgba(255,255,255,0.1)'; this.style.color='rgba(255,255,255,0.4)'"><i class="fab fa-instagram" style="font-size: 14px;"></i></a>
+            <a href="#" style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='rgba(249,115,22,0.15)'; this.style.borderColor='rgba(249,115,22,0.4)'; this.style.color='#fb923c'" onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.borderColor='rgba(255,255,255,0.1)'; this.style.color='rgba(255,255,255,0.4)'"><i class="fab fa-facebook-f" style="font-size: 14px;"></i></a>
+            <a href="#" style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='rgba(249,115,22,0.15)'; this.style.borderColor='rgba(249,115,22,0.4)'; this.style.color='#fb923c'" onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.borderColor='rgba(255,255,255,0.1)'; this.style.color='rgba(255,255,255,0.4)'"><i class="fab fa-linkedin-in" style="font-size: 14px;"></i></a>
+            <a href="#" style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='rgba(249,115,22,0.15)'; this.style.borderColor='rgba(249,115,22,0.4)'; this.style.color='#fb923c'" onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.borderColor='rgba(255,255,255,0.1)'; this.style.color='rgba(255,255,255,0.4)'"><i class="fab fa-instagram" style="font-size: 14px;"></i></a>
           </div>
         </div>
         <div class="footer-col">
@@ -1702,25 +1144,22 @@
     // ===== CUSTOM CURSOR =====
     const dot = document.getElementById('cursorDot');
     const ring = document.getElementById('cursorRing');
-    let mouseX = 0, mouseY = 0;
-    let ringX = 0, ringY = 0;
+    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
     document.addEventListener('mousemove', e => {
       mouseX = e.clientX; mouseY = e.clientY;
-      dot.style.left = mouseX + 'px';
-      dot.style.top = mouseY + 'px';
+      dot.style.left = mouseX + 'px'; dot.style.top = mouseY + 'px';
     });
     function animateRing() {
       ringX += (mouseX - ringX) * 0.12;
       ringY += (mouseY - ringY) * 0.12;
-      ring.style.left = ringX + 'px';
-      ring.style.top = ringY + 'px';
+      ring.style.left = ringX + 'px'; ring.style.top = ringY + 'px';
       requestAnimationFrame(animateRing);
     }
     animateRing();
     document.querySelectorAll('a, button, .trade-card, .why-card, .thrass-feat, .arpl-step').forEach(el => {
       el.addEventListener('mouseenter', () => {
         ring.style.width = '54px'; ring.style.height = '54px';
-        ring.style.borderColor = 'rgba(249,115,22,0.8)';
+        ring.style.borderColor = 'rgba(249,115,22,0.85)';
         dot.style.transform = 'translate(-50%,-50%) scale(2)';
       });
       el.addEventListener('mouseleave', () => {
@@ -1732,28 +1171,18 @@
 
     // ===== NAVBAR SCROLL =====
     const nav = document.getElementById('mainNav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 50);
-    });
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
 
     // ===== MOBILE MENU =====
-    const hamburger = document.getElementById('hamburgerBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    const mobileClose = document.getElementById('mobileNavClose');
-    hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
-    mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
-    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
+    document.getElementById('hamburgerBtn').addEventListener('click', () => document.getElementById('mobileNav').classList.add('open'));
+    document.getElementById('mobileNavClose').addEventListener('click', () => document.getElementById('mobileNav').classList.remove('open'));
+    document.querySelectorAll('.mobile-nav a').forEach(a => a.addEventListener('click', () => document.getElementById('mobileNav').classList.remove('open')));
 
     // ===== SCROLL REVEAL =====
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-        }
-      });
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('revealed'); });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    reveals.forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>

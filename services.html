@@ -3,341 +3,1041 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Services | Next Level Skills Academy – Automotive Training & THRASS</title>
-  <!-- Tailwind CSS + Font Awesome -->
+  <title>Services | Next Level Skills Academy</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap');
-    * { font-family: 'Inter', sans-serif; }
+    :root {
+      --blue-deep: #0a1628;
+      --blue-mid: #1a3a6b;
+      --blue-bright: #1d5fce;
+      --blue-electric: #3b82f6;
+      --orange: #f97316;
+      --orange-warm: #fb923c;
+      --red: #dc2626;
+      --red-light: #ef4444;
+      --purple: #7c3aed;
+      --purple-soft: #a855f7;
+      --white: #ffffff;
+      --glass: rgba(255,255,255,0.07);
+      --glass-border: rgba(255,255,255,0.15);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
     body {
-      background: linear-gradient(135deg, #fefcf7 0%, #f0f4fe 100%);
+      font-family: 'DM Sans', sans-serif;
+      background: var(--blue-deep);
+      color: var(--white);
+      overflow-x: hidden;
     }
-    .nav-link {
-      transition: all 0.2s;
+
+    h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
+
+    /* ===== CURSOR ===== */
+    .cursor-dot {
+      width: 8px; height: 8px;
+      background: var(--orange);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%,-50%);
+      transition: transform 0.1s;
     }
-    .nav-link:hover {
-      color: #f97316;
-      transform: translateY(-1px);
+    .cursor-ring {
+      width: 36px; height: 36px;
+      border: 2px solid rgba(249,115,22,0.5);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%,-50%);
+      transition: all 0.12s ease;
     }
-    .gradient-text {
-      background: linear-gradient(120deg, #1e3a8a, #f97316, #dc2626, #a855f7);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: shimmer 5s ease infinite;
+
+    /* ===== NOISE ===== */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 1; opacity: 0.5;
     }
-    @keyframes shimmer {
-      0% { background-position: 0% center; }
-      50% { background-position: 100% center; }
-      100% { background-position: 0% center; }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 1000; padding: 0 2rem; height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(10,22,40,0.6);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      transition: all 0.3s;
     }
-    .service-card {
-      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    nav.scrolled { background: rgba(10,22,40,0.92); height: 60px; }
+    .nav-logo { display: flex; align-items: center; gap: 12px; }
+    .nav-logo-icon {
+      width: 42px; height: 42px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--blue-bright), var(--orange));
+      display: flex; align-items: center; justify-content: center; font-size: 18px;
+      box-shadow: 0 0 20px rgba(249,115,22,0.35);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-    .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(249, 115, 22, 0.4);
+    .nav-logo:hover .nav-logo-icon { transform: rotate(-5deg) scale(1.1); box-shadow: 0 0 30px rgba(249,115,22,0.55); }
+    .nav-brand-name {
+      font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; line-height: 1.1;
+      background: linear-gradient(90deg, #fff, var(--orange-warm));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
     }
-    .icon-gradient-bg {
-      background: linear-gradient(135deg, #eef2ff, #fff1e6);
+    .nav-brand-sub { font-size: 10px; color: rgba(255,255,255,0.45); font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a {
+      font-size: 0.82rem; font-weight: 500; color: rgba(255,255,255,0.65);
+      text-decoration: none; letter-spacing: 0.05em; position: relative; transition: color 0.2s;
     }
-    .orange-btn {
-      background: linear-gradient(95deg, #f97316, #ea580c);
-      transition: all 0.25s ease;
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 2px; background: var(--orange);
+      transition: width 0.25s ease; border-radius: 2px;
     }
-    .orange-btn:hover {
-      background: linear-gradient(95deg, #ea580c, #c2410c);
-      transform: scale(1.02);
-      box-shadow: 0 8px 18px rgba(234, 88, 12, 0.3);
+    .nav-links a:hover { color: white; }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a.active { color: var(--orange-warm); }
+    .nav-links a.active::after { width: 100%; }
+    .nav-login {
+      background: linear-gradient(135deg, var(--blue-bright), var(--blue-mid));
+      color: white; border: 1px solid rgba(255,255,255,0.2);
+      padding: 9px 22px; border-radius: 50px;
+      font-size: 0.82rem; font-weight: 600; cursor: pointer;
+      text-decoration: none; display: flex; align-items: center; gap: 8px;
+      transition: all 0.25s; letter-spacing: 0.03em;
     }
-    .thrass-badge {
-      background: linear-gradient(125deg, #fff7ed, #ffe8dc);
-      border-left: 6px solid #f97316;
+    .nav-login:hover { background: linear-gradient(135deg, var(--orange), #ea580c); box-shadow: 0 6px 20px rgba(249,115,22,0.4); transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: white; border-radius: 2px; transition: all 0.3s; }
+
+    /* ===== MOBILE NAV ===== */
+    .mobile-nav {
+      display: none; position: fixed; inset: 0;
+      background: rgba(4,10,20,0.97); backdrop-filter: blur(20px);
+      z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
     }
-    .footer-link:hover {
-      color: #f97316;
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: rgba(255,255,255,0.7); text-decoration: none; letter-spacing: 0.05em; transition: color 0.2s, transform 0.2s; }
+    .mobile-nav a:hover { color: var(--orange); transform: scale(1.05); }
+    .mobile-nav-close { position: absolute; top: 1.5rem; right: 1.5rem; background: rgba(255,255,255,0.08); border: none; color: white; font-size: 1.5rem; cursor: pointer; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+    /* ===== SHARED ===== */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--orange); border: 1px solid rgba(249,115,22,0.3);
+      background: rgba(249,115,22,0.08); padding: 6px 16px; border-radius: 50px; margin-bottom: 1.2rem;
     }
-    .tab-active {
-      background: linear-gradient(95deg, #1e3a8a, #2563eb);
-      color: white;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    .section-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.1; color: white; }
+    .section-sub { color: rgba(255,255,255,0.45); font-size: 1rem; font-weight: 300; line-height: 1.7; }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--orange), #ea580c);
+      color: white; padding: 14px 32px; border-radius: 50px;
+      font-weight: 600; font-size: 0.9rem; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 10px;
+      transition: all 0.3s; position: relative; overflow: hidden; letter-spacing: 0.03em;
     }
-    .pill-hover:hover {
-      background-color: #f97316;
-      color: white;
-      transform: translateY(-2px);
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(249,115,22,0.45); }
+    .btn-ghost {
+      background: var(--glass); border: 1px solid var(--glass-border);
+      color: rgba(255,255,255,0.8); padding: 14px 32px; border-radius: 50px;
+      font-weight: 500; font-size: 0.9rem; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 10px;
+      backdrop-filter: blur(10px); transition: all 0.3s; letter-spacing: 0.03em;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.12); border-color: var(--orange); color: white; transform: translateY(-3px); }
+
+    /* ===== REVEAL ===== */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.revealed { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 60vh; position: relative;
+      display: flex; align-items: center; overflow: hidden;
+      padding-top: 72px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=1800&q=80');
+      background-size: cover; background-position: center 40%;
+      filter: brightness(0.22) saturate(1.2);
+      animation: slowZoom 20s ease-in-out infinite alternate;
+    }
+    @keyframes slowZoom { 0% { transform: scale(1.05); } 100% { transform: scale(1.12); } }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 80% 20%, rgba(124,58,237,0.18) 0%, transparent 60%),
+                  radial-gradient(ellipse 50% 60% at 10% 80%, rgba(220,38,38,0.1) 0%, transparent 50%),
+                  linear-gradient(135deg, rgba(10,22,40,0.98) 0%, rgba(26,58,107,0.7) 50%, rgba(10,22,40,0.9) 100%);
+    }
+    .hero-content { position: relative; z-index: 10; width: 100%; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(249,115,22,0.12); border: 1px solid rgba(249,115,22,0.35);
+      color: var(--orange-warm); padding: 8px 18px; border-radius: 50px;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 1.5rem; backdrop-filter: blur(10px);
+      animation: fadeInDown 0.8s ease both;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      line-height: 0.92; letter-spacing: 0.02em; margin-bottom: 1.2rem;
+      animation: fadeInUp 0.9s 0.15s ease both;
+    }
+    .hero-title .line-1 { color: white; display: block; }
+    .hero-title .line-2 {
+      display: block;
+      background: linear-gradient(90deg, var(--orange), var(--red), var(--purple-soft));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero-desc {
+      max-width: 560px; font-size: 1rem; color: rgba(255,255,255,0.55);
+      line-height: 1.75; font-weight: 300; margin-bottom: 2rem;
+      animation: fadeInUp 0.9s 0.3s ease both;
+    }
+    .hero-actions { animation: fadeInUp 0.9s 0.45s ease both; display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.75rem; color: rgba(255,255,255,0.35);
+      margin-bottom: 1.5rem; letter-spacing: 0.05em;
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--orange); }
+    .breadcrumb i { font-size: 9px; }
+
+    /* Floating service pills on hero */
+    .hero-pills {
+      display: flex; gap: 0.75rem; flex-wrap: wrap;
+      margin-top: 2.5rem;
+      animation: fadeInUp 0.9s 0.6s ease both;
+    }
+    .hero-pill {
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(10px); border-radius: 50px;
+      padding: 8px 18px; font-size: 0.78rem; font-weight: 500;
+      color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 8px;
+      transition: all 0.3s; cursor: default;
+    }
+    .hero-pill:hover { background: rgba(249,115,22,0.15); border-color: rgba(249,115,22,0.4); color: white; transform: translateY(-2px); }
+    .hero-pill i { color: var(--orange); font-size: 12px; }
+
+    /* ===== COURSES SECTION ===== */
+    .courses-section { padding: 120px 0; background: linear-gradient(180deg, var(--blue-deep) 0%, #0d1f3c 100%); position: relative; z-index: 2; }
+    .courses-section::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 1px; background: linear-gradient(90deg, transparent, var(--blue-electric), var(--orange), transparent);
+    }
+    .courses-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 4rem; }
+
+    .course-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px; overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      cursor: pointer; position: relative;
+    }
+    .course-card:hover { transform: translateY(-10px); border-color: transparent; }
+    .cc-blue:hover { box-shadow: 0 25px 50px rgba(29,95,206,0.25), inset 0 0 0 1px rgba(59,130,246,0.4); }
+    .cc-orange:hover { box-shadow: 0 25px 50px rgba(249,115,22,0.25), inset 0 0 0 1px rgba(249,115,22,0.4); }
+    .cc-purple:hover { box-shadow: 0 25px 50px rgba(124,58,237,0.25), inset 0 0 0 1px rgba(168,85,247,0.4); }
+
+    .cc-top-bar { height: 4px; width: 100%; }
+    .cc-blue .cc-top-bar { background: linear-gradient(90deg, var(--blue-bright), var(--blue-electric)); }
+    .cc-orange .cc-top-bar { background: linear-gradient(90deg, var(--orange), var(--red)); }
+    .cc-purple .cc-top-bar { background: linear-gradient(90deg, var(--purple), var(--purple-soft)); }
+
+    .cc-image {
+      height: 200px; position: relative; overflow: hidden;
+    }
+    .cc-image img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.35) saturate(1.1); transition: transform 0.5s, filter 0.5s; }
+    .course-card:hover .cc-image img { transform: scale(1.08); filter: brightness(0.45) saturate(1.3); }
+    .cc-image-overlay { position: absolute; inset: 0; }
+    .cc-blue .cc-image-overlay { background: linear-gradient(180deg, transparent 30%, rgba(10,22,40,0.95) 100%), linear-gradient(135deg, rgba(29,95,206,0.3), transparent); }
+    .cc-orange .cc-image-overlay { background: linear-gradient(180deg, transparent 30%, rgba(10,22,40,0.95) 100%), linear-gradient(135deg, rgba(249,115,22,0.3), transparent); }
+    .cc-purple .cc-image-overlay { background: linear-gradient(180deg, transparent 30%, rgba(10,22,40,0.95) 100%), linear-gradient(135deg, rgba(124,58,237,0.3), transparent); }
+    .cc-badge {
+      position: absolute; top: 1rem; left: 1rem;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 50px;
+      backdrop-filter: blur(10px); display: flex; align-items: center; gap: 6px;
+    }
+
+    .cc-body { padding: 1.5rem; }
+    .cc-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center; font-size: 22px;
+      margin-bottom: 1rem; margin-top: -3.5rem; position: relative; z-index: 1;
+      transition: transform 0.3s;
+    }
+    .course-card:hover .cc-icon { transform: scale(1.1) rotate(-4deg); }
+    .cc-blue .cc-icon { background: linear-gradient(135deg, rgba(59,130,246,0.25), rgba(59,130,246,0.08)); border: 1px solid rgba(59,130,246,0.4); color: #60a5fa; }
+    .cc-orange .cc-icon { background: linear-gradient(135deg, rgba(249,115,22,0.25), rgba(249,115,22,0.08)); border: 1px solid rgba(249,115,22,0.4); color: #fb923c; }
+    .cc-purple .cc-icon { background: linear-gradient(135deg, rgba(168,85,247,0.25), rgba(168,85,247,0.08)); border: 1px solid rgba(168,85,247,0.4); color: #c084fc; }
+
+    .cc-body h3 { font-weight: 700; font-size: 1.3rem; color: white; margin-bottom: 0.5rem; }
+    .cc-body p { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.65; margin-bottom: 1.25rem; }
+
+    .cc-features { list-style: none; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .cc-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+    .cc-feat-dot {
+      width: 18px; height: 18px; border-radius: 6px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 8px; margin-top: 1px;
+    }
+    .cc-blue .cc-feat-dot { background: rgba(59,130,246,0.15); color: #60a5fa; }
+    .cc-orange .cc-feat-dot { background: rgba(249,115,22,0.15); color: #fb923c; }
+    .cc-purple .cc-feat-dot { background: rgba(168,85,247,0.15); color: #c084fc; }
+
+    .cc-cta {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .cc-link {
+      font-size: 0.82rem; font-weight: 600; text-decoration: none;
+      display: flex; align-items: center; gap: 6px; transition: gap 0.2s;
+    }
+    .cc-blue .cc-link { color: #60a5fa; }
+    .cc-orange .cc-link { color: #fb923c; }
+    .cc-purple .cc-link { color: #c084fc; }
+    .cc-link:hover { gap: 10px; }
+    .cc-arrow {
+      width: 32px; height: 32px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; transition: all 0.3s;
+    }
+    .cc-blue .cc-arrow { background: rgba(59,130,246,0.15); color: #60a5fa; }
+    .cc-orange .cc-arrow { background: rgba(249,115,22,0.15); color: #fb923c; }
+    .cc-purple .cc-arrow { background: rgba(168,85,247,0.15); color: #c084fc; }
+    .course-card:hover .cc-arrow { transform: rotate(45deg); }
+
+    /* ===== TRADE TEST SECTION ===== */
+    .tt-section { padding: 120px 0; background: #080f1f; position: relative; z-index: 2; }
+    .tt-section::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 1px; background: linear-gradient(90deg, transparent, var(--purple-soft), var(--blue-electric), transparent);
+    }
+    .tt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+
+    .tt-card {
+      border-radius: 24px; padding: 2.5rem; position: relative; overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      cursor: default;
+    }
+    .tt-card::before {
+      content: ''; position: absolute; inset: 0; border-radius: 24px; opacity: 0; transition: opacity 0.4s;
+    }
+    .tt-main {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+    }
+    .tt-main::before { background: linear-gradient(135deg, rgba(29,95,206,0.12), transparent); }
+    .tt-main:hover { box-shadow: 0 25px 50px rgba(29,95,206,0.2), inset 0 0 0 1px rgba(59,130,246,0.3); transform: translateY(-8px); }
+    .tt-main:hover::before { opacity: 1; }
+
+    .tt-arpl {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+    }
+    .tt-arpl::before { background: linear-gradient(135deg, rgba(249,115,22,0.12), transparent); }
+    .tt-arpl:hover { box-shadow: 0 25px 50px rgba(249,115,22,0.2), inset 0 0 0 1px rgba(249,115,22,0.35); transform: translateY(-8px); }
+    .tt-arpl:hover::before { opacity: 1; }
+
+    .tt-card .tt-header {
+      display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem;
+    }
+    .tt-card-icon {
+      width: 56px; height: 56px; border-radius: 16px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 24px;
+      transition: transform 0.3s;
+    }
+    .tt-card:hover .tt-card-icon { transform: scale(1.1) rotate(-4deg); }
+    .tt-main .tt-card-icon { background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(59,130,246,0.05)); border: 1px solid rgba(59,130,246,0.3); color: #60a5fa; }
+    .tt-arpl .tt-card-icon { background: linear-gradient(135deg, rgba(249,115,22,0.2), rgba(249,115,22,0.05)); border: 1px solid rgba(249,115,22,0.3); color: #fb923c; }
+    .tt-card h3 { font-weight: 700; font-size: 1.4rem; color: white; margin-bottom: 0.3rem; }
+    .tt-card .tt-sub { font-size: 0.75rem; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; text-transform: uppercase; }
+    .tt-card p { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 1.5rem; }
+    .tt-check-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
+    .tt-check-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.85rem; color: rgba(255,255,255,0.65); padding: 0.75rem; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.06); transition: all 0.25s; }
+    .tt-check-list li:hover { background: rgba(255,255,255,0.06); padding-left: 1rem; }
+    .tt-check-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
+    .tt-main .tt-check-icon { background: linear-gradient(135deg, rgba(59,130,246,0.25), rgba(59,130,246,0.08)); color: #60a5fa; }
+    .tt-arpl .tt-check-icon { background: linear-gradient(135deg, rgba(249,115,22,0.25), rgba(249,115,22,0.08)); color: #fb923c; }
+    .tt-check-list li div h4 { font-weight: 600; font-size: 0.85rem; color: white; margin-bottom: 2px; }
+    .tt-check-list li div p { font-size: 0.78rem; color: rgba(255,255,255,0.38); margin: 0; }
+
+    .tt-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
+    .tt-tag { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 12px; border-radius: 50px; }
+
+    /* ===== PROCESS STRIP ===== */
+    .process-section { padding: 100px 0; background: linear-gradient(135deg, #0a1628, #0e1e3a); position: relative; z-index: 2; overflow: hidden; }
+    .process-section::before {
+      content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(29,95,206,0.06), transparent 70%);
+      pointer-events: none;
+    }
+    .process-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-top: 4rem; position: relative; }
+    .process-grid::before {
+      content: ''; position: absolute;
+      top: 32px; left: calc(10% + 20px); right: calc(10% + 20px);
+      height: 2px;
+      background: linear-gradient(90deg, var(--blue-bright), var(--orange), var(--purple-soft));
+      z-index: 0;
+    }
+    .process-step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 0.5rem; position: relative; z-index: 1; cursor: default; transition: transform 0.3s; }
+    .process-step:hover { transform: translateY(-5px); }
+    .ps-num {
+      width: 64px; height: 64px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: white;
+      border: 3px solid var(--blue-deep);
+      margin-bottom: 1.2rem; transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .process-step:hover .ps-num { transform: scale(1.12); }
+    .ps-1 { background: linear-gradient(135deg, var(--blue-bright), var(--blue-electric)); box-shadow: 0 0 20px rgba(29,95,206,0.4); }
+    .ps-2 { background: linear-gradient(135deg, #0e7490, var(--blue-electric)); box-shadow: 0 0 20px rgba(14,116,144,0.4); }
+    .ps-3 { background: linear-gradient(135deg, var(--orange), var(--orange-warm)); box-shadow: 0 0 20px rgba(249,115,22,0.4); }
+    .ps-4 { background: linear-gradient(135deg, var(--red), var(--red-light)); box-shadow: 0 0 20px rgba(220,38,38,0.4); }
+    .ps-5 { background: linear-gradient(135deg, var(--purple), var(--purple-soft)); box-shadow: 0 0 20px rgba(124,58,237,0.4); }
+    .process-step h4 { font-weight: 700; font-size: 0.88rem; color: white; margin-bottom: 0.4rem; }
+    .process-step p { font-size: 0.75rem; color: rgba(255,255,255,0.4); line-height: 1.5; }
+
+    /* ===== THRASS SECTION ===== */
+    .thrass-section { padding: 120px 0; background: #060d1a; position: relative; z-index: 2; overflow: hidden; }
+    .thrass-bg-text {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      font-family: 'Bebas Neue', sans-serif; font-size: clamp(8rem, 20vw, 18rem);
+      color: rgba(255,255,255,0.02); white-space: nowrap; pointer-events: none; letter-spacing: 0.05em;
+    }
+    .thrass-section::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 1px; background: linear-gradient(90deg, transparent, var(--red), var(--orange), transparent);
+    }
+    .thrass-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: center; position: relative; z-index: 2; }
+
+    .thrass-image { height: 540px; border-radius: 28px; overflow: hidden; position: relative; }
+    .thrass-image img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.35) saturate(1.1); transition: transform 0.5s; }
+    .thrass-image:hover img { transform: scale(1.05); }
+    .thrass-image-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(220,38,38,0.25), rgba(249,115,22,0.25)); }
+    .thrass-letters {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem;
+    }
+    .thrass-letter {
+      width: 58px; height: 58px;
+      background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2); border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: white;
+      transition: all 0.3s; cursor: default;
+    }
+    .thrass-letter:hover { background: rgba(249,115,22,0.3); border-color: var(--orange); transform: scale(1.12) rotate(-3deg); }
+    .thrass-image-bottom {
+      position: absolute; bottom: 2rem; left: 2rem; right: 2rem;
+      background: rgba(10,22,40,0.88); backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.12); border-radius: 18px; padding: 1.2rem 1.5rem;
+    }
+    .thrass-image-bottom h4 { font-weight: 700; font-size: 0.92rem; color: white; margin-bottom: 2px; }
+    .thrass-image-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.45); }
+
+    .thrass-features { display: flex; flex-direction: column; gap: 1rem; margin-top: 2.5rem; }
+    .thrass-feat {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px; padding: 1.3rem 1.5rem;
+      display: flex; align-items: flex-start; gap: 1rem;
+      transition: all 0.3s; cursor: default;
+    }
+    .thrass-feat:hover { background: rgba(249,115,22,0.07); border-color: rgba(249,115,22,0.3); transform: translateX(6px); }
+    .tf-icon { width: 46px; height: 46px; border-radius: 13px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .thrass-feat h4 { font-weight: 600; font-size: 0.92rem; color: white; margin-bottom: 3px; }
+    .thrass-feat p { font-size: 0.8rem; color: rgba(255,255,255,0.4); line-height: 1.55; }
+
+    /* ===== WHY US ===== */
+    .why-section { padding: 100px 0; background: linear-gradient(180deg, #060d1a, var(--blue-deep)); position: relative; z-index: 2; }
+    .why-section::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 1px; background: linear-gradient(90deg, transparent, var(--purple-soft), transparent);
+    }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+    .why-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px; padding: 2rem 1.5rem;
+      display: flex; align-items: flex-start; gap: 1.2rem;
+      transition: all 0.4s cubic-bezier(0.23,1,0.32,1); cursor: default; position: relative; overflow: hidden;
+    }
+    .why-card::before { content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity 0.4s; border-radius: 20px; }
+    .why-card:hover::before { opacity: 1; }
+    .why-card:hover { transform: translateY(-8px); border-color: transparent; }
+    .wc-b::before { background: linear-gradient(135deg, rgba(29,95,206,0.15), transparent); }
+    .wc-b:hover { box-shadow: 0 20px 50px rgba(29,95,206,0.2), inset 0 0 0 1px rgba(59,130,246,0.3); }
+    .wc-o::before { background: linear-gradient(135deg, rgba(249,115,22,0.15), transparent); }
+    .wc-o:hover { box-shadow: 0 20px 50px rgba(249,115,22,0.2), inset 0 0 0 1px rgba(249,115,22,0.3); }
+    .wc-r::before { background: linear-gradient(135deg, rgba(220,38,38,0.15), transparent); }
+    .wc-r:hover { box-shadow: 0 20px 50px rgba(220,38,38,0.2), inset 0 0 0 1px rgba(220,38,38,0.3); }
+    .wc-p::before { background: linear-gradient(135deg, rgba(124,58,237,0.15), transparent); }
+    .wc-p:hover { box-shadow: 0 20px 50px rgba(124,58,237,0.2), inset 0 0 0 1px rgba(124,58,237,0.3); }
+    .wc-g::before { background: linear-gradient(135deg, rgba(16,185,129,0.15), transparent); }
+    .wc-g:hover { box-shadow: 0 20px 50px rgba(16,185,129,0.2), inset 0 0 0 1px rgba(16,185,129,0.3); }
+    .wc-c::before { background: linear-gradient(135deg, rgba(14,116,144,0.15), transparent); }
+    .wc-c:hover { box-shadow: 0 20px 50px rgba(14,116,144,0.2), inset 0 0 0 1px rgba(14,116,144,0.3); }
+    .why-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; transition: transform 0.3s; }
+    .why-card:hover .why-icon { transform: scale(1.1) rotate(-4deg); }
+    .why-card h3 { font-weight: 700; font-size: 0.95rem; color: white; margin-bottom: 0.4rem; }
+    .why-card p { font-size: 0.82rem; color: rgba(255,255,255,0.4); line-height: 1.6; }
+
+    /* ===== CTA ===== */
+    .cta-section { padding: 100px 0; position: relative; overflow: hidden; z-index: 2; }
+    .cta-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=1800&q=80'); background-size: cover; background-position: center 40%; filter: brightness(0.18) saturate(1.1); }
+    .cta-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,22,40,0.98) 30%, rgba(10,22,40,0.55) 100%); }
+    .cta-content { position: relative; z-index: 10; }
+    .cta-inner { display: flex; justify-content: space-between; align-items: center; gap: 3rem; flex-wrap: wrap; }
+    .contact-chip { display: inline-flex; align-items: center; gap: 10px; background: var(--glass); border: 1px solid var(--glass-border); backdrop-filter: blur(15px); padding: 12px 24px; border-radius: 50px; font-size: 0.88rem; color: white; text-decoration: none; font-weight: 500; transition: all 0.3s; }
+    .contact-chip:hover { background: rgba(249,115,22,0.2); border-color: var(--orange); transform: translateY(-3px); }
+    .contact-chip i { color: var(--orange); }
+    .cta-contacts { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* ===== FOOTER ===== */
+    footer { background: #040a14; padding: 60px 0 30px; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 4rem; margin-bottom: 3rem; }
+    .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.35); line-height: 1.7; margin-top: 1rem; max-width: 280px; }
+    .footer-col h5 { font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.5); margin-bottom: 1rem; font-family: 'Syne', sans-serif; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.6rem; }
+    .footer-col ul li a { color: rgba(255,255,255,0.35); font-size: 0.88rem; text-decoration: none; transition: color 0.2s, padding-left 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+    .footer-col ul li a:hover { color: var(--orange); padding-left: 4px; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.2); }
+    .footer-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .footer-tag { font-size: 0.7rem; padding: 3px 10px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.3); }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .courses-grid { grid-template-columns: 1fr 1fr; }
+      .tt-grid { grid-template-columns: 1fr; }
+      .thrass-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+      .process-grid::before { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .courses-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .cta-inner { flex-direction: column; }
+      .cursor-dot, .cursor-ring { display: none; }
+    }
+    @media (max-width: 480px) {
+      .why-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
-<body class="antialiased">
+<body>
 
-  <!-- ========== NAVBAR with LOGIN ========== -->
-  <header class="sticky top-0 z-50 bg-white/85 backdrop-blur-md shadow-sm border-b border-gray-200/70">
-    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center py-3 md:py-4">
-        <div class="flex items-center space-x-2">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-700 via-orange-500 to-red-500 flex items-center justify-center shadow-md">
-            <i class="fas fa-wrench text-white text-sm"></i>
-          </div>
-          <div>
-            <h1 class="text-xl md:text-2xl font-extrabold tracking-tight">
-              <span class="bg-gradient-to-r from-blue-800 via-orange-600 to-purple-600 bg-clip-text text-transparent">Next Level</span>
-              <span class="text-gray-800"> Skills</span>
-            </h1>
-            <p class="text-[11px] md:text-xs text-gray-500 -mt-1">Academy · Trade Test Centre</p>
-          </div>
-        </div>
-        <div class="hidden md:flex items-center space-x-7">
-          <a href="index.html" class="nav-link text-gray-700 font-medium text-sm">Home</a>
-          <a href="about.html" class="nav-link text-gray-700 font-medium text-sm">About</a>
-          <a href="services.html" class="nav-link text-orange-600 font-semibold text-sm border-b-2 border-orange-500 pb-0.5">Services</a>
-          <a href="#" class="nav-link text-gray-700 font-medium text-sm">Trade Test</a>
-          <a href="#" class="nav-link text-gray-700 font-medium text-sm">ARPL</a>
-          <a href="#" class="nav-link text-gray-700 font-medium text-sm">Contact</a>
-        </div>
-        <div class="flex items-center gap-3">
-          <a href="portal.html" class="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white px-5 py-2 rounded-full text-sm font-semibold shadow-md transition-all duration-200 flex items-center gap-2">
-            <i class="fas fa-sign-in-alt text-xs"></i> Login
-          </a>
-          <button id="mobileMenuBtn" class="md:hidden text-gray-700 focus:outline-none text-2xl">
-            <i class="fas fa-bars"></i>
-          </button>
-        </div>
-      </div>
-      <div id="mobileMenu" class="md:hidden hidden flex-col pb-4 space-y-3">
-        <a href="index.html" class="block text-gray-800 font-medium py-1 border-b border-gray-100">Home</a>
-        <a href="about.html" class="block text-gray-800 font-medium py-1 border-b border-gray-100">About</a>
-        <a href="services.html" class="block text-orange-600 font-semibold py-1 border-b border-gray-100">Services</a>
-        <a href="#" class="block text-gray-800 font-medium py-1 border-b border-gray-100">Trade Test</a>
-        <a href="#" class="block text-gray-800 font-medium py-1 border-b border-gray-100">ARPL</a>
-        <a href="#" class="block text-gray-800 font-medium py-1">Contact</a>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" id="mobileNavClose"><i class="fas fa-times"></i></button>
+    <a href="index.html">Home</a>
+    <a href="#">About</a>
+    <a href="services.html" style="color: var(--orange);">Services</a>
+    <a href="#">Trade Test</a>
+    <a href="#">ARPL</a>
+    <a href="#">THRASS</a>
+    <a href="#">Contact</a>
+    <a href="portal.html" style="color: var(--orange);">Student Portal</a>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav id="mainNav">
+    <div class="nav-logo">
+      <div class="nav-logo-icon"><i class="fas fa-wrench" style="color: white;"></i></div>
+      <div>
+        <div class="nav-brand-name">Next Level Skills</div>
+        <div class="nav-brand-sub">Academy · Trade Test Centre</div>
       </div>
     </div>
-  </header>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="#">About</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="#">Trade Test</a>
+      <a href="#">ARPL</a>
+      <a href="#">THRASS</a>
+      <a href="#">Contact</a>
+    </div>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <a href="portal.html" class="nav-login"><i class="fas fa-sign-in-alt" style="font-size: 0.75rem;"></i> Student Portal</a>
+      <button class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
 
-  <main>
-    <!-- ========== HERO SECTION ========== -->
-    <section class="relative overflow-hidden pt-20 pb-16 md:pt-28 md:pb-20 bg-gradient-to-br from-white via-blue-50/30 to-orange-50/30">
-      <div class="absolute inset-0 pointer-events-none">
-        <div class="absolute top-10 right-10 w-80 h-80 bg-orange-200/30 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-5 left-5 w-72 h-72 bg-purple-200/20 rounded-full blur-3xl"></div>
-        <div class="absolute top-1/2 left-1/3 w-64 h-64 bg-red-100/30 rounded-full blur-2xl"></div>
-      </div>
-      <div class="max-w-7xl mx-auto px-5 text-center relative z-2">
-        <div class="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-5 py-2 rounded-full shadow-sm mb-5">
-          <i class="fas fa-cogs text-orange-500 text-sm"></i>
-          <span class="text-xs font-bold text-gray-700">Comprehensive Solutions</span>
+  <!-- ==================== HERO ==================== -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <i class="fas fa-angle-right"></i>
+          <span style="color: var(--orange-warm);">Services</span>
         </div>
-        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">Our <span class="gradient-text">Services</span></h1>
-        <p class="text-gray-600 max-w-2xl mx-auto mt-4 text-lg">From specialized automotive training to educator development via THRASS®, we provide end-to-end skill solutions.</p>
+        <div class="hero-badge"><i class="fas fa-cogs"></i> Comprehensive Solutions</div>
+        <h1 class="hero-title">
+          <span class="line-1">Our</span>
+          <span class="line-2">Services</span>
+        </h1>
+        <p class="hero-desc">From accredited automotive trades to THRASS® educator publishing — end-to-end skill solutions that transform careers and communities.</p>
+        <div class="hero-actions">
+          <a href="#courses" class="btn-primary"><i class="fas fa-tools"></i> View Courses</a>
+          <a href="#trade-test" class="btn-ghost"><i class="fas fa-certificate"></i> Trade Test Info</a>
+        </div>
+        <div class="hero-pills">
+          <div class="hero-pill"><i class="fas fa-oil-can"></i> Motor Mechanic</div>
+          <div class="hero-pill"><i class="fas fa-truck-moving"></i> Diesel Mechanic</div>
+          <div class="hero-pill"><i class="fas fa-car-battery"></i> Auto Electrician</div>
+          <div class="hero-pill"><i class="fas fa-certificate"></i> Trade Test Centre</div>
+          <div class="hero-pill"><i class="fas fa-route"></i> ARPL Services</div>
+          <div class="hero-pill"><i class="fas fa-spell-check"></i> THRASS®</div>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ========== AUTOMOTIVE TRADES (3 MAIN COURSES) ========== -->
-    <section class="py-16 px-5 max-w-7xl mx-auto">
-      <div class="text-center mb-12">
-        <span class="text-orange-600 font-semibold tracking-wide text-sm bg-orange-100 px-4 py-1.5 rounded-full"><i class="fas fa-tools mr-1"></i> Core Trades</span>
-        <h2 class="text-3xl md:text-4xl font-bold mt-4 text-gray-800">Accredited <span class="gradient-text">Automotive Programmes</span></h2>
-        <p class="text-gray-500 max-w-2xl mx-auto mt-2">Industry-aligned curricula, hands-on workshops, and expert mentorship.</p>
+  <!-- ==================== COURSES ==================== -->
+  <section class="courses-section" id="courses">
+    <div class="container">
+      <div class="reveal" style="text-align: center; margin-bottom: 0.5rem;">
+        <div class="section-label" style="justify-content: center;"><i class="fas fa-tools"></i> Core Trades</div>
+        <h2 class="section-title">Accredited <span style="background: linear-gradient(90deg, var(--orange), var(--red), var(--purple-soft)); -webkit-background-clip: text; background-clip: text; color: transparent;">Automotive Programmes</span></h2>
       </div>
+      <p class="section-sub reveal reveal-delay-1" style="text-align: center; margin: 1rem auto 0; max-width: 520px;">Industry-aligned curricula, real workshop environments, and expert mentorship — from Level 1 through Red Seal certification.</p>
 
-      <div class="grid md:grid-cols-3 gap-8">
+      <div class="courses-grid">
         <!-- Motor Mechanic -->
-        <div class="service-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
-          <div class="h-2 bg-gradient-to-r from-blue-600 to-orange-500"></div>
-          <div class="p-6">
-            <div class="w-16 h-16 rounded-2xl icon-gradient-bg flex items-center justify-center mb-5 shadow-sm">
-              <i class="fas fa-oil-can text-3xl text-blue-700"></i>
+        <div class="course-card cc-blue reveal">
+          <div class="cc-top-bar"></div>
+          <div class="cc-image">
+            <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&q=80" alt="Motor Mechanic">
+            <div class="cc-image-overlay"></div>
+            <div class="cc-badge" style="background: rgba(59,130,246,0.2); border: 1px solid rgba(59,130,246,0.35); color: #93c5fd;">
+              <i class="fas fa-circle" style="font-size: 6px;"></i> Motor Mechanic
             </div>
-            <h3 class="text-2xl font-bold text-gray-800">Motor Mechanic</h3>
-            <p class="text-gray-500 mt-2 text-sm leading-relaxed">Complete training from basic maintenance to advanced diagnostics, engine repair, and modern vehicle systems. Get ready for the trade test and a successful career.</p>
-            <ul class="mt-4 space-y-1 text-sm text-gray-600">
-              <li><i class="fas fa-check-circle text-orange-500 text-xs mr-2"></i> Engine & transmission overhaul</li>
-              <li><i class="fas fa-check-circle text-orange-500 text-xs mr-2"></i> Diagnostic & electronic systems</li>
-              <li><i class="fas fa-check-circle text-orange-500 text-xs mr-2"></i> Brakes, suspension & steering</li>
+          </div>
+          <div class="cc-body">
+            <div class="cc-icon"><i class="fas fa-oil-can"></i></div>
+            <h3>Motor Mechanic</h3>
+            <p>Comprehensive training from basic maintenance to advanced diagnostics, engine repair, and modern vehicle systems — built for a successful Red Seal career.</p>
+            <ul class="cc-features">
+              <li><div class="cc-feat-dot"><i class="fas fa-check"></i></div> Engine & transmission overhaul</li>
+              <li><div class="cc-feat-dot"><i class="fas fa-check"></i></div> Diagnostic & electronic systems</li>
+              <li><div class="cc-feat-dot"><i class="fas fa-check"></i></div> Brakes, suspension & steering</li>
+              <li><div class="cc-feat-dot"><i class="fas fa-check"></i></div> Red Seal trade test preparation</li>
             </ul>
-            <div class="mt-6 flex items-center text-orange-600 font-medium text-sm"><span>Enquire now →</span></div>
+            <div class="cc-cta">
+              <a href="#" class="cc-link">Enquire now <i class="fas fa-arrow-right"></i></a>
+              <div class="cc-arrow"><i class="fas fa-arrow-right"></i></div>
+            </div>
           </div>
         </div>
+
         <!-- Diesel Mechanic -->
-        <div class="service-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
-          <div class="h-2 bg-gradient-to-r from-orange-600 to-red-500"></div>
-          <div class="p-6">
-            <div class="w-16 h-16 rounded-2xl icon-gradient-bg flex items-center justify-center mb-5 shadow-sm">
-              <i class="fas fa-truck-moving text-3xl text-orange-700"></i>
+        <div class="course-card cc-orange reveal reveal-delay-1">
+          <div class="cc-top-bar"></div>
+          <div class="cc-image">
+            <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80" alt="Diesel Mechanic">
+            <div class="cc-image-overlay"></div>
+            <div class="cc-badge" style="background: rgba(249,115,22,0.2); border: 1px solid rgba(249,115,22,0.35); color: #fdba74;">
+              <i class="fas fa-circle" style="font-size: 6px;"></i> Diesel Mechanic
             </div>
-            <h3 class="text-2xl font-bold text-gray-800">Diesel Mechanic</h3>
-            <p class="text-gray-500 mt-2 text-sm leading-relaxed">Specialized training for heavy-duty diesel engines, fuel injection systems, and commercial vehicle maintenance. Built for the transport and mining sectors.</p>
-            <ul class="mt-4 space-y-1 text-sm text-gray-600">
-              <li><i class="fas fa-check-circle text-orange-500 text-xs mr-2"></i> Diesel engine diagnostics</li>
-              <li><i class="fas fa-check-circle text-orange-500 text-xs mr-2"></i> Common rail & electronic management</li>
-              <li><i class="fas fa-check-circle text-orange-500 text-xs mr-2"></i> Overhaul & preventive maintenance</li>
+          </div>
+          <div class="cc-body">
+            <div class="cc-icon"><i class="fas fa-truck-moving"></i></div>
+            <h3>Diesel Mechanic</h3>
+            <p>Specialized training for heavy-duty diesel engines, fuel injection, and commercial vehicle maintenance — built for transport, construction, and mining.</p>
+            <ul class="cc-features">
+              <li><div class="cc-feat-dot"><i class="fas fa-check"></i></div> Diesel engine diagnostics</li>
+              <li><div class="cc-feat-dot"><i class="fas fa-check"></i></div> Common rail & electronic management</li>
+              <li><div class="cc-feat-dot"><i class="fas fa-check"></i></div> Complete overhaul & maintenance</li>
+              <li><div class="cc-feat-dot"><i class="fas fa-check"></i></div> Heavy vehicle systems</li>
             </ul>
-            <div class="mt-6 flex items-center text-orange-600 font-medium text-sm"><span>Enquire now →</span></div>
+            <div class="cc-cta">
+              <a href="#" class="cc-link">Enquire now <i class="fas fa-arrow-right"></i></a>
+              <div class="cc-arrow"><i class="fas fa-arrow-right"></i></div>
+            </div>
           </div>
         </div>
+
         <!-- Auto Electrician -->
-        <div class="service-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
-          <div class="h-2 bg-gradient-to-r from-purple-600 to-pink-500"></div>
-          <div class="p-6">
-            <div class="w-16 h-16 rounded-2xl icon-gradient-bg flex items-center justify-center mb-5 shadow-sm">
-              <i class="fas fa-car-battery text-3xl text-purple-700"></i>
+        <div class="course-card cc-purple reveal reveal-delay-2">
+          <div class="cc-top-bar"></div>
+          <div class="cc-image">
+            <img src="https://images.unsplash.com/photo-1630818895023-0e91e979d676?w=800&q=80" alt="Auto Electrician">
+            <div class="cc-image-overlay"></div>
+            <div class="cc-badge" style="background: rgba(168,85,247,0.2); border: 1px solid rgba(168,85,247,0.35); color: #d8b4fe;">
+              <i class="fas fa-circle" style="font-size: 6px;"></i> Auto Electrician
             </div>
-            <h3 class="text-2xl font-bold text-gray-800">Automotive Electrician</h3>
-            <p class="text-gray-500 mt-2 text-sm leading-relaxed">Master modern vehicle electronics, wiring diagrams, sensors, and hybrid/electric vehicle systems. High-demand specialization.</p>
-            <ul class="mt-4 space-y-1 text-sm text-gray-600">
-              <li><i class="fas fa-check-circle text-orange-500 text-xs mr-2"></i> CAN bus & advanced diagnostics</li>
-              <li><i class="fas fa-check-circle text-orange-500 text-xs mr-2"></i> Battery & charging systems</li>
-              <li><i class="fas fa-check-circle text-orange-500 text-xs mr-2"></i> Electric vehicle fundamentals</li>
+          </div>
+          <div class="cc-body">
+            <div class="cc-icon"><i class="fas fa-car-battery"></i></div>
+            <h3>Automotive Electrician</h3>
+            <p>Master modern vehicle electronics, wiring systems, sensors, and hybrid/EV technology. A high-demand specialization for the future of mobility.</p>
+            <ul class="cc-features">
+              <li><div class="cc-feat-dot"><i class="fas fa-check"></i></div> CAN bus & advanced diagnostics</li>
+              <li><div class="cc-feat-dot"><i class="fas fa-check"></i></div> Battery & charging systems</li>
+              <li><div class="cc-feat-dot"><i class="fas fa-check"></i></div> Wiring diagrams & sensors</li>
+              <li><div class="cc-feat-dot"><i class="fas fa-check"></i></div> Electric vehicle fundamentals</li>
             </ul>
-            <div class="mt-6 flex items-center text-orange-600 font-medium text-sm"><span>Enquire now →</span></div>
+            <div class="cc-cta">
+              <a href="#" class="cc-link">Enquire now <i class="fas fa-arrow-right"></i></a>
+              <div class="cc-arrow"><i class="fas fa-arrow-right"></i></div>
+            </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ========== TRADE TEST CENTRE & ARPL SERVICES ========== -->
-    <section class="py-16 bg-gradient-to-r from-blue-50 to-indigo-50/60">
-      <div class="max-w-7xl mx-auto px-5">
-        <div class="grid lg:grid-cols-2 gap-10 items-center">
-          <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl hover:shadow-2xl transition">
-            <div class="flex items-center gap-3 mb-4">
-              <i class="fas fa-certificate text-4xl text-blue-700"></i>
-              <h3 class="text-2xl font-bold text-gray-800">Accredited Trade Test Centre</h3>
+  <!-- ==================== TRADE TEST & ARPL ==================== -->
+  <section class="tt-section" id="trade-test">
+    <div class="container">
+      <div class="reveal" style="text-align: center; margin-bottom: 3.5rem;">
+        <div class="section-label" style="justify-content: center;"><i class="fas fa-certificate"></i> Accreditation Services</div>
+        <h2 class="section-title">Trade Tests & <span style="color: var(--orange);">ARPL Pathway</span></h2>
+        <p class="section-sub" style="text-align: center; margin: 0.75rem auto 0; max-width: 520px;">Official accredited testing and recognition of prior learning — your gateway to formal artisan qualification.</p>
+      </div>
+      <div class="tt-grid">
+        <!-- Trade Test -->
+        <div class="tt-card tt-main reveal">
+          <div class="tt-header">
+            <div class="tt-card-icon"><i class="fas fa-certificate"></i></div>
+            <div>
+              <h3>Trade Test Centre</h3>
+              <div class="tt-sub">merSETA Accredited · QCTO Aligned</div>
             </div>
-            <p class="text-gray-600">We are an official Trade Test Centre (TTC) for Motor Mechanic, Diesel Mechanic, and Automotive Electrician trades. Our assessments meet merSETA and QCTO standards, ensuring fair, transparent, and credible testing.</p>
-            <ul class="mt-5 space-y-2">
-              <li class="flex gap-2"><i class="fas fa-check-circle text-orange-500 mt-1"></i> Final Red Seal trade tests</li>
-              <li class="flex gap-2"><i class="fas fa-check-circle text-orange-500 mt-1"></i> Level testing for legacy trades</li>
-              <li class="flex gap-2"><i class="fas fa-check-circle text-orange-500 mt-1"></i> Formal ARPL assessments</li>
-            </ul>
-            <a href="#" class="inline-block mt-6 bg-blue-800 hover:bg-blue-900 text-white px-6 py-2.5 rounded-full text-sm font-semibold shadow transition"><i class="fas fa-hammer mr-2"></i> Book a Trade Test</a>
           </div>
+          <p>We are an official accredited Trade Test Centre (TTC) for Motor Mechanic, Diesel Mechanic, and Automotive Electrician trades. Our assessments meet the highest national standards for fairness and credibility.</p>
+          <ul class="tt-check-list">
+            <li>
+              <div class="tt-check-icon"><i class="fas fa-layer-group"></i></div>
+              <div><h4>Legacy Trade Level Testing</h4><p>Structured progression with official assessment at each level.</p></div>
+            </li>
+            <li>
+              <div class="tt-check-icon"><i class="fas fa-star"></i></div>
+              <div><h4>Final Red Seal Trade Tests</h4><p>The nationally recognised gold-standard artisan qualification.</p></div>
+            </li>
+            <li>
+              <div class="tt-check-icon"><i class="fas fa-scale-balanced"></i></div>
+              <div><h4>Fair & Transparent Assessment</h4><p>Independent assessors, standardised criteria, full candidate feedback.</p></div>
+            </li>
+            <li>
+              <div class="tt-check-icon"><i class="fas fa-calendar-check"></i></div>
+              <div><h4>Flexible Scheduling</h4><p>Tests conducted at both our Midrand and Pinetown campuses.</p></div>
+            </li>
+          </ul>
+          <div class="tt-tags">
+            <span class="tt-tag" style="background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.3); color: #93c5fd;">Motor Mechanic</span>
+            <span class="tt-tag" style="background: rgba(249,115,22,0.12); border: 1px solid rgba(249,115,22,0.3); color: #fdba74;">Diesel Mechanic</span>
+            <span class="tt-tag" style="background: rgba(168,85,247,0.12); border: 1px solid rgba(168,85,247,0.3); color: #d8b4fe;">Auto Electrician</span>
+          </div>
+          <a href="#" class="btn-primary" style="margin-top: 1.5rem;"><i class="fas fa-calendar-check"></i> Book Trade Test</a>
+        </div>
 
-          <div class="bg-gradient-to-br from-orange-50 to-red-50/50 rounded-3xl p-8 shadow-xl border-l-4 border-orange-500">
-            <div class="flex items-center gap-3 mb-4">
-              <i class="fas fa-user-graduate text-4xl text-orange-600"></i>
-              <h3 class="text-2xl font-bold text-gray-800">ARPL Services</h3>
+        <!-- ARPL -->
+        <div class="tt-card tt-arpl reveal reveal-delay-1">
+          <div class="tt-header">
+            <div class="tt-card-icon"><i class="fas fa-route"></i></div>
+            <div>
+              <h3>ARPL Services</h3>
+              <div class="tt-sub">Recognition of Prior Learning</div>
             </div>
-            <p class="text-gray-700">Artisan Recognition of Prior Learning (ARPL) opens doors for experienced candidates without formal apprenticeships. We provide end-to-end guidance — from application phase to trade test.</p>
-            <div class="mt-5 bg-white/60 rounded-xl p-4">
-              <i class="fas fa-lightbulb text-orange-500 mr-2"></i>
-              <span class="text-sm font-medium">✔ Eligibility assessment  ✔ Portfolio of evidence support  ✔ Trade test preparation</span>
-            </div>
-            <a href="#" class="inline-flex items-center gap-2 mt-6 text-orange-700 font-semibold border-b border-orange-400 hover:border-orange-700"><span>Start your ARPL journey</span> <i class="fas fa-arrow-right text-sm"></i></a>
           </div>
+          <p>The Artisan Recognition of Prior Learning pathway opens doors for experienced tradespeople without formal apprenticeships. We provide end-to-end guidance — from initial assessment to Red Seal certification.</p>
+          <ul class="tt-check-list">
+            <li>
+              <div class="tt-check-icon"><i class="fas fa-magnifying-glass"></i></div>
+              <div><h4>Eligibility Assessment</h4><p>We evaluate your experience and determine your ARPL readiness.</p></div>
+            </li>
+            <li>
+              <div class="tt-check-icon"><i class="fas fa-folder-open"></i></div>
+              <div><h4>Portfolio of Evidence</h4><p>We guide you through documenting skills, work history, and competencies.</p></div>
+            </li>
+            <li>
+              <div class="tt-check-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+              <div><h4>Bridging Programme</h4><p>Targeted upskilling to close any gaps before formal assessment.</p></div>
+            </li>
+            <li>
+              <div class="tt-check-icon"><i class="fas fa-award"></i></div>
+              <div><h4>Trade Test & Certification</h4><p>Sit your Red Seal test and receive your formal artisan qualification.</p></div>
+            </li>
+          </ul>
+          <div class="tt-tags">
+            <span class="tt-tag" style="background: rgba(249,115,22,0.12); border: 1px solid rgba(249,115,22,0.3); color: #fdba74;">merSETA Aligned</span>
+            <span class="tt-tag" style="background: rgba(29,95,206,0.12); border: 1px solid rgba(29,95,206,0.3); color: #93c5fd;">QCTO Ready</span>
+          </div>
+          <a href="#" class="btn-primary" style="margin-top: 1.5rem; background: linear-gradient(135deg, var(--orange), #ea580c);"><i class="fas fa-arrow-right-to-bracket"></i> Start ARPL Journey</a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ========== CREATIVE THRASS METHODOLOGY SECTION ========== -->
-    <section class="py-20 px-5 max-w-7xl mx-auto">
-      <div class="thrass-badge rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-80 h-80 bg-orange-100/60 rounded-full blur-2xl"></div>
-        <div class="relative z-2 flex flex-col lg:flex-row gap-10 items-center">
-          <div class="flex-1 text-center lg:text-left">
-            <div class="inline-block px-3 py-1 bg-red-100 rounded-full text-red-700 text-xs font-bold mb-3"><i class="fas fa-chalkboard-teacher mr-1"></i> Educators' Wing</div>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800">THRASS® Methodology</h2>
-            <p class="text-gray-700 mt-3 text-lg font-semibold">Teaching Handwriting, Reading And Spelling Skills</p>
-            <p class="text-gray-600 mt-3 leading-relaxed">Beyond automotive, we publish specialized teacher training resources based on the internationally acclaimed THRASS® phonics approach. This multi-sensory system empowers educators to build strong literacy foundations — from handwriting fluency to phonetic spelling mastery. Our workshops and materials are designed for schools, colleges, and literacy advocates.</p>
-            <div class="flex flex-wrap gap-3 mt-6 justify-center lg:justify-start">
-              <span class="bg-white rounded-full px-4 py-1.5 text-sm shadow-sm"><i class="fas fa-pencil-alt text-orange-500 mr-1"></i> Handwriting</span>
-              <span class="bg-white rounded-full px-4 py-1.5 text-sm shadow-sm"><i class="fas fa-book-open text-red-500 mr-1"></i> Reading fluency</span>
-              <span class="bg-white rounded-full px-4 py-1.5 text-sm shadow-sm"><i class="fas fa-spell-check text-blue-600 mr-1"></i> Spelling mastery</span>
-            </div>
-            <a href="#" class="inline-flex items-center gap-2 mt-7 orange-btn text-white px-6 py-2.5 rounded-full font-medium shadow-md transition"><i class="fas fa-graduation-cap"></i> Explore THRASS Training</a>
+  <!-- ==================== PROCESS ==================== -->
+  <section class="process-section">
+    <div class="container">
+      <div class="reveal" style="text-align: center;">
+        <div class="section-label" style="justify-content: center;"><i class="fas fa-map-signs"></i> How It Works</div>
+        <h2 class="section-title">Your Path to <span style="color: var(--orange);">Qualification</span></h2>
+        <p class="section-sub" style="text-align: center; max-width: 480px; margin: 0.75rem auto 0;">A clear, supported journey from enrolment to Red Seal certification.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-step reveal">
+          <div class="ps-num ps-1">1</div>
+          <h4>Enquire & Apply</h4>
+          <p>Contact us, discuss your goals, and submit your application.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-1">
+          <div class="ps-num ps-2">2</div>
+          <h4>Assessment & Placement</h4>
+          <p>We assess your current level and place you on the right programme.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="ps-num ps-3">3</div>
+          <h4>Hands-on Training</h4>
+          <p>Workshop-based learning with expert instructors and live vehicles.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="ps-num ps-4">4</div>
+          <h4>Trade Test Prep</h4>
+          <p>Focused preparation with mock assessments and targeted support.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-4">
+          <div class="ps-num ps-5">5</div>
+          <h4>Red Seal Certification</h4>
+          <p>Sit your official trade test and earn your nationally recognised qualification.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== THRASS ==================== -->
+  <section class="thrass-section" id="thrass">
+    <div class="thrass-bg-text">THRASS</div>
+    <div class="container">
+      <div class="thrass-grid">
+        <div class="thrass-image reveal">
+          <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80" alt="THRASS Education">
+          <div class="thrass-image-overlay"></div>
+          <div class="thrass-letters">
+            <div class="thrass-letter">T</div>
+            <div class="thrass-letter">H</div>
+            <div class="thrass-letter">R</div>
+            <div class="thrass-letter">A</div>
+            <div class="thrass-letter">S</div>
+            <div class="thrass-letter">S</div>
           </div>
-          <div class="flex-1 flex justify-center">
-            <div class="w-56 h-56 md:w-72 md:h-72 bg-gradient-to-br from-white to-orange-100 rounded-full flex items-center justify-center shadow-2xl border-4 border-white">
-              <div class="text-center">
-                <i class="fas fa-chalkboard-user text-5xl text-orange-500 mb-2"></i>
-                <p class="font-bold text-gray-800 text-sm">THRASS®</p>
-                <p class="text-xs text-gray-500">Phonics for life</p>
+          <div class="thrass-image-bottom">
+            <h4>THRASS® Methodology</h4>
+            <p>Teaching Handwriting, Reading And Spelling Skills</p>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <div class="section-label" style="background: rgba(220,38,38,0.1); border-color: rgba(220,38,38,0.3); color: #ef4444;"><i class="fas fa-chalkboard-teacher"></i> Education Publishing</div>
+          <h2 class="section-title" style="margin-bottom: 1rem;">
+            Building Educators.<br>
+            <span style="background: linear-gradient(90deg, var(--orange), var(--red)); -webkit-background-clip: text; background-clip: text; color: transparent;">Building Minds.</span>
+          </h2>
+          <p class="section-sub" style="max-width: 100%; margin-bottom: 2.5rem;">Beyond automotive, Next Level Skills Academy publishes specialist training materials for educators based on the internationally acclaimed <strong style="color: white;">THRASS®</strong> phonics approach — a multi-sensory system that empowers educators to build strong literacy foundations in their learners.</p>
+          <div class="thrass-features">
+            <div class="thrass-feat">
+              <div class="tf-icon" style="background: linear-gradient(135deg, rgba(249,115,22,0.2), rgba(249,115,22,0.05)); border: 1px solid rgba(249,115,22,0.3); color: var(--orange);"><i class="fas fa-pen-fancy"></i></div>
+              <div>
+                <h4>Handwriting Fluency</h4>
+                <p>Structured motor-skill development programmes for early learners, aligned to national curricula.</p>
+              </div>
+            </div>
+            <div class="thrass-feat">
+              <div class="tf-icon" style="background: linear-gradient(135deg, rgba(220,38,38,0.2), rgba(220,38,38,0.05)); border: 1px solid rgba(220,38,38,0.3); color: var(--red-light);"><i class="fas fa-book-open-reader"></i></div>
+              <div>
+                <h4>Reading & Phonics Mastery</h4>
+                <p>Phonetic-based reading methodology grounded in proven literacy science and classroom research.</p>
+              </div>
+            </div>
+            <div class="thrass-feat">
+              <div class="tf-icon" style="background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(59,130,246,0.05)); border: 1px solid rgba(59,130,246,0.3); color: var(--blue-electric);"><i class="fas fa-chalkboard"></i></div>
+              <div>
+                <h4>Teacher Training & Resources</h4>
+                <p>Published materials and CPD workshops for classroom educators at all levels.</p>
+              </div>
+            </div>
+            <div class="thrass-feat">
+              <div class="tf-icon" style="background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(124,58,237,0.05)); border: 1px solid rgba(124,58,237,0.3); color: var(--purple-soft);"><i class="fas fa-spell-check"></i></div>
+              <div>
+                <h4>Spelling Skills Development</h4>
+                <p>Systematic spelling acquisition through phonetic patterns and multisensory reinforcement.</p>
               </div>
             </div>
           </div>
+          <a href="#" class="btn-ghost" style="margin-top: 2rem; border-color: rgba(220,38,38,0.4);"><i class="fas fa-graduation-cap"></i> Explore THRASS Resources</a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ========== ADDITIONAL SERVICES (Facility + Brands) ========== -->
-    <section class="py-16 bg-white">
-      <div class="max-w-7xl mx-auto px-5">
-        <div class="text-center mb-10">
-          <h2 class="text-3xl font-bold text-gray-800">Why Industry Trusts <span class="gradient-text">Us</span></h2>
-          <p class="text-gray-500">Modern infrastructure, premium tools & brand partnerships</p>
+  <!-- ==================== WHY US ==================== -->
+  <section class="why-section">
+    <div class="container">
+      <div style="text-align: center;" class="reveal">
+        <div class="section-label" style="justify-content: center;"><i class="fas fa-trophy"></i> Why Choose Us</div>
+        <h2 class="section-title">The Next Level <span style="color: var(--orange);">Difference</span></h2>
+        <p class="section-sub" style="text-align: center; max-width: 480px; margin: 0.75rem auto 0;">State-of-the-art facilities, real workshop environments, and industry experts who've lived the trade.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card wc-b reveal">
+          <div class="why-icon" style="background: linear-gradient(135deg, rgba(29,95,206,0.2), rgba(29,95,206,0.05)); border: 1px solid rgba(29,95,206,0.3); color: #60a5fa;"><i class="fas fa-user-graduate"></i></div>
+          <div><h3>Expert Instructors</h3><p>Seasoned artisans with decades of real-world field experience leading every session.</p></div>
         </div>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-gradient-to-b from-gray-50 to-white shadow-sm hover:shadow-md transition">
-            <i class="fas fa-microchip text-4xl text-blue-600 mb-3"></i>
-            <h4 class="font-bold text-lg">State-of-the-art workshops</h4>
-            <p class="text-gray-500 text-sm">Diagnostic equipment, EV training rigs, and real vehicle models.</p>
-          </div>
-          <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-gradient-to-b from-gray-50 to-white shadow-sm hover:shadow-md transition">
-            <i class="fas fa-chalkboard-user text-4xl text-orange-500 mb-3"></i>
-            <h4 class="font-bold text-lg">Experienced facilitators</h4>
-            <p class="text-gray-500 text-sm">Qualified artisans with decades of workshop and training expertise.</p>
-          </div>
-          <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-gradient-to-b from-gray-50 to-white shadow-sm hover:shadow-md transition">
-            <i class="fas fa-handshake text-4xl text-red-500 mb-3"></i>
-            <h4 class="font-bold text-lg">Brands we serve</h4>
-            <p class="text-gray-500 text-sm">Trusted by leading automotive brands and transport companies.</p>
-          </div>
+        <div class="why-card wc-o reveal reveal-delay-1">
+          <div class="why-icon" style="background: linear-gradient(135deg, rgba(249,115,22,0.2), rgba(249,115,22,0.05)); border: 1px solid rgba(249,115,22,0.3); color: #fb923c;"><i class="fas fa-microchip"></i></div>
+          <div><h3>Modern Diagnostics</h3><p>Cutting-edge tools, live vehicle bays, and current diagnostic equipment for all trades.</p></div>
+        </div>
+        <div class="why-card wc-r reveal reveal-delay-2">
+          <div class="why-icon" style="background: linear-gradient(135deg, rgba(220,38,38,0.2), rgba(220,38,38,0.05)); border: 1px solid rgba(220,38,38,0.3); color: #f87171;"><i class="fas fa-handshake"></i></div>
+          <div><h3>Industry Partnerships</h3><p>Strong ties with leading automotive brands, ensuring employment-ready graduates.</p></div>
+        </div>
+        <div class="why-card wc-p reveal reveal-delay-3">
+          <div class="why-icon" style="background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(124,58,237,0.05)); border: 1px solid rgba(124,58,237,0.3); color: #c084fc;"><i class="fas fa-map-location-dot"></i></div>
+          <div><h3>Two Prime Campuses</h3><p>Midrand (Gauteng) and Pinetown (KZN) — accessible locations serving all regions.</p></div>
+        </div>
+        <div class="why-card wc-g reveal reveal-delay-1">
+          <div class="why-icon" style="background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(16,185,129,0.05)); border: 1px solid rgba(16,185,129,0.3); color: #34d399;"><i class="fas fa-shield-halved"></i></div>
+          <div><h3>BBBEE Level 1</h3><p>100% Black-owned, proudly South African, committed to transformation and access.</p></div>
+        </div>
+        <div class="why-card wc-c reveal reveal-delay-2">
+          <div class="why-icon" style="background: linear-gradient(135deg, rgba(14,116,144,0.2), rgba(14,116,144,0.05)); border: 1px solid rgba(14,116,144,0.3); color: #22d3ee;"><i class="fas fa-car-side"></i></div>
+          <div><h3>EV-Ready Training</h3><p>Future-proofed curriculum covering hybrid and electric vehicle systems and diagnostics.</p></div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ========== CTA + CONTACT ========== -->
-    <section class="py-16 bg-gradient-to-r from-gray-900 to-gray-800 text-white">
-      <div class="max-w-6xl mx-auto px-5 text-center">
-        <h3 class="text-2xl md:text-3xl font-bold">Ready to accelerate your future?</h3>
-        <p class="text-gray-300 mt-2">Contact our team to discuss courses, trade tests, or THRASS teacher training.</p>
-        <div class="flex flex-wrap gap-5 justify-center mt-8">
-          <a href="tel:0113148775" class="bg-orange-600 hover:bg-orange-700 px-6 py-3 rounded-full flex items-center gap-2 font-semibold transition"><i class="fas fa-phone-alt"></i> 011 314 8775</a>
-          <a href="tel:0317090514" class="border border-orange-400 hover:bg-orange-700/20 px-6 py-3 rounded-full flex items-center gap-2 transition"><i class="fas fa-phone-alt"></i> 031 709 0514</a>
-          <a href="mailto:info@nextlsa.co.za" class="border border-white/30 hover:bg-white/10 px-6 py-3 rounded-full flex items-center gap-2 transition"><i class="fas fa-envelope"></i> info@nextlsa.co.za</a>
+  <!-- ==================== CTA ==================== -->
+  <section class="cta-section">
+    <div class="cta-bg"></div>
+    <div class="cta-overlay"></div>
+    <div class="container cta-content">
+      <div class="cta-inner">
+        <div class="reveal">
+          <div class="section-label"><i class="fas fa-rocket"></i> Get Started</div>
+          <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem);">Ready to Accelerate<br><span style="color: var(--orange);">Your Future?</span></h2>
+          <p class="section-sub" style="margin-top: 0.75rem;">Contact our team for courses, trade tests, ARPL, or THRASS training.</p>
         </div>
-        <div class="mt-10 text-sm text-gray-400 flex justify-center gap-6">
-          <span><i class="fas fa-map-marker-alt mr-1 text-orange-400"></i> Midrand, Gauteng</span>
-          <span><i class="fas fa-map-marker-alt mr-1 text-orange-400"></i> Pinetown, KZN</span>
+        <div class="cta-contacts reveal reveal-delay-1">
+          <a href="tel:0113148775" class="contact-chip"><i class="fas fa-phone-alt"></i> 011 314 8775</a>
+          <a href="tel:0317090514" class="contact-chip"><i class="fas fa-phone-alt"></i> 031 709 0514</a>
+          <a href="mailto:info@nextlsa.co.za" class="contact-chip"><i class="fas fa-envelope"></i> info@nextlsa.co.za</a>
+          <a href="portal.html" class="btn-primary"><i class="fas fa-arrow-right-to-bracket"></i> Student Portal</a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ========== FOOTER ========== -->
-    <footer class="bg-white border-t border-gray-200 py-10">
-      <div class="max-w-7xl mx-auto px-5 grid md:grid-cols-3 gap-8">
-        <div>
-          <h4 class="font-bold flex gap-2"><i class="fas fa-wrench text-orange-500"></i> Next Level Skills Academy</h4>
-          <p class="text-gray-500 text-sm mt-2">Accredited Trade Test Centre | Automotive Training | THRASS® Educator Resources</p>
-          <p class="text-gray-500 text-xs mt-2">BBBEE Level 1 · 100% Black-owned</p>
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo" style="margin-bottom: 1rem;">
+            <div class="nav-logo-icon" style="width: 36px; height: 36px; border-radius: 10px; font-size: 14px;"><i class="fas fa-wrench" style="color: white;"></i></div>
+            <div><div class="nav-brand-name">Next Level Skills</div><div class="nav-brand-sub">Academy · Trade Test Centre</div></div>
+          </div>
+          <p>Accredited Trade Test Centre & Automotive Training Academy. Proudly 100% Black-owned, BBBEE Level 1, merSETA accredited.</p>
+          <div style="display: flex; gap: 8px; margin-top: 1.2rem;">
+            <a href="#" style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); text-decoration: none; transition: all 0.25s;" onmouseover="this.style.background='rgba(249,115,22,0.15)';this.style.borderColor='rgba(249,115,22,0.4)';this.style.color='#fb923c'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.borderColor='rgba(255,255,255,0.1)';this.style.color='rgba(255,255,255,0.4)'"><i class="fab fa-facebook-f" style="font-size: 14px;"></i></a>
+            <a href="#" style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); text-decoration: none; transition: all 0.25s;" onmouseover="this.style.background='rgba(249,115,22,0.15)';this.style.borderColor='rgba(249,115,22,0.4)';this.style.color='#fb923c'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.borderColor='rgba(255,255,255,0.1)';this.style.color='rgba(255,255,255,0.4)'"><i class="fab fa-linkedin-in" style="font-size: 14px;"></i></a>
+            <a href="#" style="width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); text-decoration: none; transition: all 0.25s;" onmouseover="this.style.background='rgba(249,115,22,0.15)';this.style.borderColor='rgba(249,115,22,0.4)';this.style.color='#fb923c'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.borderColor='rgba(255,255,255,0.1)';this.style.color='rgba(255,255,255,0.4)'"><i class="fab fa-instagram" style="font-size: 14px;"></i></a>
+          </div>
         </div>
-        <div>
-          <h5 class="font-semibold">📍 Contact Hubs</h5>
-          <p class="text-gray-500 text-sm">Unit 4 Corporate Park South, Midrand<br>Unit 16 Palm River Ind Park, Pinetown</p>
-          <p class="text-gray-500 text-sm mt-2">📞 011 314 8775 / 031 709 0514</p>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul>
+            <li><a href="#"><i class="fas fa-angle-right" style="font-size: 10px;"></i>Motor Mechanic</a></li>
+            <li><a href="#"><i class="fas fa-angle-right" style="font-size: 10px;"></i>Diesel Mechanic</a></li>
+            <li><a href="#"><i class="fas fa-angle-right" style="font-size: 10px;"></i>Auto Electrician</a></li>
+            <li><a href="#"><i class="fas fa-angle-right" style="font-size: 10px;"></i>Trade Test Centre</a></li>
+            <li><a href="#"><i class="fas fa-angle-right" style="font-size: 10px;"></i>ARPL Services</a></li>
+            <li><a href="#"><i class="fas fa-angle-right" style="font-size: 10px;"></i>THRASS Resources</a></li>
+            <li><a href="portal.html" style="color: var(--orange) !important;"><i class="fas fa-arrow-right" style="font-size: 10px;"></i>Student Portal</a></li>
+          </ul>
         </div>
-        <div>
-          <h5 class="font-semibold">Explore</h5>
-          <ul class="text-sm space-y-1">
-            <li><a href="#" class="footer-link text-gray-500">Motor Mechanic Course</a></li>
-            <li><a href="#" class="footer-link text-gray-500">THRASS Teacher Training</a></li>
-            <li><a href="portal.html" class="footer-link text-orange-600 font-medium">Student Portal Login →</a></li>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="tel:0113148775"><i class="fas fa-phone" style="font-size: 10px;"></i>011 314 8775</a></li>
+            <li><a href="tel:0317090514"><i class="fas fa-phone" style="font-size: 10px;"></i>031 709 0514</a></li>
+            <li><a href="mailto:info@nextlsa.co.za"><i class="fas fa-envelope" style="font-size: 10px;"></i>info@nextlsa.co.za</a></li>
+            <li style="margin-top: 0.8rem;"><a href="#" style="cursor: default; pointer-events: none;"><i class="fas fa-map-pin" style="font-size: 10px;"></i>Midrand, Gauteng</a></li>
+            <li><a href="#" style="cursor: default; pointer-events: none;"><i class="fas fa-map-pin" style="font-size: 10px;"></i>Pinetown, KZN</a></li>
           </ul>
         </div>
       </div>
-      <div class="text-center text-gray-400 text-xs pt-8 border-t mt-8 max-w-7xl mx-auto">© 2025 Next Level Skills Academy. All Rights Reserved. | Building artisans & educators.</div>
-    </footer>
-  </main>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Next Level Skills Academy. All Rights Reserved.</p>
+        <div class="footer-tags">
+          <span class="footer-tag">BBBEE Level 1</span>
+          <span class="footer-tag">merSETA Accredited</span>
+          <span class="footer-tag">QCTO Ready</span>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <script>
-    const menuBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    if(menuBtn) {
-      menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-    }
+    // Cursor
+    const dot = document.getElementById('cursorDot');
+    const ring = document.getElementById('cursorRing');
+    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+    document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; dot.style.left = mouseX+'px'; dot.style.top = mouseY+'px'; });
+    function animateRing() { ringX += (mouseX - ringX) * 0.12; ringY += (mouseY - ringY) * 0.12; ring.style.left = ringX+'px'; ring.style.top = ringY+'px'; requestAnimationFrame(animateRing); }
+    animateRing();
+    document.querySelectorAll('a, button, .course-card, .why-card, .thrass-feat, .tt-card, .process-step').forEach(el => {
+      el.addEventListener('mouseenter', () => { ring.style.width='54px'; ring.style.height='54px'; ring.style.borderColor='rgba(249,115,22,0.8)'; dot.style.transform='translate(-50%,-50%) scale(2)'; });
+      el.addEventListener('mouseleave', () => { ring.style.width='36px'; ring.style.height='36px'; ring.style.borderColor='rgba(249,115,22,0.5)'; dot.style.transform='translate(-50%,-50%) scale(1)'; });
+    });
+    // Nav scroll
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+    // Mobile menu
+    document.getElementById('hamburgerBtn').addEventListener('click', () => document.getElementById('mobileNav').classList.add('open'));
+    document.getElementById('mobileNavClose').addEventListener('click', () => document.getElementById('mobileNav').classList.remove('open'));
+    document.querySelectorAll('#mobileNav a').forEach(a => a.addEventListener('click', () => document.getElementById('mobileNav').classList.remove('open')));
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('revealed'); }), { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
