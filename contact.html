@@ -3,387 +3,430 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Contact Us | Next Level Skills Academy – Connect With Us</title>
-  <!-- Tailwind CSS + Font Awesome -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>Contact Us | Next Level Skills Academy – Connect With Excellence</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap');
-    * { font-family: 'Inter', sans-serif; }
-    body {
-      background: linear-gradient(135deg, #fefbf5 0%, #f0f3fe 100%);
+    :root {
+      --white:       #ffffff;
+      --off-white:   #f7f8fc;
+      --light-gray:  #eaecf5;
+      --mid-gray:    #c8ccdf;
+      --text-body:   #3d4460;
+      --text-dark:   #141828;
+      --text-muted:  #7b82a0;
+      --blue:        #1d5fce;
+      --blue-light:  #3b82f6;
+      --blue-pale:   #dbeafe;
+      --orange:      #f97316;
+      --orange-warm: #fb923c;
+      --orange-pale: #fff3e8;
+      --red:         #dc2626;
+      --red-pale:    #fff0f0;
+      --purple:      #7c3aed;
+      --purple-light:#c084fc;
+      --purple-pale: #f3e8ff;
+      --shadow-sm:   0 2px 8px rgba(20,24,40,.07);
+      --shadow-md:   0 8px 28px rgba(20,24,40,.10);
+      --shadow-lg:   0 20px 55px rgba(20,24,40,.13);
+      --shadow-xl:   0 32px 80px rgba(20,24,40,.16);
     }
-    .nav-link {
-      transition: all 0.2s;
-    }
-    .nav-link:hover {
-      color: #f97316;
-      transform: translateY(-1px);
-    }
-    .gradient-text {
-      background: linear-gradient(120deg, #1e3a8a, #f97316, #dc2626, #a855f7);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: shimmer 5s ease infinite;
-    }
-    @keyframes shimmer {
-      0% { background-position: 0% center; }
-      50% { background-position: 100% center; }
-      100% { background-position: 0% center; }
-    }
-    .contact-card {
-      transition: all 0.3s ease;
-    }
-    .contact-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(249, 115, 22, 0.3);
-    }
-    .orange-btn {
-      background: linear-gradient(95deg, #f97316, #ea580c);
-      transition: all 0.25s ease;
-    }
-    .orange-btn:hover {
-      background: linear-gradient(95deg, #ea580c, #c2410c);
-      transform: scale(1.02);
-      box-shadow: 0 8px 18px rgba(234, 88, 12, 0.3);
-    }
-    .input-focus:focus {
-      border-color: #f97316;
-      box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
-      outline: none;
-    }
-    .footer-link:hover {
-      color: #f97316;
-    }
-    .map-placeholder {
-      background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
-      transition: all 0.3s;
-    }
-    .map-placeholder:hover {
-      background: linear-gradient(135deg, #cbd5e1, #b9c3d1);
-    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text-body);overflow-x:hidden;}
+    h1,h2,h3,h4{font-family:'Syne',sans-serif;color:var(--text-dark);}
+
+    /* CURSOR */
+    .c-dot{width:7px;height:7px;background:var(--orange);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s;}
+    .c-ring{width:32px;height:32px;border:2px solid rgba(249,115,22,.4);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .12s,height .12s,border-color .12s;}
+
+    /* NAVBAR */
+    nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:72px;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.8);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-bottom:1px solid var(--light-gray);transition:all .3s;}
+    nav.scrolled{background:rgba(255,255,255,.96);box-shadow:var(--shadow-sm);height:62px;}
+    .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+    .nav-logo-icon{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--orange));display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(249,115,22,.28);transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .3s;}
+    .nav-logo:hover .nav-logo-icon{transform:rotate(-8deg) scale(1.12);box-shadow:0 8px 24px rgba(249,115,22,.45);}
+    .nav-brand-name{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:var(--text-dark);line-height:1.1;}
+    .nav-brand-sub{font-size:9.5px;color:var(--text-muted);letter-spacing:.1em;text-transform:uppercase;}
+    .nav-links{display:flex;gap:2rem;align-items:center;}
+    .nav-links a{font-size:.82rem;font-weight:500;color:var(--text-body);text-decoration:none;position:relative;transition:color .2s;}
+    .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:2px;background:var(--orange);border-radius:2px;transition:width .25s;}
+    .nav-links a:hover{color:var(--text-dark);}
+    .nav-links a:hover::after{width:100%;}
+    .nav-links a.active{color:var(--orange);}
+    .nav-links a.active::after{width:100%;background:var(--orange);}
+    .nav-cta{background:linear-gradient(135deg,var(--orange),#ea580c);color:white;padding:9px 22px;border-radius:50px;font-size:.82rem;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:7px;box-shadow:0 4px 14px rgba(249,115,22,.32);transition:all .3s cubic-bezier(.34,1.56,.64,1);}
+    .nav-cta:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 8px 22px rgba(249,115,22,.48);}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--text-dark);border-radius:2px;transition:all .3s;}
+
+    /* HERO */
+    .hero{min-height:65vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+    .hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=1800&q=80');background-size:cover;background-position:center 30%;filter:brightness(.32) saturate(1.1);transform:scale(1.04);animation:slowZoom 22s ease-in-out infinite alternate;}
+    @keyframes slowZoom{from{transform:scale(1.04)}to{transform:scale(1.1)}}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.04) 0%,rgba(18,22,40,.2) 40%,rgba(12,16,32,.75) 100%);}
+    .hero-content{position:relative;z-index:10;max-width:860px;width:100%;margin:0 auto;padding:0 2rem;padding-top:80px;text-align:center;display:flex;flex-direction:column;align-items:center;}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);backdrop-filter:blur(14px);color:#fff;padding:8px 20px;border-radius:50px;font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2rem;opacity:0;animation:slideDown .8s .1s cubic-bezier(.22,1,.36,1) forwards;}
+    .hero-badge .bdot{width:7px;height:7px;background:var(--orange);border-radius:50%;animation:pulse 2s infinite;}
+    .hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,9vw,6rem);line-height:.95;letter-spacing:.02em;margin-bottom:1.5rem;}
+    .hero-title .l1{display:block;color:#fff;text-shadow:0 4px 32px rgba(0,0,0,.4);opacity:0;animation:slideUp .85s .25s cubic-bezier(.22,1,.36,1) forwards;}
+    .hero-title .l2{display:block;background:linear-gradient(90deg,var(--orange) 0%,#ff5722 45%,var(--purple-light) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 28px rgba(249,115,22,.35));opacity:0;animation:slideUp .85s .38s cubic-bezier(.22,1,.36,1) forwards;}
+    .hero-desc{max-width:580px;font-size:1.05rem;color:rgba(255,255,255,.82);line-height:1.75;font-weight:300;margin-bottom:0;text-shadow:0 2px 12px rgba(0,0,0,.35);opacity:0;animation:slideUp .85s .5s cubic-bezier(.22,1,.36,1) forwards;}
+    .scroll-hint{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:5px;z-index:10;opacity:0;animation:fadeIn 1s 1.2s ease forwards;}
+    .scroll-hint span{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);}
+    .scroll-hint i{color:rgba(255,255,255,.3);font-size:12px;animation:bounce 2.2s 2s infinite;}
+    @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+    @keyframes slideUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes slideDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+    /* BUTTONS */
+    .btn-orange{background:linear-gradient(135deg,var(--orange),#ea580c);color:#fff;padding:14px 32px;border-radius:50px;font-weight:700;font-size:.9rem;text-decoration:none;display:inline-flex;align-items:center;gap:10px;box-shadow:0 4px 18px rgba(249,115,22,.35);transition:all .35s cubic-bezier(.34,1.56,.64,1);letter-spacing:.02em;position:relative;overflow:hidden;border:none;cursor:pointer;}
+    .btn-orange::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.18),transparent);opacity:0;transition:opacity .3s;}
+    .btn-orange:hover{transform:translateY(-4px) scale(1.04);box-shadow:0 16px 38px rgba(249,115,22,.5);}
+    .btn-orange:hover::after{opacity:1;}
+    .btn-outline-light{background:transparent;border:1.5px solid var(--mid-gray);color:var(--text-dark);padding:13px 30px;border-radius:50px;font-weight:600;font-size:.88rem;text-decoration:none;display:inline-flex;align-items:center;gap:9px;transition:all .3s cubic-bezier(.34,1.56,.64,1);}
+    .btn-outline-light:hover{border-color:var(--orange);color:var(--orange);transform:translateY(-3px) scale(1.03);box-shadow:0 8px 18px rgba(249,115,22,.14);}
+
+    /* SECTION SHARED */
+    section{position:relative;z-index:2;}
+    .container{max-width:1280px;margin:0 auto;padding:0 2rem;}
+    .chip{display:inline-flex;align-items:center;gap:7px;font-size:.7rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;padding:6px 16px;border-radius:50px;margin-bottom:1.1rem;}
+    .chip-o{color:var(--orange);background:var(--orange-pale);border:1px solid rgba(249,115,22,.22);}
+    .chip-b{color:var(--blue);background:var(--blue-pale);border:1px solid rgba(29,95,206,.22);}
+    .chip-r{color:var(--red);background:var(--red-pale);border:1px solid rgba(220,38,38,.22);}
+    .chip-p{color:var(--purple);background:var(--purple-pale);border:1px solid rgba(124,58,237,.22);}
+    .sec-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.9rem,3.8vw,3rem);line-height:1.08;color:var(--text-dark);}
+    .sec-sub{font-size:.98rem;color:var(--text-muted);line-height:1.72;font-weight:300;max-width:500px;margin-top:.7rem;}
+    .g-orange{color:var(--orange);}
+    .g-fire{background:linear-gradient(90deg,var(--orange),var(--red));-webkit-background-clip:text;background-clip:text;color:transparent;}
+
+    /* CONTACT CARDS */
+    .contact-card{background:var(--white);border:1.5px solid var(--light-gray);border-radius:1.5rem;padding:1.8rem;transition:all .4s cubic-bezier(.23,1,.32,1);box-shadow:var(--shadow-sm);}
+    .contact-card:hover{transform:translateY(-8px);border-color:rgba(249,115,22,.3);box-shadow:var(--shadow-xl);}
+    .contact-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;transition:transform .35s cubic-bezier(.34,1.56,.64,1);}
+    .contact-card:hover .contact-icon{transform:scale(1.12) rotate(-5deg);}
+    .map-placeholder{background:var(--off-white);border:1.5px solid var(--light-gray);border-radius:1rem;transition:all .3s;cursor:pointer;}
+    .map-placeholder:hover{background:var(--orange-pale);border-color:rgba(249,115,22,.4);}
+
+    /* FORM STYLES */
+    .form-group{margin-bottom:1.25rem;}
+    .form-label{display:block;font-size:.75rem;font-weight:600;color:var(--text-muted);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.05em;}
+    .form-input{width:100%;padding:1rem 1.2rem;background:var(--off-white);border:1.5px solid var(--light-gray);border-radius:1rem;font-size:.9rem;color:var(--text-dark);transition:all .3s;font-family:'DM Sans',sans-serif;}
+    .form-input:focus{outline:none;border-color:var(--orange);background:var(--white);box-shadow:0 0 0 3px rgba(249,115,22,.12);}
+    .form-input::placeholder{color:var(--mid-gray);}
+    select.form-input{cursor:pointer;background:var(--off-white);}
+    textarea.form-input{resize:vertical;min-height:110px;}
+
+    /* SIDEBAR CARDS */
+    .glass-card{background:var(--off-white);border:1.5px solid var(--light-gray);border-radius:1.5rem;padding:1.5rem;transition:all .35s cubic-bezier(.23,1,.32,1);}
+    .glass-card:hover{transform:translateY(-5px);border-color:rgba(249,115,22,.3);box-shadow:var(--shadow-md);}
+    .office-hours{background:linear-gradient(135deg,var(--off-white),#fff);}
+
+    /* LOCATION GRID */
+    .loc-card{background:var(--white);border:1.5px solid var(--light-gray);border-radius:1.25rem;padding:1.5rem;display:flex;gap:1.2rem;align-items:flex-start;transition:all .4s cubic-bezier(.23,1,.32,1);}
+    .loc-card:hover{transform:translateY(-6px);border-color:rgba(249,115,22,.3);box-shadow:var(--shadow-lg);}
+    .loc-pin{width:48px;height:48px;border-radius:13px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:19px;background:linear-gradient(135deg,var(--orange),var(--red));transition:transform .35s cubic-bezier(.34,1.56,.64,1);}
+    .loc-card:hover .loc-pin{transform:scale(1.12) rotate(-5deg);}
+
+    /* FOOTER */
+    footer{background:var(--text-dark);padding:64px 0 28px;}
+    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:4rem;margin-bottom:3rem;}
+    .f-logo-name{font-family:'Syne',sans-serif;font-weight:800;font-size:1.05rem;color:#fff;}
+    .f-logo-sub{font-size:9.5px;color:rgba(255,255,255,.38);letter-spacing:.1em;text-transform:uppercase;}
+    .footer-brand p{font-size:.82rem;color:rgba(255,255,255,.33);line-height:1.7;margin-top:.9rem;max-width:270px;}
+    .footer-col h5{font-weight:700;font-size:.76rem;text-transform:uppercase;letter-spacing:.13em;color:rgba(255,255,255,.42);margin-bottom:.9rem;}
+    .footer-col ul{list-style:none;}
+    .footer-col ul li{margin-bottom:.52rem;}
+    .footer-col ul li a{color:rgba(255,255,255,.33);font-size:.84rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:color .2s,padding-left .2s;}
+    .footer-col ul li a:hover{color:var(--orange);padding-left:4px;}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:1.4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+    .footer-bottom p{font-size:.75rem;color:rgba(255,255,255,.18);}
+    .footer-tags{display:flex;gap:.5rem;flex-wrap:wrap;}
+    .footer-tag{font-size:.67rem;padding:3px 10px;border-radius:50px;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.26);}
+    .soc-btn{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.35);text-decoration:none;font-size:13px;transition:all .3s;}
+    .soc-btn:hover{background:rgba(249,115,22,.18);border-color:rgba(249,115,22,.4);color:var(--orange-warm);transform:translateY(-2px);}
+
+    /* MOBILE NAV */
+    .mob-nav{display:none;position:fixed;inset:0;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
+    .mob-nav.open{display:flex;}
+    .mob-nav a{font-family:'Bebas Neue',sans-serif;font-size:2.6rem;color:var(--text-body);text-decoration:none;letter-spacing:.04em;transition:color .2s,transform .2s;}
+    .mob-nav a:hover{color:var(--orange);transform:scale(1.06);}
+    .mob-close{position:absolute;top:1.5rem;right:1.5rem;background:var(--light-gray);border:none;border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;color:var(--text-dark);}
+
+    /* REVEAL */
+    .rev{opacity:0;transform:translateY(30px);transition:opacity .75s ease,transform .75s ease;}
+    .rev.in{opacity:1;transform:translateY(0);}
+    .d1{transition-delay:.12s;}.d2{transition-delay:.22s;}.d3{transition-delay:.32s;}.d4{transition-delay:.42s;}
+
+    @media(max-width:1024px){.footer-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}.footer-grid{grid-template-columns:1fr;}.c-dot,.c-ring{display:none;}}
   </style>
 </head>
-<body class="antialiased">
+<body>
 
-  <!-- ========== NAVBAR with LOGIN ========== -->
-  <header class="sticky top-0 z-50 bg-white/85 backdrop-blur-md shadow-sm border-b border-gray-200/70">
-    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center py-3 md:py-4">
-        <div class="flex items-center space-x-2">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-700 via-orange-500 to-red-500 flex items-center justify-center shadow-md">
-            <i class="fas fa-wrench text-white text-sm"></i>
-          </div>
-          <div>
-            <h1 class="text-xl md:text-2xl font-extrabold tracking-tight">
-              <span class="bg-gradient-to-r from-blue-800 via-orange-600 to-purple-600 bg-clip-text text-transparent">Next Level</span>
-              <span class="text-gray-800"> Skills</span>
-            </h1>
-            <p class="text-[11px] md:text-xs text-gray-500 -mt-1">Academy · Trade Test Centre</p>
-          </div>
-        </div>
-        <div class="hidden md:flex items-center space-x-7">
-          <a href="index.html" class="nav-link text-gray-700 font-medium text-sm">Home</a>
-          <a href="about.html" class="nav-link text-gray-700 font-medium text-sm">About</a>
-          <a href="services.html" class="nav-link text-gray-700 font-medium text-sm">Services</a>
-          <a href="#" class="nav-link text-gray-700 font-medium text-sm">Trade Test</a>
-          <a href="#" class="nav-link text-gray-700 font-medium text-sm">ARPL</a>
-          <a href="contact.html" class="nav-link text-orange-600 font-semibold text-sm border-b-2 border-orange-500 pb-0.5">Contact</a>
-        </div>
-        <div class="flex items-center gap-3">
-          <a href="portal.html" class="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white px-5 py-2 rounded-full text-sm font-semibold shadow-md transition-all duration-200 flex items-center gap-2">
-            <i class="fas fa-sign-in-alt text-xs"></i> Login
-          </a>
-          <button id="mobileMenuBtn" class="md:hidden text-gray-700 focus:outline-none text-2xl">
-            <i class="fas fa-bars"></i>
-          </button>
-        </div>
+  <div class="c-dot" id="cDot"></div>
+  <div class="c-ring" id="cRing"></div>
+
+  <div class="mob-nav" id="mobNav">
+    <button class="mob-close" id="mobClose"><i class="fas fa-times"></i></button>
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="#">Courses</a>
+    <a href="#">Trade Test</a><a href="#">ARPL</a><a href="#">THRASS</a><a href="contact.html">Contact</a>
+    <a href="portal.html" style="color:var(--orange)">Student Portal</a>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav id="mainNav">
+    <a class="nav-logo" href="index.html">
+      <div class="nav-logo-icon"><i class="fas fa-wrench" style="color:#fff;font-size:17px"></i></div>
+      <div>
+        <div class="nav-brand-name">Next Level Skills</div>
+        <div class="nav-brand-sub">Academy · Trade Test Centre</div>
       </div>
-      <div id="mobileMenu" class="md:hidden hidden flex-col pb-4 space-y-3">
-        <a href="index.html" class="block text-gray-800 font-medium py-1 border-b border-gray-100">Home</a>
-        <a href="about.html" class="block text-gray-800 font-medium py-1 border-b border-gray-100">About</a>
-        <a href="services.html" class="block text-gray-800 font-medium py-1 border-b border-gray-100">Services</a>
-        <a href="#" class="block text-gray-800 font-medium py-1 border-b border-gray-100">Trade Test</a>
-        <a href="#" class="block text-gray-800 font-medium py-1 border-b border-gray-100">ARPL</a>
-        <a href="contact.html" class="block text-orange-600 font-semibold py-1">Contact</a>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a><a href="about.html">About</a><a href="#">Courses</a>
+      <a href="#">Trade Test</a><a href="#">ARPL</a><a href="#">THRASS</a><a href="contact.html" class="active">Contact</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:1rem">
+      <a href="portal.html" class="nav-cta"><i class="fas fa-sign-in-alt" style="font-size:.72rem"></i> Student Portal</a>
+      <button class="hamburger" id="hamBtn"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge"><span class="bdot"></span> Get in Touch</div>
+      <h1 class="hero-title">
+        <span class="l1">Let's</span>
+        <span class="l2">Connect</span>
+      </h1>
+      <p class="hero-desc">Reach out for course inquiries, trade test bookings, ARPL guidance, or THRASS® teacher training. Our team is ready to help you level up.</p>
+    </div>
+    <div class="scroll-hint"><span>Scroll</span><i class="fas fa-chevron-down"></i></div>
+  </section>
+
+  <!-- CONTACT CARDS - 2 LOCATIONS -->
+  <section class="py-16">
+    <div class="container">
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Midrand HQ -->
+        <div class="contact-card rev">
+          <div class="flex items-center gap-4 mb-5">
+            <div class="contact-icon" style="background:linear-gradient(135deg,var(--blue),var(--blue-light));color:white;"><i class="fas fa-building"></i></div>
+            <div><h2 class="text-2xl font-bold" style="font-family:'Syne',sans-serif;">Head Office</h2><p class="text-orange-500 text-sm font-semibold">Gauteng · Midrand</p></div>
+          </div>
+          <div class="space-y-4">
+            <div class="flex gap-3"><i class="fas fa-map-pin text-orange-500 mt-1"></i><span class="text-gray-600 text-sm">Unit 4 Corporate Park South, Corner Tsessebe and Suni Avenue, Randjespark, Midrand</span></div>
+            <div class="flex gap-3"><i class="fas fa-phone-alt text-orange-500"></i><a href="tel:0113148775" class="text-gray-700 hover:text-orange-500 transition">011 314 8775</a></div>
+            <div class="flex gap-3"><i class="fas fa-envelope text-orange-500"></i><a href="mailto:info@nextlsa.co.za" class="text-gray-700 hover:text-orange-500 transition">info@nextlsa.co.za</a></div>
+          </div>
+          <div class="map-placeholder mt-6 h-32 flex items-center justify-center text-gray-500 text-sm"><i class="fas fa-map-marked-alt mr-2"></i> Interactive map preview</div>
+        </div>
+        <!-- Durban Branch -->
+        <div class="contact-card rev d1">
+          <div class="flex items-center gap-4 mb-5">
+            <div class="contact-icon" style="background:linear-gradient(135deg,var(--orange),var(--red));color:white;"><i class="fas fa-umbrella-beach"></i></div>
+            <div><h2 class="text-2xl font-bold" style="font-family:'Syne',sans-serif;">Durban Branch</h2><p class="text-orange-500 text-sm font-semibold">KwaZulu-Natal · Pinetown</p></div>
+          </div>
+          <div class="space-y-4">
+            <div class="flex gap-3"><i class="fas fa-map-pin text-orange-500 mt-1"></i><span class="text-gray-600 text-sm">Unit 16 Palm River Industrial Park, 1 Devon Road, Pinetown</span></div>
+            <div class="flex gap-3"><i class="fas fa-phone-alt text-orange-500"></i><a href="tel:0317090514" class="text-gray-700 hover:text-orange-500 transition">031 709 0514</a></div>
+            <div class="flex gap-3"><i class="fas fa-envelope text-orange-500"></i><a href="mailto:info@nextlsa.co.za" class="text-gray-700 hover:text-orange-500 transition">info@nextlsa.co.za</a></div>
+          </div>
+          <div class="map-placeholder mt-6 h-32 flex items-center justify-center text-gray-500 text-sm"><i class="fas fa-map-marked-alt mr-2"></i> Interactive map preview</div>
+        </div>
       </div>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <!-- ========== HERO SECTION ========== -->
-    <section class="relative overflow-hidden pt-20 pb-16 md:pt-28 md:pb-20">
-      <div class="absolute inset-0 pointer-events-none">
-        <div class="absolute top-20 left-10 w-72 h-72 bg-orange-200/40 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-10 right-10 w-80 h-80 bg-purple-200/30 rounded-full blur-3xl"></div>
-        <div class="absolute top-1/3 right-1/4 w-64 h-64 bg-blue-200/20 rounded-full blur-2xl"></div>
-      </div>
-      <div class="max-w-7xl mx-auto px-5 text-center relative z-2">
-        <div class="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-5 py-2 rounded-full shadow-sm mb-5">
-          <i class="fas fa-map-marker-alt text-orange-500 text-sm"></i>
-          <span class="text-xs font-bold text-gray-700">Get in Touch</span>
-        </div>
-        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">Let’s <span class="gradient-text">Connect</span></h1>
-        <p class="text-gray-600 max-w-2xl mx-auto mt-4 text-lg">Reach out to our team for course inquiries, trade test bookings, ARPL guidance, or THRASS® teacher training.</p>
-      </div>
-    </section>
-
-    <!-- ========== CONTACT INFO CARDS (2 Locations + Quick Contacts) ========== -->
-    <section class="py-8 px-5 max-w-7xl mx-auto">
-      <div class="grid md:grid-cols-2 gap-8 mb-16">
-        <!-- Midrand HQ Card -->
-        <div class="contact-card bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-          <div class="h-2 bg-gradient-to-r from-blue-700 to-orange-500"></div>
-          <div class="p-6 md:p-8">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
-                <i class="fas fa-building text-blue-700 text-xl"></i>
-              </div>
-              <h2 class="text-2xl font-bold text-gray-800">Head Office</h2>
-            </div>
-            <p class="text-gray-600 font-medium">Gauteng · Midrand</p>
-            <div class="mt-4 space-y-3">
-              <div class="flex items-start gap-3">
-                <i class="fas fa-map-pin text-orange-500 mt-1"></i>
-                <span class="text-gray-600 text-sm">Unit 4 Corporate Park South, Corner Tsessebe and Suni Avenue, Randjespark, Midrand</span>
-              </div>
-              <div class="flex items-center gap-3">
-                <i class="fas fa-phone-alt text-orange-500"></i>
-                <a href="tel:0113148775" class="text-gray-700 hover:text-orange-600 transition">011 314 8775</a>
-              </div>
-              <div class="flex items-center gap-3">
-                <i class="fas fa-envelope text-orange-500"></i>
-                <a href="mailto:info@nextlsa.co.za" class="text-gray-700 hover:text-orange-600 transition">info@nextlsa.co.za</a>
-              </div>
-            </div>
-            <div class="mt-6 map-placeholder rounded-xl h-32 bg-gray-200 flex items-center justify-center text-gray-500 text-sm">
-              <i class="fas fa-map-marked-alt mr-2"></i> Interactive map preview
-            </div>
-          </div>
-        </div>
-
-        <!-- Durban Branch Card -->
-        <div class="contact-card bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-          <div class="h-2 bg-gradient-to-r from-orange-500 to-red-500"></div>
-          <div class="p-6 md:p-8">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center">
-                <i class="fas fa-umbrella-beach text-orange-600 text-xl"></i>
-              </div>
-              <h2 class="text-2xl font-bold text-gray-800">Durban Branch</h2>
-            </div>
-            <p class="text-gray-600 font-medium">KwaZulu-Natal · Pinetown</p>
-            <div class="mt-4 space-y-3">
-              <div class="flex items-start gap-3">
-                <i class="fas fa-map-pin text-orange-500 mt-1"></i>
-                <span class="text-gray-600 text-sm">Unit 16 Palm River Industrial Park, 1 Devon Road, Pinetown</span>
-              </div>
-              <div class="flex items-center gap-3">
-                <i class="fas fa-phone-alt text-orange-500"></i>
-                <a href="tel:0317090514" class="text-gray-700 hover:text-orange-600 transition">031 709 0514</a>
-              </div>
-              <div class="flex items-center gap-3">
-                <i class="fas fa-envelope text-orange-500"></i>
-                <a href="mailto:info@nextlsa.co.za" class="text-gray-700 hover:text-orange-600 transition">info@nextlsa.co.za</a>
-              </div>
-            </div>
-            <div class="mt-6 map-placeholder rounded-xl h-32 bg-gray-200 flex items-center justify-center text-gray-500 text-sm">
-              <i class="fas fa-map-marked-alt mr-2"></i> Interactive map preview
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== CONTACT FORM + ADDITIONAL SUPPORT ========== -->
-    <section class="py-8 pb-20 px-5 max-w-7xl mx-auto">
+  <!-- CONTACT FORM + SIDEBAR -->
+  <section class="py-12 pb-20">
+    <div class="container">
       <div class="grid lg:grid-cols-3 gap-10">
-        <!-- Form Column (2/3 width on large screens) -->
-        <div class="lg:col-span-2">
-          <div class="bg-white rounded-3xl shadow-2xl p-6 md:p-8 border border-gray-100">
+        <!-- Form Column -->
+        <div class="lg:col-span-2 rev">
+          <div class="bg-white border border-light-gray rounded-2xl p-6 md:p-8 shadow-md">
             <div class="mb-6">
-              <h3 class="text-2xl font-bold text-gray-800">Send us a message</h3>
-              <p class="text-gray-500 text-sm mt-1">We'll respond within 24 hours — whether it's about automotive training, trade tests, or THRASS® educator resources.</p>
+              <div class="chip chip-o"><i class="fas fa-envelope"></i> Send Message</div>
+              <h3 class="text-2xl font-bold" style="font-family:'Syne',sans-serif;">We'd love to hear from you</h3>
+              <p class="text-gray-500 text-sm mt-1">We'll respond within 24 hours — automotive training, trade tests, or THRASS® resources.</p>
             </div>
             <form action="#" method="POST" class="space-y-5">
               <div class="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">Full name *</label>
-                  <input type="text" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-orange-400 input-focus transition bg-gray-50/50">
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">Email address *</label>
-                  <input type="email" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-orange-400 input-focus transition bg-gray-50/50">
-                </div>
+                <div class="form-group"><label class="form-label">Full name *</label><input type="text" required class="form-input" placeholder="John Doe"></div>
+                <div class="form-group"><label class="form-label">Email address *</label><input type="email" required class="form-input" placeholder="hello@example.com"></div>
               </div>
               <div class="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">Phone number</label>
-                  <input type="tel" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-orange-400 input-focus transition bg-gray-50/50">
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">I'm interested in *</label>
-                  <select class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-orange-400 input-focus transition bg-gray-50/50">
-                    <option>Motor Mechanic Training</option>
-                    <option>Diesel Mechanic Training</option>
-                    <option>Auto Electrician Course</option>
-                    <option>Trade Test Booking</option>
-                    <option>ARPL Services</option>
-                    <option>THRASS® Teacher Training</option>
-                    <option>General Inquiry</option>
+                <div class="form-group"><label class="form-label">Phone number</label><input type="tel" class="form-input" placeholder="+27 XX XXX XXXX"></div>
+                <div class="form-group"><label class="form-label">I'm interested in *</label>
+                  <select class="form-input">
+                    <option>Motor Mechanic Training</option><option>Diesel Mechanic Training</option>
+                    <option>Auto Electrician Course</option><option>Trade Test Booking</option>
+                    <option>ARPL Services</option><option>THRASS® Teacher Training</option><option>General Inquiry</option>
                   </select>
                 </div>
               </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Your message *</label>
-                <textarea rows="4" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-orange-400 input-focus transition bg-gray-50/50" placeholder="Tell us about your goals, questions, or which campus you'd like to visit..."></textarea>
-              </div>
-              <div>
-                <button type="submit" class="orange-btn text-white px-8 py-3 rounded-full font-semibold shadow-md w-full sm:w-auto flex items-center justify-center gap-2 transition">
-                  <i class="fas fa-paper-plane"></i> Send Message
-                </button>
-              </div>
-              <p class="text-xs text-gray-400 mt-3">By submitting, you agree to our privacy policy. We’ll never share your details.</p>
+              <div class="form-group"><label class="form-label">Your message *</label><textarea rows="4" required class="form-input" placeholder="Tell us about your goals, questions, or which campus you'd like to visit..."></textarea></div>
+              <button type="submit" class="btn-orange"><i class="fas fa-paper-plane"></i> Send Message</button>
+              <p class="text-xs text-gray-400 mt-3">By submitting, you agree to our privacy policy. We'll never share your details.</p>
             </form>
           </div>
         </div>
 
-        <!-- Quick Support / THRASS & CTA Sidebar -->
-        <div class="lg:col-span-1">
-          <div class="bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl p-6 shadow-lg border-l-4 border-orange-500 mb-6">
-            <i class="fas fa-headset text-3xl text-orange-600 mb-3"></i>
-            <h4 class="text-xl font-bold text-gray-800">Need instant help?</h4>
-            <p class="text-gray-600 text-sm mt-1">Call our admissions team directly during business hours.</p>
+        <!-- Sidebar -->
+        <div class="space-y-6">
+          <div class="glass-card rev d1">
+            <i class="fas fa-headset text-3xl text-orange-500 mb-3"></i>
+            <h4 class="text-xl font-bold" style="font-family:'Syne',sans-serif;">Need instant help?</h4>
+            <p class="text-gray-500 text-sm mt-1">Call our admissions team directly during business hours.</p>
             <div class="mt-4 space-y-2">
-              <a href="tel:0113148775" class="flex items-center gap-3 text-gray-800 font-medium hover:text-orange-600 transition"><i class="fas fa-phone-alt text-orange-500 w-5"></i> 011 314 8775 (JHB)</a>
-              <a href="tel:0317090514" class="flex items-center gap-3 text-gray-800 font-medium hover:text-orange-600 transition"><i class="fas fa-phone-alt text-orange-500 w-5"></i> 031 709 0514 (DBN)</a>
-              <a href="mailto:info@nextlsa.co.za" class="flex items-center gap-3 text-gray-800 font-medium hover:text-orange-600 transition"><i class="fas fa-envelope text-orange-500 w-5"></i> info@nextlsa.co.za</a>
+              <a href="tel:0113148775" class="flex items-center gap-3 text-gray-700 hover:text-orange-500 transition"><i class="fas fa-phone-alt text-orange-500 w-5"></i> 011 314 8775 (JHB)</a>
+              <a href="tel:0317090514" class="flex items-center gap-3 text-gray-700 hover:text-orange-500 transition"><i class="fas fa-phone-alt text-orange-500 w-5"></i> 031 709 0514 (DBN)</a>
+              <a href="mailto:info@nextlsa.co.za" class="flex items-center gap-3 text-gray-700 hover:text-orange-500 transition"><i class="fas fa-envelope text-orange-500 w-5"></i> info@nextlsa.co.za</a>
             </div>
           </div>
 
-          <!-- THRASS integration in contact sidebar -->
-          <div class="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
-            <div class="flex items-center gap-2 mb-3">
-              <i class="fas fa-chalkboard-teacher text-red-500 text-xl"></i>
-              <h4 class="font-bold text-gray-800">Educator Resources</h4>
-            </div>
-            <p class="text-gray-600 text-sm">Interested in our <span class="font-semibold text-orange-600">THRASS® methodology</span> publications and teacher training? We provide workshops and material for schools and literacy advocates.</p>
-            <a href="#" class="inline-flex items-center gap-2 mt-4 text-orange-600 text-sm font-semibold border-b border-orange-300 hover:border-orange-600 transition"><span>Request THRASS info</span> <i class="fas fa-arrow-right text-xs"></i></a>
+          <div class="glass-card rev d2">
+            <div class="flex items-center gap-2 mb-3"><i class="fas fa-chalkboard-teacher text-red-500 text-xl"></i><h4 class="font-bold text-lg">Educator Resources</h4></div>
+            <p class="text-gray-500 text-sm">Interested in our <span class="text-orange-500 font-semibold">THRASS® methodology</span> publications and teacher training? We provide workshops and material for schools.</p>
+            <a href="#" class="inline-flex items-center gap-2 mt-4 text-orange-500 text-sm font-semibold hover:text-orange-600 transition group"><span>Request THRASS info</span> <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition"></i></a>
           </div>
 
-          <div class="mt-6 bg-blue-50 rounded-2xl p-5 text-center">
-            <i class="fas fa-clock text-blue-600 text-2xl mb-2"></i>
-            <p class="text-sm font-medium">Office Hours</p>
-            <p class="text-xs text-gray-600">Mon–Thu: 8:00 – 16:30<br>Fri: 8:00 – 15:00<br>Sat & Sun: Closed (Trade tests by appointment)</p>
+          <div class="glass-card office-hours rev d3 text-center">
+            <i class="fas fa-clock text-blue-500 text-2xl mb-2"></i>
+            <p class="text-sm font-semibold text-gray-800">Office Hours</p>
+            <p class="text-xs text-gray-500 mt-1">Mon–Thu: 8:00 – 16:30<br>Fri: 8:00 – 15:00<br>Sat & Sun: Closed (Trade tests by appointment)</p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ========== LOCATION & VISIT INFO (with simulated map cards) ========== -->
-    <section class="py-12 bg-gradient-to-r from-blue-50 to-indigo-50/40">
-      <div class="max-w-7xl mx-auto px-5">
-        <div class="text-center mb-10">
-          <h2 class="text-3xl font-bold text-gray-800">Visit Our <span class="gradient-text">Campuses</span></h2>
-          <p class="text-gray-500">State-of-the-art workshops & trade test facilities</p>
+  <!-- LOCATION MAPS SECTION -->
+  <section class="py-16 bg-off-white">
+    <div class="container">
+      <div class="text-center mb-12 rev">
+        <div class="chip chip-o" style="justify-content:center"><i class="fas fa-map-marked-alt"></i> Visit Our Campuses</div>
+        <h2 class="sec-title">State-of-the-art <span class="g-fire">Workshops & Trade Test Facilities</span></h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="loc-card rev">
+          <div class="loc-pin"><i class="fas fa-building" style="color:#fff"></i></div>
+          <div><h4 class="font-bold text-lg">📍 Gauteng (Head Office)</h4><p class="text-gray-500 text-sm">Unit 4 Corporate Park South, Corner Tsessebe and Suni Avenue, Randjespark, Midrand</p><p class="text-gray-400 text-xs mt-2"><i class="fas fa-car mr-1"></i> Ample parking | Workshop viewing by appointment</p><a href="https://maps.google.com/?q=Unit+4+Corporate+Park+South+Midrand" target="_blank" class="inline-block mt-3 text-orange-500 text-sm font-semibold hover:underline">Get directions →</a></div>
         </div>
-        <div class="grid md:grid-cols-2 gap-8">
-          <!-- Midrand map placeholder + details -->
-          <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition">
-            <div class="map-placeholder h-48 w-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center text-gray-700 font-medium">
-              <i class="fas fa-map-marker-alt text-orange-600 mr-2"></i> Midrand Campus - Corporate Park South
-            </div>
-            <div class="p-5">
-              <h3 class="font-bold text-xl">📍 Gauteng (Head Office)</h3>
-              <p class="text-gray-600 text-sm mt-1">Unit 4 Corporate Park South, Corner Tsessebe and Suni Avenue, Randjespark, Midrand</p>
-              <p class="text-gray-500 text-xs mt-2 flex items-center gap-1"><i class="fas fa-car"></i> Ample parking | Workshop viewing by appointment</p>
-              <a href="https://maps.google.com/?q=Unit+4+Corporate+Park+South+Midrand" target="_blank" class="inline-block mt-4 text-orange-600 text-sm font-semibold hover:underline">Get directions →</a>
-            </div>
-          </div>
-          <!-- Durban map placeholder -->
-          <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition">
-            <div class="map-placeholder h-48 w-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center text-gray-700 font-medium">
-              <i class="fas fa-map-marker-alt text-orange-600 mr-2"></i> Durban Campus - Palm River Industrial Park
-            </div>
-            <div class="p-5">
-              <h3 class="font-bold text-xl">🌊 KZN (Durban Branch)</h3>
-              <p class="text-gray-600 text-sm mt-1">Unit 16 Palm River Industrial Park, 1 Devon Road, Pinetown</p>
-              <p class="text-gray-500 text-xs mt-2 flex items-center gap-1"><i class="fas fa-tools"></i> Trade test centre | Fully equipped workshops</p>
-              <a href="https://maps.google.com/?q=Unit+16+Palm+River+Industrial+Park+Pinetown" target="_blank" class="inline-block mt-4 text-orange-600 text-sm font-semibold hover:underline">Get directions →</a>
-            </div>
-          </div>
+        <div class="loc-card rev d1">
+          <div class="loc-pin" style="background:linear-gradient(135deg,var(--blue),var(--purple))"><i class="fas fa-building-user" style="color:#fff"></i></div>
+          <div><h4 class="font-bold text-lg">🌊 KZN (Durban Branch)</h4><p class="text-gray-500 text-sm">Unit 16 Palm River Industrial Park, 1 Devon Road, Pinetown</p><p class="text-gray-400 text-xs mt-2"><i class="fas fa-tools mr-1"></i> Trade test centre | Fully equipped workshops</p><a href="https://maps.google.com/?q=Unit+16+Palm+River+Industrial+Park+Pinetown" target="_blank" class="inline-block mt-3 text-orange-500 text-sm font-semibold hover:underline">Get directions →</a></div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ========== FAQ / PRE-VISIT SUPPORT ========== -->
-    <section class="py-16 px-5 max-w-7xl mx-auto">
-      <div class="bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-xl">
+  <!-- QUICK ANSWERS / FAQ -->
+  <section class="py-16">
+    <div class="container">
+      <div class="bg-off-white border border-light-gray rounded-2xl p-8 md:p-10 rev">
         <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div class="flex-1">
-            <h3 class="text-2xl font-bold text-gray-800 flex items-center gap-2"><i class="fas fa-question-circle text-orange-500"></i> Quick answers</h3>
-            <p class="text-gray-600 mt-1">Have questions about enrollment, trade tests, or THRASS teacher materials? Our team is ready to assist.</p>
-          </div>
-          <div class="flex gap-4">
-            <a href="tel:0113148775" class="bg-gray-800 hover:bg-gray-900 text-white px-6 py-2.5 rounded-full text-sm font-semibold transition shadow flex items-center gap-2"><i class="fas fa-phone"></i> Call Us</a>
-            <a href="mailto:info@nextlsa.co.za" class="border border-orange-500 text-orange-600 hover:bg-orange-50 px-6 py-2.5 rounded-full text-sm font-semibold transition flex items-center gap-2"><i class="fas fa-envelope"></i> Email Direct</a>
-          </div>
+          <div><h3 class="text-2xl font-bold flex items-center gap-2"><i class="fas fa-question-circle text-orange-500"></i> Quick answers</h3><p class="text-gray-500 mt-1">Questions about enrollment, trade tests, or THRASS materials? We're ready.</p></div>
+          <div class="flex gap-4"><a href="tel:0113148775" class="btn-orange py-3 px-6"><i class="fas fa-phone"></i> Call Us</a><a href="mailto:info@nextlsa.co.za" class="btn-outline-light"><i class="fas fa-envelope"></i> Email Direct</a></div>
         </div>
-        <div class="grid md:grid-cols-3 gap-4 mt-8 text-sm text-gray-600 border-t pt-6">
+        <div class="grid md:grid-cols-3 gap-4 mt-8 text-sm text-gray-500 border-t border-gray-200 pt-6">
           <div><i class="fas fa-check-circle text-green-500 mr-1"></i> Accredited trade tests</div>
           <div><i class="fas fa-check-circle text-green-500 mr-1"></i> ARPL application support</div>
           <div><i class="fas fa-check-circle text-green-500 mr-1"></i> THRASS® publishing & training</div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ========== CTA SECTION ========== -->
-    <section class="py-14 bg-gray-900 text-white">
-      <div class="max-w-5xl mx-auto px-5 text-center">
-        <h3 class="text-2xl md:text-3xl font-bold">Ready to take the next step?</h3>
-        <p class="text-gray-300 mt-2">Whether you're starting your automotive career or seeking educator resources, we're here to guide you.</p>
-        <div class="flex flex-wrap gap-4 justify-center mt-6">
-          <a href="#" class="bg-orange-600 hover:bg-orange-700 px-6 py-2.5 rounded-full font-semibold transition shadow flex items-center gap-2"><i class="fas fa-calendar-alt"></i> Book a campus tour</a>
-          <a href="#" class="border border-white/40 hover:bg-white/10 px-6 py-2.5 rounded-full font-semibold transition flex items-center gap-2"><i class="fas fa-download"></i> Download prospectus</a>
-        </div>
+  <!-- CTA SECTION -->
+  <section class="relative py-20 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-[#141828] to-[#1a1f38]"></div>
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=1600&q=80')] bg-cover bg-center opacity-15"></div>
+    <div class="relative z-10 container text-center">
+      <h3 class="text-3xl md:text-4xl font-bold text-white">Ready to take the next step?</h3>
+      <p class="text-white/60 text-lg mt-2">Whether you're starting your automotive career or seeking educator resources, we're here to guide you.</p>
+      <div class="flex flex-wrap gap-4 justify-center mt-8">
+        <a href="#" class="btn-orange"><i class="fas fa-calendar-alt"></i> Book a campus tour</a>
+        <a href="#" class="btn-outline-light" style="border-color:rgba(255,255,255,.3);color:#fff;"><i class="fas fa-download"></i> Download prospectus</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ========== FOOTER ========== -->
-    <footer class="bg-white border-t border-gray-200 py-10">
-      <div class="max-w-7xl mx-auto px-5 grid md:grid-cols-3 gap-8">
-        <div>
-          <h4 class="font-bold flex gap-2"><i class="fas fa-wrench text-orange-500"></i> Next Level Skills Academy</h4>
-          <p class="text-gray-500 text-sm mt-2">Accredited Trade Test Centre | Automotive Training | THRASS® Educator Resources</p>
-          <p class="text-gray-500 text-xs mt-2">BBBEE Level 1 · 100% Black-owned</p>
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display:flex;align-items:center;gap:11px;margin-bottom:.9rem">
+            <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--orange));display:flex;align-items:center;justify-content:center"><i class="fas fa-wrench" style="color:#fff;font-size:14px"></i></div>
+            <div><div class="f-logo-name">Next Level Skills</div><div class="f-logo-sub">Academy · Trade Test Centre</div></div>
+          </div>
+          <p>Accredited Trade Test Centre &amp; Automotive Training Academy. Proudly 100% Black-owned, BBBEE Level 1 Contributor, merSETA accredited.</p>
+          <div style="display:flex;gap:7px;margin-top:1.1rem">
+            <a href="#" class="soc-btn"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="soc-btn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="soc-btn"><i class="fab fa-instagram"></i></a>
+          </div>
         </div>
-        <div>
-          <h5 class="font-semibold">📍 Campuses</h5>
-          <p class="text-gray-500 text-sm">Midrand, Johannesburg<br>Pinetown, Durban</p>
-          <h5 class="font-semibold mt-2">📞 Contact Centre</h5>
-          <p class="text-gray-500 text-sm">011 314 8775 | 031 709 0514</p>
+        <div class="footer-col">
+          <h5>Training Programmes</h5>
+          <ul>
+            <li><a href="#"><i class="fas fa-angle-right" style="font-size:9px"></i>Motor Mechanic Course</a></li>
+            <li><a href="#"><i class="fas fa-angle-right" style="font-size:9px"></i>Diesel Mechanic Training</a></li>
+            <li><a href="#"><i class="fas fa-angle-right" style="font-size:9px"></i>Auto Electric Programme</a></li>
+            <li><a href="#"><i class="fas fa-angle-right" style="font-size:9px"></i>ARPL Assessment</a></li>
+            <li><a href="#"><i class="fas fa-angle-right" style="font-size:9px"></i>THRASS Teacher Resources</a></li>
+            <li><a href="portal.html" style="color:var(--orange)!important"><i class="fas fa-arrow-right" style="font-size:9px"></i>Student Portal Login</a></li>
+          </ul>
         </div>
-        <div>
-          <h5 class="font-semibold">Quick links</h5>
-          <ul class="text-sm space-y-1">
-            <li><a href="#" class="footer-link text-gray-500">Motor Mechanic Course</a></li>
-            <li><a href="#" class="footer-link text-gray-500">THRASS Teacher Training</a></li>
-            <li><a href="portal.html" class="footer-link text-orange-600 font-medium">Student Portal Login →</a></li>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="tel:0113148775"><i class="fas fa-phone" style="font-size:9px"></i>011 314 8775</a></li>
+            <li><a href="tel:0317090514"><i class="fas fa-phone" style="font-size:9px"></i>031 709 0514</a></li>
+            <li><a href="mailto:info@nextlsa.co.za"><i class="fas fa-envelope" style="font-size:9px"></i>info@nextlsa.co.za</a></li>
+            <li style="margin-top:.8rem"><a href="#" style="pointer-events:none"><i class="fas fa-map-pin" style="font-size:9px"></i>Midrand, Gauteng</a></li>
+            <li><a href="#" style="pointer-events:none"><i class="fas fa-map-pin" style="font-size:9px"></i>Pinetown, KZN</a></li>
           </ul>
         </div>
       </div>
-      <div class="text-center text-gray-400 text-xs pt-8 border-t mt-8 max-w-7xl mx-auto">© 2025 Next Level Skills Academy. All Rights Reserved. | Building artisans & educators — connect with us today.</div>
-    </footer>
-  </main>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Next Level Skills Academy. All Rights Reserved. | Building artisans & educators — connect with us today.</p>
+        <div class="footer-tags">
+          <span class="footer-tag">BBBEE Level 1</span>
+          <span class="footer-tag">merSETA Accredited</span>
+          <span class="footer-tag">QCTO Ready</span>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <script>
-    const menuBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    if(menuBtn) {
-      menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-    }
+    // Cursor
+    const cDot=document.getElementById('cDot'),cRing=document.getElementById('cRing');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cDot.style.left=mx+'px';cDot.style.top=my+'px';});
+    (function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;cRing.style.left=rx+'px';cRing.style.top=ry+'px';requestAnimationFrame(loop);})();
+    document.querySelectorAll('a,button,.contact-card,.glass-card,.loc-card').forEach(el=>{
+      el.addEventListener('mouseenter',()=>{cRing.style.width='50px';cRing.style.height='50px';cRing.style.borderColor='rgba(249,115,22,.75)';cDot.style.transform='translate(-50%,-50%) scale(2)';});
+      el.addEventListener('mouseleave',()=>{cRing.style.width='32px';cRing.style.height='32px';cRing.style.borderColor='rgba(249,115,22,.4)';cDot.style.transform='translate(-50%,-50%) scale(1)';});
+    });
+    // Nav scroll
+    window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',scrollY>50));
+    // Mobile menu
+    document.getElementById('hamBtn').addEventListener('click',()=>document.getElementById('mobNav').classList.add('open'));
+    document.getElementById('mobClose').addEventListener('click',()=>document.getElementById('mobNav').classList.remove('open'));
+    document.querySelectorAll('.mob-nav a').forEach(a=>a.addEventListener('click',()=>document.getElementById('mobNav').classList.remove('open')));
+    // Reveal
+    const ro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in');}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
   </script>
 </body>
 </html>
